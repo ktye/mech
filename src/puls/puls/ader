@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# ader - vergleich zwischen aderamos und aderginac
+#
+# Pulsierende Rohrströmung
+# aderamos - komplexe Besselfunktion
+# aderginac - Taylor Entwicklung
+
+if [ -z "$3" ]; then 
+	echo "usage: $0 time alpha Ntaylor"
+	exit 1
+fi
+
+export R=1000 time=$1 alpha=$2 Ntaylor=$3
+echo ":1:2:green"
+aderamos $alpha $R $time  | awk '{print $2,$3}'
+echo 
+echo ":1:2:yellow"
+aderginac $alpha $R $time $Ntaylor | awk '{print $2,$3}'
+echo ""
+echo ":1:2:red"
+aderamos/aderoctave $alpha $R $time | awk '{print $1,$2+0.0001}'

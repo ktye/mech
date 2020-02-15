@@ -1,0 +1,6 @@
+<$SRC/mkhdr
+
+TARG=rbf
+LDFLAGS=$LDFLAGS $LIBLAPACK -lm
+
+<$SRC/mkone

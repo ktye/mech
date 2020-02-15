@@ -1,0 +1,13 @@
+# $Id: mkfile,v 1.3 2006/01/24 15:46:45 elmar Exp $
+FIGS=`ls *.fig | sed 's/\.fig/.pdf/'`
+
+all:V:	$FIGS
+
+%.eps:	%.fig
+	fig2dev -Leps $stem.fig $stem.eps
+
+%.pdf:	%.fig
+	fig2dev -Lpdf $stem.fig $stem.pdf
+
+clean:V:
+	rm -f *.eps *.fig.bak *.pdf

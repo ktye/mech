@@ -1,0 +1,4 @@
+<$SRC/mkhdr
+LDFLAGS=$LDFLAGS -lm
+TARG=floqdat
+<$SRC/mkone

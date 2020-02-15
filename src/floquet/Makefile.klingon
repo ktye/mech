@@ -1,0 +1,36 @@
+.SUFFIXES:      .o .c
+CFLAGS=-O3 -I$(HOME)/include -I In
+LDADD=  $(HOME)/lib/lapack_HP-UX-ia64.a  $(HOME)/lib/blas_HP-UX-ia64.a $(HOME)/lib/libF77.a $(HOME)/lib/libI77.a -lm
+OBJS= expvel.o floquet.o inner.o la.o loop.o main.o quad.o quasisteady.o readbase.o reinit.o solve.o status.o
+LIB=In/In.a
+
+
+floquet: $(OBJS) $(LIB)
+	cc -o floquet -O3 $(OBJS) $(LIB) $(LDADD)
+
+$(LIB):
+	( cd In; make -f Makefile.klingon )
+	
+.c.o:
+	cc $(CFLAGS) -c $<
+
+$(HOME)/bin/floquet: floquet
+	cp floquet $(HOME)/bin && chmod 744 $(HOME)/bin/floquet
+
+install: $(HOME)/bin/floquet
+
+getsrc:
+	scp -r 'lighthill:src/floquet/{Makefile.klingon,*.[ch],patch.klingon}' .
+	#scp -r 'lighthill:src/floquet/{Makefile.klingon,*.[ch],In}' .
+	patch define.h < patch.klingon
+
+clean:
+	rm *.o floquet
+
+Intest: Intest.c
+	cc -c Intest.c
+	cc -o Intest Intest.o $(LIB) -lm
+
+nuke: clean
+	rm $(HOME)/bin/floquet
+	

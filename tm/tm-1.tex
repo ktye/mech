@@ -1,0 +1,456 @@
+% $Id: tm-1.tex,v 1.13 2006/06/13 12:56:50 elmar Exp $
+\input{header}
+\setcounter{section}{0}
+
+\begin{document}
+
+\section{Einleitung}
+\subsection{Definition und Einteilung der Mechanik}
+\begin{itemize}
+	\item Die Mechanik ist der älteste, grundlegende Zweig der Physik.
+	Sie untersucht die Bewegungen und den inneren Zustand materieller Körper unter der Einwirkung von Kräften.
+\end{itemize}
+
+Die Bearbeitung technisch relevanter Aufgaben in der Mechanik erfolgt in der Regel in mehreren Schritten:
+\begin{itemize}
+	\item Abbildung des realen technischen Systems auf ein mechanisches \hbox{(Ersatz-)} Modell,
+	\item mathematische Formulierung der mechanischen Vorgänge, die anhand des Modells untersucht werden sollen,
+	\item Entwicklung und Anwendung geeigneter Lösungsmethoden,
+	\item mechanische Interpretation und Auswertung der Lösungen im Hinblick auf die Aufgabenstellung.
+\end{itemize}
+Die Modellbildung betrifft u.a. auch die Stoffeigenschaften der materiellen Körper.
+Daraus ergibt sich bereits eine grobe Einteilung der Mechanik.\\
+
+%\todo{tabelle}
+%\begin{table}[ htbp ]
+%\begin{tabular}{|l|l|l|l|l|}
+%\hline
+%Aggregatzustand & Werkstoffmodell & Teilgebiet & \multicolumn{2}{l}{übergeordnete Begriffe} \vline\\\hline\hline
+%\multirow{3}{*}{fest} & starr & Stereomechanik & \multirow{3}{2.4cm}{Festkörper-\\mechanik} & \multirow{5}{*}{ \begin{tabular}{l}Kontinuums-\\mechanik\\\end{tabular} }\\
+%	& elastisch & Elastomechanik & \\
+%	& plastisch & Plastomechanik & \\
+%flüssig & viskos & Hydromechanik & \multirow{2}{*}{Fluidmechanik} & \\
+%gasförmig & reibungslos & Aeromechanik & \\\hline
+%\end{tabular}
+%\end{table}
+\bildnocap{fig/einteilung}{angle=-90,width=\textwidth}{}
+
+Im Hinblick auf die zu untersuchenden Vorgänge gliedert man die Mechanik in vier Bereiche:
+\begin{itemize}
+	\item Die \textbf{Kinematik} beschreibt den geometrisch möglichen Bewegungsablauf in Raum und Zeit.
+	\item Die \textbf{Dynamik} ist die Lehre von den Kräften und ihren Wirkungen und umfasst die Teilgebiete Statik und Kinetik.
+	\item Die \textbf{Statik} ist die Lehre vom Gleichgewicht der Kräfte am ruhenden Körper.
+	\item Die \textbf{Kinetik} untersucht den Zusammenhang zwischen den auf einen Körper wirkenden Kräften und den durch sie hervorgerufenen Bewegungen.
+\end{itemize}
+
+Die unterschiedlichen Eigenschaften technisch relevanter Werkstoffe führen dann zu einer weiteren Untergliederung in eigenständige Teilgebiete, s. Tabelle.\\
+
+Historische Personen, die zur Entwicklung der Mechanik wesentlich beigetragen haben:\\
+\begin{table}[ htbp ]
+\begin{tabular}{lll}
+	Archimedes &(287--212 v. Chr.) & Hebelgesetze, Auftrieb, Schwerpunkt\\
+	Tycho Brahe & (1546--1601)& Planetenbewegung\\
+	G. Galilei& (1564--1642)& Fallgesetze, Wurf\\
+	J. Kepler& (1571--1630)& Planetenbewegung\\
+	C. Huygens&(1629--1695)& Schwingungen, Stoß \\
+	I. Newton&(1643--1727)&Bewegungsgesetze\\
+	J. Bernoulli &(1667--1748)&Balkenbiegung\\
+	D. Bernoulli &(1700--1782)&Energiesatz\\
+	L. Euler&(1707--1783)&Hydrodynamik, Variationsrechnung\\
+	J.-B. d'Alembert&(1717--1783)&Prinzipien der Mechanik, Wellengleichung\\
+	J. L. Lagrange&(1736--1813)& Analytische Mechanik\\
+	W. R. Hamilton&(1805--1865)&Extremalprinzip\\
+	J. W. Rayleigh&(1842--1919)&Schwingungslehre, Akustik\\
+\end{tabular}
+\end{table}
+
+\bildnocap{fig/stammbaum}{height=23cm}{}{}
+\newpage
+
+\subsection{Physikalische Größen und Einheiten}
+Wie überall in der Physik begegnen uns auch in der Mechanik dimensionsbehaftete Größen, die durch einen Zahlenwert (Maßzahl) und eine Einheit gekennzeichnet sind, z.B.
+\begin{table}[ htbp ]
+\begin{center}
+\begin{tabular}{l}
+	$m$ = 70 kg \\
+	$v$ = 10 m/s \\
+\end{tabular}
+\end{center}
+\end{table}
+
+Im internationalen Einheitensystem (SI) sind die voneinander unabhängigen Basisgrößen festgelegt.\\
+
+\begin{table}[ htbp ]
+\begin{center}
+\begin{tabular}{lll}
+	Basisgrößen & \multicolumn{2}{l}{SI-Basiseinheiten} \\\hline
+	Masse & Kilogramm & kg \\
+	Länge & Meter & m \\
+	Zeit & Sekunde & s \\
+	Temperatur & Kelvin & K\\
+	elektrische Feldstärke & Ampere & A\\
+	Lichtstärke & Candela & cd \\
+	Stoffmenge & Mol & mol\\
+\end{tabular}
+\end{center}
+\end{table}
+
+In der Mechanik werden (nur) die Basisgrößen Masse, Länge und Zeit benötigt.
+Die Einheiten andersartiger mechanischer Größen können aus kg, m und s abgeleitet werden.\\
+
+Für einige abgeleitete SI-Einheiten sind besondere Namen üblich:\\
+
+\begin{table}[ htbp ]
+\begin{center}
+\begin{tabular}{lll}
+	Größe & \multicolumn{2}{l}{SI-Einheiten} \\\hline
+	Kraft & Newton & N = kg m/s$^2$\\ 
+	Druck, Zugspannung & Pascal & Pa = N/m$^2$ \\
+	Energie, Arbeit & Joule & J = Nm\\
+	Leistung & Watt & W = J/s\\
+\end{tabular}
+\end{center}
+\end{table}
+
+Oft ist es zweckmäßig, auch Vielfache oder Bruchteile der SI-Einheiten zu verwenden.
+Zur Kennzeichnung sind international vereinbarte Vorsätze üblich.\\
+
+\begin{table}[ htbp ]
+\begin{center}
+\begin{tabular}{lll}
+	Faktor & Vorsatz & Zeichen \\\hline
+	10$^6$ & Mega & M \\
+	10$^3$ & Kilo & k \\
+	10$^2$ & Hekto & h \\
+	10$^{-1}$ & Dezi & d\\
+	10$^{-2}$ & Zenti& c\\
+	10$^{-3}$ & Milli & m\\
+	10$^{-6}$ & Mikro& $\mu$\\
+\end{tabular}
+\end{center}
+\end{table}
+\newpage
+
+Wichtiger Hinweis: Unterscheiden Sie stets zwischen der Masse $m$ und der Gewichtskraft $G$ eines Körpers!
+Es gilt der Zusammenhang
+$$ G = mg $$
+In der Technik rechnet man üblicherweise mit dem konstanten Wert
+$$ g = 9,81 \textrm{ m}/\textrm{s}^2$$
+für die Fallbeschleunigung auf der Erde.
+\begin{itemize}
+	\item Ein Körper mit einer Masse von 1 kg besitzt (auf der Erde ungefähr) ein Gewicht von 9,81 N.
+\end{itemize}
+
+Zweckmäßigerweise betrachtet man in der Mechanik oft die Kraft --- statt der Masse --- als Grundgröße.\\
+
+\bildnocap{fig/teilgebiete}{angle=-90,width=\textwidth}{}
+
+\begin{table}[ htbp ]
+\indent Zusammenstellung der verwendeten Symbole
+\begin{center}
+\begin{tabular}{lll}
+	Symbol & SI-Einheit & Bedeutung \\\hline
+	$a$ & m/s$^2$ & Beschleunigung \\
+	$A$ & m$^2$ & Fläche \\
+	$c$ & N/m & Federkonstante\\
+	$d$ & m & Durchmesser\\
+	$\vec{e}$ & -- & Einheitsvektor\\
+%	$E$ & J & Energie\\
+	$E$ & N/m$^2$ & Elastizitätsmodul\\
+	$F$ & N & Kraft\\
+	$G$ & N & Gewichtskraft\\
+	$h$ & m & Höhe\\
+	$I$ & m$^4$ & Flächenmoment 2. Ordnung\\
+	$J\quad(\Theta)$ & kg m$^2$ & Massenträgheitsmoment\\
+	$l$ & m & Länge\\
+	$L$ & kg m$^2$/s & Drehimpuls, Drall\\
+	$m$ & kg & Masse\\
+	$M$ & Nm & Moment\\
+	$n$ & 1/s & Drehzahl\\
+	$p$ & kg m/s & Impuls, Bewegungsgröße\\
+	$P$ & W & Leistung\\
+	$r$ & m & Zylinderkoordinate, Radius\\
+	$t$ & s & Zeit\\
+	$T$ & J & kinetische Energie\\
+	$U$ & J & Formänderungsenergie, potentielle Energie\\
+	$v$ & m/s & Geschwindigkeit\\
+	$V$ & m$^3$ & Volumen\\
+	$W$ & J & Arbeit\\
+	$x,y,z$ & m & kartesische Koordianten\\
+	$\alpha,\beta,\gamma$ & -- & Winkel\\
+	$\alpha$ & 1/K & thermischer Ausdehnungskoeffizient\\
+	$\varepsilon$ & -- & Dehnung\\
+	$\varrho$ & kg/m$^3$ & Massendichte\\
+	$\sigma$ & Pa & Normalspannung\\
+	$\varphi$ & -- & Polarkoordinate, Winkel\\
+	$\omega$ & 1/s & Winkelgeschwindigkeit, Kreisfrequenz\\
+\end{tabular}
+\end{center}
+\end{table}
+\newpage
+
+\subsection{Mathematische Grundlagen}
+\subsubsection{Ebene Trigonometrie}
+Definition der Winkelfunktionen am Dreieck
+\vspace*{1cm}
+
+\bildnocap{fig/dreieck}{angle=-90,width=5cm}{
+\put(91,-11){$\cdot$}
+\put(-15,-75){$A$}
+\put(144,-75){$B$}
+\put(95,8){$C$}
+\put(125,-38){$a$}
+\put(35,-36){$b$}
+\put(75,-85){$c$}
+\put(36,-62){$\alpha$}
+\put(107,-62){$\beta$}
+}
+
+\begin{eqnarray*}
+	\textrm{Sinus} = \frac{\textrm{Gegenkathete}}{\textrm{Hypothenuse}} &\qquad&\sin\alpha  = \frac{a}{c}\\
+	\textrm{Cosinus} = \frac{\textrm{Ankathete}}{\textrm{Hypothenuse}} &\qquad& \cos\alpha  = \frac{b}{c}\\
+	\textrm{Tangens} = \frac{\textrm{Gegenkathete}}{\textrm{Ankathete}} &\qquad& \tan\alpha  = \frac{a}{b}\\
+	\textrm{Cotangens} = \frac{\textrm{Ankathete}}{\textrm{Gegenkathete}} &\qquad& \cot\alpha  = \frac{b}{a}\\
+\end{eqnarray*}
+
+Zusammenhänge zwischen den Winkelfunktionen
+$$ \sin^2 \alpha + \cos^2 \alpha = 1$$
+$$ \tan \alpha = \frac{\sin\alpha}{\cos\alpha}$$
+$$ 1 + \tan^2 \alpha = \frac{1}{\cos^2\alpha} $$
+$$ \cot\alpha = \frac{1}{\tan\alpha}$$
+
+\newpage
+Veranschaulichung der Winkelfunktionen am Kreis\\
+\bildnocap{fig/kreis}{width=6cm,angle=-90}{
+	\put(165,-103){$x$}
+	\put(75,-15){$y$}
+	\put(17,-80){$r\sin\varphi$}
+	\put(75,-125){$r\cos\varphi$}
+	\put(79,-67){$r$}
+	\put(86,-92){$\varphi$}
+	\put(97,-38){$P$}
+	\put(135,-60){$r\tan\varphi$}
+}
+
+Die Lage des Punktes $P$ kann beschrieben werden entweder mit \textbf{kartesischen Lagekoordianten} $x,y$ oder mit \textbf{Polarkoordinaten} $r,\varphi$.\\
+Zusammenhang:
+$$ x = r \cos\varphi $$
+$$ y = r \sin\varphi $$
+
+\subsubsection{Vektorrechnung}
+Vektoren sind gerichtete Strecken im Raum.
+Kennzeichen einer solchen Strecke sind: Länge, Richtung und Richtungssinn.
+Das geometrische Bild eines Vektors $\vec a$ im 3d Raum unserer Anschauung ist ein Pfeil.
+Die Länge des Pfeils ist ein Maß für den \textbf{Betrag des Vektors} 
+$$ a = |\vec a| $$
+Ein Vektor vom Betrag Null heißt \textbf{Nullvektor}.
+Ein Vektor $\vec e$, dessen Betrag Eins ist, d.h. $e=1$, heißt \textbf{Einsvektor} (auch Einheitsvektor).\\
+
+\textbf{Multiplikation mit einem Skalar:} Wird der Vektor $\vec a$ mit einer Zahl $\lambda$ (Skalar) multipliziert, dann gilt
+\begin{eqnarray*}
+	\vec b = \lambda \vec a &&\textrm{ mit } b = |\lambda| a\\
+	&& \textrm{ und } \vec b \upuparrows \vec a, \textrm{ wenn } \lambda > 0 \textrm{ (gleichsinnig parallel)}\\
+	&& \textrm{ oder } \vec b \upharpoonleft\!\downharpoonright \vec a, \textrm{ wenn } \lambda < 0 \textrm{ (gegensinnig parallel)}\\
+\end{eqnarray*}
+
+\newpage
+Die \textbf{Addition} zweier Vektoren $\vec a$ und $\vec b$ erfolgt nach der Parallelogrammregel.
+Zur grafischen Darstellung genügt es, ein Dreieck anstelle des vollständigen Parallelogramms zu zeichnen.\\
+
+\bildnocap{fig/parallelogramm}{angle=-90}{
+	\put(-11,-80){$O$}
+	\put(18,2){$A$}
+	\put(63,-80){$B$}
+	\put(78,2){$C$}
+	\put(0,-40){$\vec a$}
+	\put(20,-88){$\vec b$}
+	\put(28,-40){$\vec c$}
+
+	\put(98,-80){$O$}
+	\put(120,2){$A$}
+	\put(180,2){$C$}
+	\put(108,-40){$\vec a$}
+	\put(150,0){$\vec b$}
+	\put(158,-40){$\vec c$}
+
+	\put(200,-40){$\vec c = \vec a + \vec b$}
+}
+
+Eigenschaften der Vektoraddition
+\begin{eqnarray*}
+	\vec a + \vec b = \vec b + \vec a && \textrm{ (kommutativ) }\\
+	\vec a + \vec b + \vec c = (\vec a + \vec b) + \vec c = \vec a + (\vec b + \vec c) && \textrm{ (assoziativ) }
+\end{eqnarray*}
+
+\bildnocap{fig/vektoraddition}{angle=-90}{
+	\put(5,-70){\begin{rotate}{70}$\vec a + \vec b + \vec c$\end{rotate}}
+	\put(30,-95){\begin{rotate}{20}$\vec a + \vec b$\end{rotate}}
+	\put(54,-40){\begin{rotate}{-70}$\vec b + \vec c$\end{rotate}}
+	\put(35,-120){$\vec a$}
+	\put(97,-100){$\vec b$}
+	\put(79,-40){$\vec c$}
+}
+
+Zu jedem Vektor $\vec a$ gibt es einen inversen Vektor $-\vec a$, so dass gilt
+$$ \vec a + (-\vec a) = \vec 0 $$
+Beachte: Die Vektoren $\vec a$ und $-\vec a$ haben den gleichen Betrag $a$.\\
+
+Die Beziehung
+$$ \vec a + \vec b + \vec c = \vec 0 $$
+sagt aus, dass das aus $\vec a$, $\vec b$ und $\vec c$ gebildete Vektordreieck geschlossen ist: der Endpunkt von $\vec c$ fällt mit dem Anfangspunkt von $\vec a$ zusammen.\\
+
+\bildnocap{fig/vektordreieck}{angle=-90}{
+	\put(10,-25){$\vec a$}
+	\put(50,-35){$-\vec a$}
+	\put(180,-25){$\vec c$}
+	\put(210,-35){$\vec b$}
+	\put(170,-65){$\vec a$}
+}
+
+\newpage
+\textbf{Komponentendarstellung} eines Vektors bezüglich einer \textbf{kartesischen Basis} mit den Einsvektoren $\vec e_x$, $\vec e_y$ und $\vec e_z$.
+Jeder Vektor kann als Linearkombination der Basisvektoren dargestellt werden:
+$$ \vec a = a_x \vec e_x + a_y \vec e_y + a_z \vec e_z $$
+Die drei Summanden der rechten Seite heißen \textbf{Komponenten}, die skalaren Faktoren $a_x$, $a_y$ und $a_z$ heißen \textbf{Koordinaten} des Vektors $\vec a$.\\
+
+\bildnocap{fig/komponentendarstellung}{angle=-90}{
+	\put(100,-105){$\vec e_x$}
+	\put(40,-40){$\vec e_y$}
+	\put(20,-110){$\vec e_z$}
+	\put(95,-50){$\vec a$}
+	\put(70,-140){$a_x$}
+	\put(140,-70){$a_y$}
+	\put(165,-110){$a_z$}
+}
+
+Nach Festlegung der Basisvektoren genügt es, die Koordinaten von $\vec a$ zu notieren.
+Man schreibt
+$$ \vec a = ( a_x, \, a_y, \, a_z) \qquad\textrm{ ``Zeilenvektor''}$$
+oder
+$$ \vec a = \begin{pmatrix}a_x\\a_y\\a_z\end{pmatrix}\qquad\textrm{``Spaltenvektor''}$$\\
+
+Achtung: Wir verwenden immer \textbf{Rechtshandsysteme}, d.h. der Richtungssinn der Basisvektoren $\vec e_x, \vec e_y, \vec e_z$ korrespondiert (in dieser Reihenfolge) mit der Richtung von Daumen, Zeigefinger und Mittelfinger der rechten Hand.\\
+
+\bildnocap{images/rechtehandregel}{width=5cm}{}
+\newpage
+Das \textbf{Skalarprodukt} (``Punktprodukt'', inneres Produkt) zweier Vektoren $\vec a$ und $\vec b$ ist definiert durch
+$$ \vec a \cdot \vec b = a\, b\, \cos\alpha $$
+wobei $\alpha$ der Winkel zwischen $\vec a$ und $\vec b$ ist.
+
+\bildnocap{fig/skalarprodukt}{width=5cm,angle=-90}{
+	\put(28,-80){$\alpha$}
+	\put(38,-115){$b\cos\alpha$}
+	\put(140,-80){$\vec a$}
+	\put(50,-30){$\vec b$}
+	\put(98,-81){$\cdot$}
+	\put(85,-140){$a$}
+}
+
+Es kann auch folgendermaßen berechnet werden:
+$$ \vec a \cdot \vec b = a_x b_x + a_y b_y + a_z b_z $$
+Hieraus folgt insbesondere (mit $\vec b = \vec a$)
+$$ a = \sqrt{\vec a\cdot \vec a} = \sqrt{a_x^2 + a_y^2 + a_z^2} $$
+und (mit $\vec b = \vec e_x$ usw.)
+$$ \vec a\cdot\vec e_x = a_x \qquad \textrm{ usw. }$$
+Beachte: Das Skalarprodukt zweier Vektoren, die senkrecht aufeinander stehen, ist null,
+$$\textrm{z.B.}\qquad \vec e_x\cdot\vec e_y = 0$$\\
+
+Das \textbf{Vektorprodukt} (``Kreuzprodukt'', äußeres Produkt) $\vec a \times \vec b$ zweier Vektoren ist ein Vektor $\vec c$ mit folgenden Eigenschaften:
+
+\bildnocap{fig/kreuzprodukt}{width=5cm,angle=-90}{
+	\put(15,-20){$\vec c = \vec a \times \vec b$}
+	\put(20,-113){$\alpha$}
+	%\put(7,-110){$\cdot$}
+	\put(110,-148){$\vec a$}
+	\put(50,-80){$\vec b$}
+	\put(90,-105){$b\,\sin\alpha$}
+}
+
+\begin{itemize}
+	\item Der Betrag $c$ ist gleich dem Flächeninhalt des von $\vec a$ und $\vec b$ aufgespannten Parallelogramms:
+	$$ c = a\,b\,\sin\alpha$$
+	\item Die Richtung von $\vec c$ steht senkrecht auf $\vec a$ und $\vec b$.
+	\item Der Richtungssinn ist so festgelegt, dass $\vec a, \vec b$ und $\vec c$ in dieser Reihenfolge ein Rechtssystem bilden.
+\end{itemize}
+Achtung: Es gilt
+$$ \vec a \times \vec b = -(\vec b\times\vec a ) \qquad \textrm{ nicht kommutativ! }$$
+
+Zur Berechnung eines Kreuzproduktes ist folgende \textbf{Determinantenregel} hilfreich:
+$$ \vec a \times \vec b = \left| \begin{matrix}\vec e_x & \vec e_y & \vec e_z\\a_x & a_y & a_z\\b_x&b_y&b_z\end{matrix}\right| = (a_y b_z-a_z b_y)\vec e_x + (a_z b_x - a_x b_z)\vec e_y + (a_x b_y - a_y b_x) \vec e_z$$
+
+\subsubsection{Andere Gebiete}
+Gelegentlich werden in dieser Vorlesung auch Kenntnisse aus folgenden Teilgebieten der Mathematik benötigt:
+
+\begin{itemize}
+	\item Lineare Algebra (Auflösung einfacher Gleichungssysteme)
+	\item Integralrechnung (Flächenmomente, Massenträgheitsmoment)
+	\item Differentialrechnung (Ableitung von Funktionen)
+	\item Differentialgleichungen (Biegelinie, Bewegungsgleichungen)
+\end{itemize}
+
+\newpage
+\subsection{Lehrbücher zur Technischen Mechanik}
+\begin{list}{}{}
+	\item Brommundt, E., Sachs, G.:\\
+	Technische Mechanik\\
+	R. Oldenbourg Verlag, München 1998 (3. Auflage)
+	\item Dankert, J., Dankert, H.:\\
+	Technische Mechanik: Statik -- Festigkeitslehre -- Kinematik/Kinetik\\
+	B. G. Teubner Verlag, Suttgart 2004 (3. Auflage)
+	\item Gross, D., Hauger, W., Schnell, W., Schröder, J.:\\
+	Technische Mechanik, Band 1: Statik\\
+	Springer-Verlag, Berlin 2004 (8. Auflage)
+	\item Gross, D., Hauger, W., Schnell, W., Schröder, J.:\\
+	Technische Mechanik, Band 2: Elastostatik\\
+	Springer-Verlag, Berlin 2005 (8. Auflage)
+	\item Gross, D., Hauger, W., Schnell, W., Schröder, J.:\\
+	Technische Mechanik, Band 3: Kinetik\\
+	Springer-Verlag, Berlin 2004 (8. Auflage)
+	\item Hagedorn, P.:\\
+	Technische Mechanik, Band 1: Statik\\
+	Verlag Harri Deutsch, Frankfurt a. M. 2001 (3. Auflage)
+	\item Hagedorn, P.:\\
+	Technische Mechanik, Band 2: Festigkeitslehre\\
+	Verlag Harri Deutsch, Frankfurt a. M. 2003 (3. Auflage)
+	\item Hagedorn, P.:\\
+	Technische Mechanik, Band 3: Dynamik\\
+	Verlag Harri Deutsch, Frankfurt a. M. 2003 (2. Auflage)
+	\item Holzmann, G., Meyer, H., Schumpich, G.:\\
+	Technische Mechanik 1: Statik\\
+	B. G. Teubner Verlag, Stuttgart 2004 (10. Auflage)
+	\item Holzmann, G., Meyer, H., Schumpich, G.:\\
+	Technische Mechanik 2: Kinematik und Kinetik\\
+	B. G. Teubner Verlag, Stuttgart 2000 (8. Auflage)
+	\item Holzmann, G., Meyer, H., Schumpich, G.:\\
+	Technische Mechanik 3: Festigkeitslehre\\
+	B. G. Teubner Verlag, Stuttgart 2002 (8. Auflage)
+	\item Magnus, K., Müller-Slany, H. H.:\\
+	Grundlagen der Technischen Mechanik\\
+	B. G. Teubner Verlag, Stuttgart 2005 (7. Auflage)
+	\item Wriggers, P., Nackenhorst, U., Beuermann, S., Spiess, H., Löhnert, S.:\\
+	Technische Mechanik kompakt: Starrkörperstatik -- Elastostatik -- Kinetik\\
+	B. G. Teubner Verlag, Stuttgart 2005
+\end{list}
+\newpage
+\subsection{Aufgaben}
+\paragraph {Aufgabe 1.1: } Gegeben seien die Vektoren $\vec a=(1,2,3)$ und $\vec b=(4,5,6)$. Berechnen Sie:
+	\begin{list}{}{}
+	\item a) Den Vektor $\vec c=2 \vec a + \vec b$ und seinen Betrag $c$
+	\item b) Die Skalarprodukte $\vec a \cdot \vec b$ und $\vec b\cdot\vec a$
+	\item c) Die Kreuzprodukte $\vec a \times \vec b$ und $\vec b \times \vec a$
+	\end{list}
+
+\paragraph {Aufgabe 1.2: } Gegeben seien die Vektoren $\vec a=(4,-2,1)$ und $\vec b=(1,3,2)$.
+Zeigen Sie, dass die Vektoren senkrecht aufeinander stehen und berechnen Sie den Vektor $\vec c$, der mit $\vec a$ und $\vec b$ ein Rechtshandsystem bildet und den Betrag $c=3$ besitzt.
+
+\paragraph {Aufgabe 1.3: } Berechnen Sie den Vektor $\vec c = (2\vec a\cdot\vec b)\vec a\times \vec b$.
+\bildnocap{fig/aufgabe_kreuzprodukt}{angle=-90,width=5cm}{
+	\put(110,-133){$\vec e_x$}
+	\put(46,-70){$\vec e_y$}
+	\put(77,-90){$\vec a$}
+	\put(100,-45){$\vec b$}
+	\put(67,-117){$\alpha$}
+	\put(105,-58){$\beta$}
+}
+
+\end{document}

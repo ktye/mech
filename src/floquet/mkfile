@@ -1,0 +1,13 @@
+<$SRC/mkhdr
+
+
+TARG=floquet
+CFLAGS=$CFLAGS -I In
+LDFLAGS=$LDFLAGS $LIBLAPACK In/In.a -lm
+#LIB=In/In.a
+
+#LDFLAGS=$LDFLAGS -lg2c -lm
+#LIB=$HOME/lib/amoswrap.o $HOME/lib/libamos.a $SRC/libcephes/libcephes.a
+
+<$SRC/mkone
+

@@ -1,0 +1,8 @@
+<$SRC/mkhdr
+
+TARG=velocity
+CFLAGS=$CFLAGS -I ../In -I ..
+LDFLAGS=$LDFLAGS ../In/In.a -lm
+
+<$SRC/mkone
+

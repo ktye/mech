@@ -1,0 +1,96 @@
+% POOLFILE=odenwald.pretex
+\title{Nichtlineare Pulsausbreitung in Blutgefässen}
+\date{}
+\maketitle
+\begin{figure}[htbp]
+	\begin{center}
+		\includegraphics[width=16cm]{fig/puls.eps}
+	\end{center}
+\end{figure}
+
+%[-] Rotierte Folie
+
+[@] Aderinnenströmung
+Masse
+{masse
+	\pdA:t + \pduA:x = 0
+}
+Impuls
+{impuls
+	\pdu:t + u\pdu:x + \frac{1}{\rho} \pdp:x = 0
+}
+Druck hängt vom Querschnitt ab
+{druck
+	p = f(A)	
+}
+{
+	p = \underline{\underline{p_a}} + \underbrace{Eh\sqrt{\pi} |( \frac{1}{\sqrt{A}}-\frac{\sqrt{A_0}}{A} )| }_{}
+}
+{
+	\approx \frac{Eh\sqrt{\pi}}{2\sqrt{A_0^3}} A 
+}
+{
+	==> \mathrm{ lineare Welle, } \quad c = \sqrt{Eh/2\rho R_0} 
+}
+
+[@] Aderaussenströmung
+Potentialströmung, radialsymmetrisches Feld mit Quelle
+{
+	q = \pdA:t ,\quad \phi = (q/2\pi) \ln r,\quad v = q/2\pi r
+}
+{
+	\frac{p_\infty - p_a}{\rho} = \pd\phi:t + 1/2 v^2 \qquad\mathrm{(Bernoulli)}
+}
+Führt auf den Druckgradienten
+{
+	\begin{split}
+	- \pdp_a:x = \frac{1}{2\pi} \ln\sqrt{\frac{A}{\pi}} \quad \pd3A:x:t^2 \\
+	+\frac{1}{2A} \quad \pdA:x  \pd2A:t^2 \\
+	+ \frac{3}{4\pi A} \quad \pd2A:x:t \pdA:t \\
+	- \frac{3}{8\pi A^2} \quad \pdA:x |(  \pdA:t  )| ^2  
+	\end{split}
+}
+
+[@] Gekoppelte Adern (als Quelle/Senke)
+Aderradius / Abstand: $\qquad\lambda = R/L$\\
+\vspace{8cm}
+
+{
+	\begin{split}
+	\phi = &Q \ln R - Q \ln l \\ 
+	     = &Q \ln \frac{\lambda}{\sqrt{1+\lambda^2-2\lambda\cos\phi}} 
+	\end{split}
+}
+Gilt für kleine $\lambda$, verletzt Randbedingung am Zylinder.
+
+[@]
+Spiegelungsprinzip oder \textsc{Milne-Thompson} Circle Theorem
+{
+	w = f(z) + f |( \frac{R^2}{z} )|  
+}
+\vspace{7cm}
+{
+	R^2 = \rho L
+}
+Addition zweiter Quelle im Zentrum
+{
+	\begin{split}
+	\phi = & 2Q \ln R - Q \ln a - Q \ln b \\ 
+	     = &Q \ln \frac{\lambda}{1+\lambda^2-2\lambda\cos\phi} \quad==> p_a
+	\end{split}	
+}
+Randbedingungen sind erfüllt, Feld gilt nur in der Nähe des Zylinders.
+[@] 
+\begin{itemize}
+	\item Umströmung zweier pulsierender Zylinder
+	\item Ist Symmetrieannahme begründbar?
+	\item Gekoppeltes System zusammenfassen
+	\item Entwickeln $-->$ (Boussinesq/KdV/NLS)
+	\item Pulsevolution (AWP)
+	\item Was bringt die Kopplung ($\lambda$) bzgl. Energie
+\end{itemize}
+Erweiterung
+\begin{itemize}
+	\item Nettokraft am Zylinder beim Pulsdurchgang (An- und Abstossung)
+	\item Potential schwach dreidimensional
+\end{itemize}

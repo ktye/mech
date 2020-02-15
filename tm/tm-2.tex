@@ -1,0 +1,849 @@
+% $Id: tm-2.tex,v 1.23 2006/06/13 12:56:50 elmar Exp $
+\input{header}
+\setcounter{section}{1}
+
+\begin{document}
+\section{Statik starrer Körper}
+\subsection{Grundoperationen mit Kräften}
+Ein wichtiger Grundbegriff der Mechanik ist die Kraft.
+Die Kraft ist eine physikalische Größe, die sich der direkten Beobachtung entzieht.
+Kräfte lassen sich indirekt an ihren Wirkungen erkennen, z.B. an den Bewegungsänderungen ($\to$ Kinetik) oder den Formänderungen ($\to$ Elastostatik) der Körper, auf die sie einwirken.\\
+
+Beispiele für Kräfte: Gewichtskraft, Muskelkraft, magnetische Kraft, Federkraft, Windkraft usw.\\
+
+Als gerichtete Größe hat die Kraft Vektorcharakter, man spricht vom \textbf{Kraftvektor}.
+Die übliche Bezeichnung ist $\vec F$.
+Zur vollständigen Beschreibung eines Kraftvektors gehören sein \textbf{Betrag} $F$, sein \textbf{Angriffspunkt}, seine \textbf{Richtung} und sein \textbf{Richtungssinn}.
+
+\bildnocap{fig/angriffspunkt}{angle=-90,width=5cm}{
+	\put(128,-25){$\vec F$}
+	\put(100,-47){$A:$ Angriffspunkt}
+	\put(22,-112){Wirkungslinie}
+}
+
+Mit dem Angriffspunkt $A$ und der Richtung liegt die sogenannte \textbf{Wirkungslinie} der Kraft fest.\\
+
+Jeder feste Körper wird bei einer Belastung durch Kräfte etwas verformt.
+Die Formänderungen sind oft gering und bei der Analyse gewisser mechanischer Probleme unwesentlich.
+Man verwendet dann zweckmäßigerweise das Modell eines idealisierten \textbf{starren Körpers}, der sich unter der Einwirkung von Kräften gar nicht verformt.\\
+
+Zwei Kräfte(gruppen) heißen \textbf{gleichwertig} (äquivalent), wenn sie auf einen starren Körper die gleiche Wirkung hervorrufen.
+\begin{itemize}
+	\item Zwei Kräfte, die den gleichen Betrag, die gleiche Wirkungslinie und den gleichen Richtungssinn, aber verschiedene Angriffspunkte haben, sind gleichwertig.
+	\bildnocap{fig/wirkungslinie}{angle=-90,width=10cm}{
+		\put(70,-16){$F$}
+		\put(280,-16){$F$}
+		\put(138,-23){$\widehat{=}$}
+		\put(40,-30){$A$}
+		\put(253,-30){$B$}
+	}
+\end{itemize}
+\vspace*{-1cm}
+Mit anderen Worten:
+\begin{itemize}
+	\item Am starren Körper darf der Kraftvektor längs seiner Wirkungslinie verschoben werden (Verschiebungsaxiom).
+	Jeder Punkt auf der Wirkungslinie kann als Angriffspunkt der Kraft aufgefasst werden.
+\end{itemize}
+Man spricht deshalb von \textbf{linienflüchtigen} Kraftvektoren.
+\begin{itemize}
+	\item Zwei Kräfte $\vec F_1$ und $\vec F_2$ mit einem gemeinsamen Angriffspunkt sind einer Einzelkraft $\vec F_R$ mit demselben Angriffspunkt gleichwertig, die sich als Diagonale des von den Vektoren $\vec F_1$ und $\vec F_2$ gebildeten Parallelogramms ergibt (Parallelogramm\-axiom).
+	\bildnocap{fig/parallelogrammaxiom}{angle=-90,width=10cm}{
+		\put(60,-56){$\vec F_1$}
+		\put(42,-16){$\vec F_2$}
+		\put(130,-50){$\widehat{=}$}
+		\put(242,-16){$\vec F_R$}
+	}
+\end{itemize}
+Man bezeichnet $\vec F_R$ als \textbf{Resultierende} der Kräftegruppe $\vec F_1,\vec F_2$.
+Die Parallelogrammkonstruktion entspricht einer vektoriellen Addition, d.h.
+$$ \vec F_R = \vec F_1 + \vec F_2 $$\\
+
+Man spricht von einer \textbf{zentralen Kräftegruppe}, wenn sich die Wirkungslinien aller Kräfte $\vec F_i$ $(i=1,\dots,n)$ in einem Punkt schneiden.
+Die Wirkungslinie der Resultierenden $\vec F_R$ verläuft dann auch durch diesen Punkt.\\
+
+Die Resultierende $\vec F_R$ einer allgemeinen ebenen Kräftegruppe $\vec F_i$ $(i=1,\dots,n)$ und ihre Wirkungslinie können grundsätzlich durch fortgesetzte Anwendung von Verschiebungsaxiom und Parallelogrammaxiom grafisch erzeugt werden.
+
+\begin{figure}[htbp]\begin{picture}(0,0)(0,0)
+	\put(-2,-80){\small{1}}
+	\put(10,-92){\small 2}
+	\put(95,-10){\small 3}
+	\put(60,-73){$\vec F_1$}
+	\put(42,-35){$\vec F_2$}
+	\put(95,-60){$\vec F_3$}
+	\put(-10,-188){\small $1\!+\!2$}
+	\put(30,-186){$F_1$}
+	\put(10,-165){$F_2$}
+	\put(95,-160){$\vec F_3$}
+	\put(95,-110){\small 3}
+	\put(55,-149){$\vec F_{1+2}$}
+	\put(63,-230){\small $1\!+\!2$}
+	\put(95,-200){\small $3$}
+	\put(70,-203){\small $R$}
+	\put(110,-197){$F_{1+2}$}
+	\put(78,-245){$F_3$}
+	\put(133,-230){$\vec F_R$}
+	\put(200,-40){Gegebene ebene Kräftegruppe}
+	\put(200,-55){Lageplan}
+	\put(200,-120){1. Schritt:}
+	\put(200,-135){Zusammenfassen von $\vec F_1$ und $\vec F_2$}
+	\put(200,-150){zum Kraftvektor $\vec F_{1+2}$}
+	\put(200,-210){2. Schritt:}
+	\put(200,-225){Zusammenfassen von $\vec F_{1+2}$ und $\vec F_3$ zum}
+	\put(200,-240){resultierenden Kraftvektor $\vec F_R$}
+\end{picture}\includegraphics[angle=-90,width=6cm]{fig/kraeftegruppe}\end{figure}
+\newpage
+
+Die grafische Methode ist zeitraubend und dient vor allem der Veranschaulichung.
+In der Regel \textbf{berechnet} man die Resultierende auf der Basis der Vektorsumme
+$$ \vec F_R = \sum_{i=1}^n \vec F_i $$
+Zweckmäßigerweise zerlegt man erst einmal die Kräfte in ihre kartesischen Komponenten
+$$ \vec F_i = F_{ix} \vec e_x + F_{iy} \vec e_y + F_{iz} \vec e_z $$
+$$ \vec F_R = F_{Rx} \vec e_x + F_{Ry} \vec e_y + F_{Rz} \vec e_z $$
+und führt dann die \textbf{Vektoradditionen} \textbf{koordinatenweise} durch:
+$$ F_{Rx} = \sum_{i=1}^n F_{ix},\quad F_{Ry} = \sum_{i=1}^n F_{iy},\quad F_{Rz} = \sum_{i=1}^n F_{iz} $$
+Auf diese Weise erhält man $\vec F_R$ nach Größe und Richtung.
+Zur Berechnung der Wirkungslinie benötigt man das Moment der Kräfte.
+
+\paragraph{Beispiel 2.1:} Gegeben sind
+$$ 
+	\vec F_1 = \begin{pmatrix}80\\0\end{pmatrix}\textrm{N},\,
+	\vec F_2 = \begin{pmatrix}40\\40\end{pmatrix}\textrm{N},\,
+	\vec F_3 = \begin{pmatrix}0\\-90\end{pmatrix}\textrm{N}
+$$
+\bildnocap{fig/kraefteadditionbspl}{angle=-90,width=5cm}{
+	\put(135,-60){$x$}
+	\put(0,-5){$y$}
+	\put(90,-58){$\vec F_1$}
+	\put(63,-20){$\vec F_2$}
+	\put(20,-173){$\vec F_3$}
+	\put(-6,-22){\small 40}
+	\put(-10,-115){\small -40}
+	\put(-10,-162){\small -80}
+	\put(54,-81){\small 40}
+	\put(101,-81){\small 80}
+}
+
+Gesucht sind $\vec F_R$ und dessen Betrag $F_R$.
+$$
+	\vec F_R = \begin{pmatrix}80+40+0\\0+40-90\end{pmatrix}\textrm{N}\,\to\,
+	\vec F_R = \begin{pmatrix}120\\-50\end{pmatrix}\textrm{N}
+$$
+$$ F_R = \sqrt{(120)^2+(50)^2}\,\textrm{N} \, \to \, F_R = 130\, \textrm{N}$$
+
+\newpage
+Um zwei \textbf{parallele Kräfte} $\vec F_1$ und $\vec F_2$ \textbf{zusammenzufassen}, fügt man zwei Hilfskräfte hinzu, die denselben Betrag, dieselbe Wirkungslinie, aber entgegengesetzte Richtung besitzen (Nullsystem).
+
+\bildnocap{fig/parallelekraefte}{angle=-90,width=8cm}{
+	\put(43,3){$\small 1$}
+	\put(167,3){$\small 2$}
+	\put(70,-19){$a_1$}
+	\put(130,-19){$a_2$}
+	\put(20,-108){$\vec H$}
+	\put(200,-108){$-\vec H$}
+	\put(-15,-180){$\vec R_1$}
+	\put(217,-155){$\vec R_2$}
+	\put(50,-180){$\vec F_1$}
+	\put(154,-155){$\vec F_2$}
+	\put(100,-150){$\vec F_R$}
+}
+Die Resultierende hat natürlich den Betrag $F_R = F_1 + F_2$.
+Ihre Wirkungslinie teilt den Abstand zwischen den Wirkungslinien 1 und 2 im Verhältnis
+$$ \frac{a_1}{a_2} = \frac{F_2}{F_1}$$
+Es gilt also
+$$ a_1 F_1 = a_2 F_2 $$
+
+\subsection{Kräftepaar und Moment}
+Zwei gleich große Kräfte, die auf parallelen Wirkungslinien in entgegengesetzter Richtung wirken, werden als \textbf{Kräftepaar} bezeichnet.
+\bildnocap{fig/kraeftepaar}{angle=-90,width=2cm}{
+	\put(-12,-55){$F$}
+	\put(60,-15){$F$}
+	\put(25,-28){$a$}
+}
+\begin{itemize}
+	\item Ein Kräftepaar lässt sich nicht zu einer Einzelkraft zusammenfassen.
+	Es muss daher als eigenständiges Grundelement eines Kräftesystems angesehen werden.
+\end{itemize}
+
+\newpage
+Das Hinzufügen eines Nullsystems führt wieder zu einem Kräftepaar.
+
+\bildnocap{fig/momentenkonstruktion}{angle=-90,width=6cm}{
+	\put(40,-130){$F$}
+	\put(120,-20){$F$}
+	\put(12,-135){$F_1$}
+	\put(155,-45){$F_1$}
+	\put(10,-65){$H$}
+	\put(150,-88){$H$}
+	\put(80,-83){$a$}
+	\put(95,-48){$a_1$}
+}
+
+Aus der Konstruktion entnimmt man den Zusammenhang
+$$ F a = F_1 a_1 $$
+für die Gleichwertigkeit (Äquivalenz) der beiden Kräftepaare.
+Demnach ist das Produkt aus Kraft $F$ und Abstand $a$ der Wirkungslinien kennzeichnend für ein Kräftepaar.
+Man spricht vom \textbf{Moment des Kräftepaars}
+$$ M = F a \qquad \textrm{ Symbol: }\curvearrowleft$$
+%Moment um A: $$ \stackrel{\curvearrowleft}{A} $$
+\begin{itemize}
+	\item Zwei Kräftepaare mit entgegengesetzt gleichen Momenten(vektoren) heben sich gegenseitig auf.
+	\item Beim Versetzen einer Kraft auf eine parallele Wirkungslinie (Abstand $a$) kommt ein \textbf{Versetzungsmoment} $M=Fa$ hinzu.
+\end{itemize}
+
+\bildnocap{fig/versatzmoment}{angle=-90,width=12cm}{
+	\put(110,-70){$\widehat{=}$}
+	\put(240,-70){$\widehat{=}$}
+	\put(42,-90){$F$}
+	\put(172,-90){$F$}
+	\put(202,-75){$F$}
+	\put(172,-10){$F$}
+	\put(325,-80){$F$}
+	\put(38,-62){$a$}
+	\put(168,-62){$a$}
+	\put(289,-70){$\stackrel{\curvearrowleft}{M}$}
+}
+\newpage
+
+Das \textbf{Moment einer Kraft} $\vec F$ \textbf{bezüglich eines Punktes} $O$ wird definiert durch
+$$ \vec M^{(O)} = \vec r \times \vec F $$
+Dabei bezeichnet $\vec r$ den Ortsvektor vom Momenenbezugspunkt $O$ zum Angriffspunkt $A$ der Kraft (oder einem beliebigen anderen Punkt der Wirkungslinie).
+
+\bildnocap{fig/moment3d}{angle=-90,width=6cm}{
+	\put(-3,-10){$\vec M^{(O)}$}
+	\put(70,-60){$\vec r$}
+	\put(142,-60){$\vec F$}
+	\put(110,-75){$A$}
+	\put(47,-79){$a$}
+	\put(13,-67){$O$}
+}
+Der Vektor $\vec M^{(O)}$ steht senkrecht auf der von $\vec r$ und $\vec F$ aufgespannten Ebene.
+Er hat den Betrag $Fa$ (``Kraft mal Hebelarm''); dabei ist $a$ der Abstand des Momentenbezugspunktes von der Wirkungslinie der Kraft.
+Der Richtungssinn ergibt sich aus der Rechtshandregel.
+
+\paragraph{Beispiel 2.2:} Die in den Ecken des Rechtecks angreifenden Kräfte üben bezüglich $O$ folgende Momente aus (positiv, wenn $\curvearrowleft$):
+\begin{eqnarray*}
+	M_1^{(O)}=& F_1 b &= 300\textrm{ Nm }\\
+	M_2^{(O)}=&-F_2 h &= -400\textrm{ Nm }\\
+	M_3^{(O)}=& F_3\cdot 0 &= 0\textrm{ Nm}\qquad\textrm{sprich: Newtonmeter!}
+\end{eqnarray*}
+
+\bildnocap{fig/bspl_moment}{angle=-90,width=5cm}{
+	\put(8,-60){$h=2$ m}
+	\put(40,-87){$b=3$ m}
+	\put(110,-110){$F_1=100$ N}
+	\put(100,-25){$F_2=200$ N}
+	\put(8,-10){$F_3=300$ N}
+	\put(-10,-100){$O$}
+}
+
+\newpage
+\subsection{Gleichgewicht starrer Körper}
+Ein Körper befindet sich im statischen Gleichgewicht, wenn er ruht und das an ihm angreifende Kräftesystem einer Nullkraft äquivalent ist.
+Man spricht dann auch vom ``Gleichgewicht der Kräfte''.
+\begin{itemize}
+	\item Zwei Kräfte sind im Gleichgewicht, wenn sie auf derselben Wirkungslinie liegen, gleich groß und entgegengesetzt gerichtet sind.
+\end{itemize}
+
+\bildnocap{fig/zentralekg}{angle=-90,width=9cm}{
+	\put(22,-83){$\vec F_1$}
+	\put(22,-20){$\vec F_2$}
+	\put(115,-25){$\vec F_1$}
+	\put(192,-35){$\vec F_2$}
+	\put(107,-73){$\vec F_3$}
+	\put(213,-59){$\vec F_1$}
+	\put(225,-25){$\vec F_2$}
+	\put(248,-45){$\vec F_3$}
+	\put(120,-90){Lageplan}
+	\put(210,-90){Kräfteplan}
+}
+
+\begin{itemize}
+	\item Eine zentrale Kräftegruppe ist im Gleichgewicht, wenn die Resultierende null ist, so dass sich das Krafteck schließt.
+	$$ \sum_{i=1}^n \vec F_i = \vec 0$$
+	$$ \textrm{in Komponenten: }\quad 
+		\sum_{i=1}^n F_{ix} = 0,\quad
+		\sum_{i=1}^n F_{iy} = 0,\quad
+		\sum_{i=1}^n F_{iz} = 0 $$
+	\item Allgemeinere Kraftsysteme sind im Gleichgewicht, wenn außerdem auch das resultierende Moment bezüglich eines beliebigen Punktes null wird.
+	$$ \sum_i M_i = 0 $$
+\end{itemize}
+
+\bildnocap{fig/momentengleichgewicht}{angle=-90,width=8cm}{
+	\put(56,-60){$h$}
+	\put(80,-83){$h$}
+	\put(145,-83){$h$}
+	\put(38,-20){$F$}
+	\put(180,-100){$F$}
+	\put(190,-22){$2F$}
+	\put(25,-84){$2F$}
+}
+
+\begin{itemize}
+	\item Befindet sich ein mechanisches System im statischen Gleichgewicht, dann ist auch jedes gedanklich herausgeschnittene Teilsystem unter Wirkung aller an ihm angreifenden Kräften einschließlich der \textbf{Schnittkräfte} im Gleichgewicht.
+\end{itemize}
+\newpage
+Dieses nützliche \textbf{Schnittprinzip} wird in der Mechanik vielfältig angewandt, oft in Verbindung mit dem \textbf{Reaktionsaxiom} (Gegenwirkungsprinzip):
+\begin{itemize}
+	\item  Wenn zwei Körper Kräfte aufeinander ausüben, dann sind Kraft und Gegenkraft dem Betrag nach gleich groß, liegen auf der gleichen Wirkungslinie, sind aber entgegengesetzt gerichtet.
+\end{itemize}
+
+\bildnocap{fig/schnittprinzip}{angle=-90,width=7cm}{
+	\put(70,-30){1}
+	\put(130,-30){2}
+	\put(30,-90){1}
+	\put(170,-110){2}
+	\put(72,-77){$\vec F_{12}$}
+	\put(125,-85){$\vec F_{21}$}
+	\put(215,-30){Körper 1 in Kontakt}
+	\put(215,-45){mit Körper 2}
+	\put(215,-100){Freikörperbild}
+}
+
+\begin{center}
+\begin{tabular}{lcl}
+	$\vec F_{12}$ &--& Kraft, die Körper 2 auf Körper 1 ausübt\\
+	$\vec F_{21}$ &--& Kraft, die Körper 1 auf Körper 2 ausübt\\
+\end{tabular}
+\end{center}
+$$ \vec F_{12} = - \vec F_{21} \quad \textrm{ aber } \quad F_{12} = F_{21} $$\\
+
+\textbf{Beispiel 2.3}\\
+
+\bildnocap{fig/bspl_lagekraftplan}{angle=-90,width=12cm}{
+	\put(20,5){System}
+	\put(150,5){Lageplan}
+	\put(290,5){Kraftplan}
+	\put(40,-25){Seil}
+	\put(30,-90){Stab}
+	\put(12,-22){$\alpha$}
+	\put(12,-75){$\beta$}
+	\put(73,-132){$G=20$ kN}
+	\put(200,-45){$F_1$}
+	\put(190,-85){$F_2$}
+	\put(212,-102){$G$}
+	\put(275,-42){$G$}
+	\put(318,-33){$F_1$}
+	\put(306,-68){$F_2$}
+	\put(292,-29){$\alpha$}
+	\put(292,-58){$\beta$}
+}
+
+Die Geometrie des Kraftdreiecks liefert
+$$ F_1 = G\frac{\sin \beta}{\sin(\alpha+\beta)},\quad F_2 = G\frac{\sin\alpha}{\sin(\alpha+\beta)} $$
+Zahlen für $\alpha=45^\circ$, $\beta=60^\circ$: $F_1 = 17,93$ kN, $F_2=14,64$ kN.\\
+
+\newpage
+\textbf{Beispiel 2.4}\\
+\bildnocap{fig/umlenkrolle}{angle=-90,width=7cm}{
+	\put(-20,-10){Umlenkrolle}
+	\put(50,-25){Seil}
+	\put(63,-49){$\alpha_1$}
+	\put(120,-49){$\alpha_2$}
+	\put(63,-129){$\alpha_1$}
+	\put(120,-129){$\alpha_2$}
+	\put(200,-30){$g$}
+	\put(15,-75){$m_1$}
+	\put(185,-75){$m_2$}
+	\put(20,-140){$x$}
+	\put(-5,-120){$y$}
+	\put(105,-90){$M$}
+	\put(60,-110){$m_1 g$}
+	\put(140,-110){$m_2 g$}
+	\put(105,-170){$M g$}
+}
+$$ \sum F_{xi}:\quad -m_1 g \cos \alpha_1 + m_2 g \cos\alpha_2 = 0$$
+$$ \sum F_{yi}:\quad m_1 g \sin\alpha_1 + m_2 g \sin\alpha_2 - Mg = 0$$\\
+
+Das sind 2 Gleichungen für $\alpha_1$ und $\alpha_2$ bei vorgegebenen Massen $m_1$, $m_2$ und $M$.\\
+
+Spezialfall:
+$$ m_2 = m_1\quad \to\quad \alpha_2 = \alpha_1 = \arcsin \frac{M}{2m_1} $$
+
+\vspace*{1cm}
+\textbf{Beispiel 2.5}\\
+\bildnocap{fig/bspl_ggw}{angle=-90,width=12cm}{
+	\put(5,-48){$A$}
+	\put(138,-48){$B$}
+	\put(31,-22){$a$}
+	\put(40,-85){$l/2$}
+	\put(95,-85){$l/2$}
+	\put(80,-102){$G_1$}
+	\put(35,-60){$G_2$}
+	\put(285,-102){$G_1$}
+	\put(260,-30){$G_2$}
+	\put(225,-15){$F_A$}
+	\put(342,-20){$F_B$}
+}
+
+Die Auswertung der Gleichgewichtsbedingungen ergibt
+$$ F_A = \frac{1}{2} G_1 + \frac{l-a}{l} G_2,\quad F_B = \frac{1}{2}G_1 + \frac{a}{l} G_2 $$
+
+
+\newpage
+\subsection{Verteilte Kräfte und Schwerpunkt}
+Wir betrachten eine Gruppe \textbf{paralleler Kräfte} $F_i$ $(i=1,2,\dots,n)$ und fragen nach Größe und Lage der äquivalenten resultierenden Einzelkraft, d.h. nach der Lage ihrer Wirkungslinie (\textbf{Kraftmittelpunkt} $S$).\\
+
+\bildnocap{fig/schwerpunkt}{angle=-90,width=6cm}{
+	\put(10,-20){$F_1$}
+	\put(50,-20){$F_2$}
+	\put(72,0){$F_R$}
+	\put(120,-20){$F_i$}
+	\put(145,-20){$F_n$}
+	\put(30,-70){$x$}
+	\put(5,-92){$z$}
+	\put(85,-66){$S$}
+	\put(93,-150){$S$}
+	\put(-7,-110){$O$}
+	\put(170,-103){$x$}
+	\put(-7,-190){$y$}
+	\put(86,-103){$x_s$}
+	\put(-8,-140){$y_s$}
+	\put(120,-140){$y_i$}
+	\put(60,-158){$x_i$}
+}
+
+Die Äquivalenz der Einzelkraft $F_R$ zur Kräftegruppe erfordert die Gleichheit der Kräfte und Momente:
+$$ F_R = \sum_{i=1}^n F_i $$
+$$ x_s F_R = \sum_{i=1}^n x_i F_i $$
+$$ y_s F_R = \sum_{i=1}^n y_i F_i $$
+
+Eingeprägte Kräfte und äußere Lasten treten oft kontinuierlich verteilt auf.
+Zur Ermittlung des Kräftemittelpunktes sind dann Integrale statt endlicher Summen auszuwerten.
+
+\subsubsection{Räumlich verteilte Schwerkraft}
+\begin{tabular}{llll}
+$F_R$ & $\to$ & $G=mg$ &Gewicht des gesamten Körpers\\
+$F_i$ & $\to$ & $dG= g\,dm$ &Gewicht eines Massenelements\\
+$x_i,y_i$ & $\to$ & $x,y$ &Position des Massenelements\\
+\end{tabular}\\
+
+Die Koordinaten des Schwerpunkts (\textbf{Massenmittelpunkt}) sind also folgendermaßen zu berechnen:
+$$ x_s = \frac{1}{m}\int_{\textrm{Körper}} x\, dm$$
+$$ y_s = \frac{1}{m}\int_{\textrm{Körper}} y\, dm$$
+Wenn der Körper gedanklich gedreht wird, erkennt man, dass analog gilt
+$$ z_s = \frac{1}{m}\int_{\textrm{Körper}} z\, dm$$
+Spezialfall: \textbf{homogener} Körper, d.h. die Massendichte $\rho = dm/dV$ ist räumlich konstant.
+Der Massenmittelpunkt stimmt dann mit dem \textbf{Volumenmittelpunkt} überein:
+$$ x_s = \frac{1}{V} \int_{\textrm{Volumen}} x\, dV,\quad y_s = \frac{1}{V} \int_{\textrm{Volumen}} y\, dV,\quad z_s = \frac{1}{V} \int_{\textrm{Volumen}} z\, dV$$
+\begin{itemize}
+	\item Besitzt ein homogener Körper eine Symmetrieachse oder eine Symmetrieebene, dann liegt sein Schwerpunkt auf dieser Achse, bzw. in dieser Ebene.
+\end{itemize}
+\paragraph{Beispiel 2.6:} Für einen Kegel mit dem Grundkreisradius $r_0$ und der Höhe $h$ gilt
+\bildnocap{fig/kegel}{angle=-90,width=4cm}{
+	\put(65,-10){$z$}
+	\put(90,-15){$r_0$}
+	\put(115,-55){$\displaystyle z=\frac{h}{r_0}r$}
+	\put(15,-80){$h$}
+	\put(65,-55){$S$}
+	\put(80,-63){$r$}
+	\put(40,-140){$x$}
+	\put(100,-120){$y$}
+}
+\begin{equation*}\begin{split}
+	V &= \frac{\pi}{3} r_0^2 h\\
+	x_s &= 0,\quad y_s = 0\quad\textrm{(Symmetrie)}\\
+	z_s &= \frac{1}{\frac{\pi}{3}r_0^2h}\int_0^h z\pi r^2\,dz\\
+	&= \frac{3}{r_0^2h}\int_0^h \left( \frac{r_0}{h} \right)^2 z^3\,dz = \frac{3}{h^3}\frac{h^4}{4}\\
+	z_s & = \frac{3}{4}h
+\end{split}\end{equation*}
+
+\subsubsection{Schwerpunkt ebener Flächen ($z=\mathrm{konst}$)}
+Anwendung der Formeln auf eine dünne Scheibe konstanter Dicke $t$ ergibt $dV = t\,dA$, $V=tA$ und
+$$ x_s = \frac{1}{A} \int_{\textrm{Fläche}} x\,dA $$
+$$ y_s = \frac{1}{A} \int_{\textrm{Fläche}} y\,dA $$
+Die Integrale auf der rechten Seite bezeichnet man als \textbf{Flächenmomente 1. Ordnung}.
+
+\newpage
+\paragraph{Beispiel 2.7:} Für ein rechtwinkliges Dreieck mit den Kantenlängen $a$ und $h$ berechnet man
+\bildnocap{fig/schwerpunktdreieck}{angle=-90,width=6cm}{
+	\put(50,-100){$x_s$}
+	\put(12,-73){$y_s$}
+	\put(-5,-65){$h$}
+	\put(75,-120){$a$}
+	\put(160,-98){$x$}
+	\put(30,-5){$y$}
+	\put(58,-75){$S$}
+	\put(80,-40){$\displaystyle y(x)=h\left(1-\frac{x}{a}\right)$}
+}
+\begin{equation*}\begin{split}
+	A &= \frac{1}{2} a h\\
+	x_s &= \frac{1}{\frac{1}{2} a h} \int_0^a x y(x)\,dx\\
+		&= \frac{2}{ah} \int_0^a xh\left(1-\frac{x}{a}\right)\,dx = \frac{2}{a}\left(\frac{a^2}{2}-\frac{a^3}{3a}\right)\\
+	x_s &= \frac{a}{3}\\
+	y_s &= \frac{h}{3}\quad\textrm{(analog)}
+\end{split}\end{equation*}\\
+
+Die Lage des Schwerpunkts ($x_s,y_s$) einer \textbf{zusammengesetzten Fläche} lässt sich aus den Schwerpunkten ($x_{si},y_{si}$) der Teilflächen $A_i$ berechnen:
+$$ x_s = \frac{1}{A} \sum_i x_{si} A_i,\quad y_s = \frac{1}{A} \sum_i y_{si} A_i \quad\textrm{mit}\quad A=\sum_i A_i$$
+
+\paragraph{Beispiel 2.8:} Schwerpunkt eines Trapezes mit einem Loch
+\begin{figure}[htbp]\begin{center}
+	\begin{picture}(0,0)(0,0)
+		\put(43,-73){$a$}
+		\put(0,-10){$y$}
+		\put(140,-112){$x$}
+		\put(-7,-55){$a$}
+		\put(-7,-90){$a$}
+		\put(22,-117){$a$}
+		\put(57,-117){$a$}
+		\put(87,-117){$a$}
+		\put(130,-70){$=$}
+		\put(260,-70){$+$}
+		\put(335,-70){$-$}
+		\put(280,-85){$S_2$}
+		\put(390,-50){$S_3$}
+		\put(180,-130){$A_1=4a^2$}
+		\put(180,-150){$x_{S_1}=a$}
+		\put(180,-170){$y_{S_1}=a$}
+		\put(290,-130){$A_2 = a^2$}
+		\put(260,-150){$x_{S_2} = 2a+\frac{a}{3}=\frac{7}{3}a$}
+		\put(290,-170){$y_{S_2} = \frac{2}{3}a$}
+		\put(370,-130){$A_3 = \frac{\pi}{4}a^2$}
+		\put(370,-150){$x_{S_3} = a$}
+		\put(370,-170){$y_{S_3} = a$}
+	\end{picture}
+	\includegraphics[angle=-90,width=14cm]{fig/strapezloch}
+	\begin{picture}(0,0)(0,0)
+		\put(-357,-74){$a$}
+		\put(-200,-75){$S_1$}
+	\end{picture}
+	\end{center}
+\end{figure}
+
+\vspace*{2cm}
+
+Daraus folgt für die gelochte Trapezfläche
+\begin{equation*}\begin{split}
+	A&=\left(5-\frac{\pi}{4}\right)a^2\\
+	x_s&=\frac{\left(4+\frac{7}{3}-\frac{\pi}{4}\right)a^3}{\left(5-\frac{\pi}{4}\right)a^2} = 1,316 a\\
+	y_s&=\frac{\left(4+\frac{2}{3}-\frac{\pi}{4}\right)a^3}{\left(5-\frac{\pi}{4}\right)a^2} = 0,921 a
+\end{split}\end{equation*}
+
+\vspace*{0.5cm}
+\subsubsection{Resultierende einer Streckenlast $\displaystyle q\,\left[\frac{\textnormal{N}}{\textnormal{m}}\right]$}
+\bildnocap{fig/sstreckenlast}{angle=-90,width=6cm}{
+	\put(115,-10){$F_R$}
+	\put(-5,-115){$O$}
+	\put(75,-110){$x$}
+	\put(75,-55){$q(x)$}
+	\put(175,-65){$q(l)$}
+	\put(167,-115){$l$}
+	\put(53,-135){$x_R$}
+	\put(210,-40){$\displaystyle F_R = \int_0^l q(x)\,dx$}
+	\put(210,-90){$\displaystyle x_R = \frac{1}{F_R}\int_0^l x q(x)\,dx$}
+}
+\paragraph{Beispiel 2.9:} Dreieckslast $\displaystyle q(x) = q(l) \frac{x}{l}$
+\begin{tabbing}
+	Dazu gehören\quad\= $F_R = \frac{1}{2}q(l)l$\kill\\
+	Dazu gehören	\> $F_R = \frac{1}{2}q(l)l$\\\\
+	und 		\> $x_R =\frac{2}{3}l$\\
+\end{tabbing}
+
+\newpage
+\subsection{Lagerreaktionen}
+Mechanische Systeme sind stets in irgendeiner Form durch Auflager, Stützen, Häng\-ungen oder Führungen mit der Umgebung verbunden.
+Die Tabelle zeigt die Eigenschaften gängiger Lagerungen ebener Systeme.
+Sie unterscheiden sich in der \textbf{Wertigkeit der Bindung}, d.h. in der Anzahl möglicher Lagerreaktionen.
+
+\bildnocap{fig/lagertabelle}{angle=-90,width=\linewidth}{
+	\put(5,-13){\small Bezeichnungen}
+	\put(5,-45){\small Loslager}
+	\put(5,-60){\small (Pendelstütze,}
+	\put(5,-75){\small \,\,Rollenlager)}
+	\put(5,-110){\small Festlager}
+	\put(5,-125){\small (Doppelstütze,}
+	\put(5,-140){\small \,\,Gelenklager)}
+	\put(5,-190){\small Einspannung}
+	\put(100,-13){\small Symbol}
+	\put(180,-13){\small Lagerreaktionen}
+	\put(385,-13){\small Wertigkeit}
+	\put(180,-122){$F_x$}
+	\put(232,-80){$F_y$}
+	\put(300,-50){$F_x=0$}
+	\put(300,-70){$M=0$}
+	\put(300,-125){$M=0$}
+	\put(232,-145){$F_y$}
+	\put(180,-192){$F_x$}
+	\put(222,-170){$M$}
+	\put(232,-220){$F_y$}
+	\put(405,-60){1}
+	\put(405,-125){2}
+	\put(405,-190){3}
+}
+
+Die rechnerische Ermittlung von Lagerreaktionen geschieht in konkreten Lastfällen zweckmäßigerweise folgendermaßen:
+\begin{itemize}
+	\item Wahl eines rechtwinkligen Bezugssystems für die Komponenten der Kraftvektoren,
+	\item Befreien des Körpers von seinen Bindungen und Berücksichtigung zunächst unbekannter Lagerreaktionen gemäß Wertigkeit der Bindung,
+	\item Anschreiben der Gleichgewichtsbedingungen in Form algebraischer Gleichungen,
+	\item Lösung des Gleichungssystems nach den unbekannten Lagerreaktionen.
+\end{itemize}
+
+\vspace*{0.5cm}
+Ein mechanisches System heißt \textbf{statisch bestimmt}, wenn die Lagerreaktionen allein aus den Gleichgewichtsbedingungen berechnet werden können.
+
+\newpage
+\paragraph{Beispiel 2.10} einer statisch bestimmten Lagerung:\\
+
+
+\begin{figure}[htbp]
+	\begin{picture}(0,0)(0,0)
+		\put(100,0){$l$}
+		\put(55,-30){$q_0$}
+		\put(55,-60){$A$}
+		\put(215,-68){$B$}
+		\put(145,-85){$a$}
+		\put(232,-82){$\alpha$}
+		\put(20,-183){$x$}
+		\put(8,-155){$y$}
+		\put(80,-125){$l/2$}
+		\put(110,-135){$q_0l$}
+		\put(40,-185){$A_x$}
+		\put(70,-200){$A_y$}
+		\put(255,-197){$B$}
+		\put(230,-190){$\alpha$}
+		\put(300,-60){mechanisches System}
+		\put(300,-155){Lageplan der Kräfte}
+		\put(300,-172){am freigeschnittenen}
+		\put(300,-189){System}
+	\end{picture}
+	\includegraphics[angle=-90,width=9cm]{fig/bspl_lager}
+\end{figure}
+
+Gleichgewichtsbedingungen
+\begin{eqnarray*}
+	\sum_i F_{ix} = 0 &\to& A_x - B\sin\alpha = 0 \\
+	\sum_i F_{iy} = 0 &\to& A_y + B \cos\alpha -q_0 l = 0 \\
+	\sum_i \stackrel{\curvearrowleft}{M}_i^{(B)} = 0 &\to& -A_y a + q_0 l \left(a-\frac{l}{2}\right) = 0\\
+\end{eqnarray*}
+Auflösung des Gleichungssytems ergibt
+$$ A_y = q_0 l \left( 1-\frac{l}{2a} \right),\quad B = \frac{q_0 l^2}{2a\cos\alpha},\quad A_x = \frac{q_0 l^2}{2a}\tan\alpha $$
+
+\newpage
+\subsection{Haften und Gleiten}
+Bekanntes Phänomen: Um einen schweren Körper, z.B. eine Kiste auf rauher Unterlage zu verschieben, bedarf es einer Kraft parallel zuf Kontaktfläche.\\
+Genauer: Der Körper ruht, wenn diese Tangentialkraft nicht groß genug ist.\\
+
+Wir betrachten also zuerst den ruhenden Körper unter Wirkung von $G$ und $F$.
+
+\bildnocap{fig/reibung}{angle=-90,width=10cm}{
+	\put(90,-15){$F$}
+	\put(45,-65){$G$}
+	\put(250,-15){$F$}
+	\put(230,-55){$G$}
+	\put(257,-88){$N$}
+	\put(275,-50){$H$}
+}
+
+\begin{tabbing}
+	Gleichgewichtsbedingungen: \quad \= $N=G$\quad \= Normalkraft\kill\\
+	Gleichgewichtsbedingungen: \quad \> $N=G$\quad \> Normalkraft\\
+		\> $H=F$ \> Haftkraft\\
+\end{tabbing}
+Experimentelle Befunde besagen, dass der Körper ruht, solange
+$$ |H| \leq H_\textrm{max} = \mu_0 N \quad \textbf{Haftbedingung} $$
+$\mu_0$ heißt \textbf{Haftkoeffizient, Haftbeiwert} oder \textbf{Haftzahl}.\\
+
+Ist $F>H_\textrm{max}$, dann gleitet der Körper über die rauhe Unterlage, bewegt sich also (\mbox{$\to$ Kinetik}).
+
+\bildnocap{fig/gleiten}{angle=-90,width=10cm}{
+	\put(60,2){$v$}
+	\put(120,-22){$F$}
+	\put(55,-70){$G$}
+	\put(255,-20){$F$}
+	\put(230,-70){$G$}
+	\put(257,-100){$N$}
+	\put(275,-58){$R$}
+}
+
+Auch jetzt gilt noch 
+$$N=G,$$
+aber die \textbf{Reibkraft} $R$ ist i. a. kleiner als $F$.\\
+
+Bei trockener Reibung ist $R$ unabhängig von der Gleitgeschwindigkeit $v$, und es gilt das \textbf{Coulombsche Reibgesetz}
+$$ |R| = \mu N $$
+$\mu$ heißt \textbf{Reibkoffizient, Reibbeiwert} oder \textbf{Reibzahl}.\\
+
+\newpage
+Die Tabelle enthält ungefähre Richtwerte für Haft- und Reibkoeffizienten.
+\begin{center}
+\begin{tabular}{l|c|c}
+	\hline
+	Materialpaarung & Haftzahl $\mu_0$ & Reibzahl $\mu$ \\\hline
+	Stahl -- Stahl	& 0,2 -- 0,8	& 0,1 -- 0,7\\
+	Holz -- Metall	& 0,4 -- 0,7	& 0,2 -- 0,4\\
+	Holz -- Holz	& 0,4 -- 0,6	& 0,3 -- 0,5\\
+	Stahl -- Eis	& 0,03		& 0,01\\
+	Gummi -- Asphalt & 0,8		& 0,5\\\hline
+\end{tabular}
+\end{center}
+\vspace*{0.5cm}
+
+In der Technik wird häufig von der \textbf{Seilreibung} Gebrauch gemacht.
+Wir betrachten beispielsweise ein Seil, das über einen fest verankerten, nicht drehbaren Zylinder läuft.
+Die Last $F_1$ kann mit Unterstützung der maximalen Haftkraft $H_\textrm{max}(\varphi)$ von einer kleineren Kraft $F_2$ gehalten werden.\\
+
+\bildnocap{fig/seil}{angle=-90,width=10cm}{
+	\put(72,0){$\alpha$}
+	\put(59,-20){$\varphi$}
+	\put(89,-75){$F_1$}
+	\put(-5,-28){$F_2$}
+	\put(130,-13){$F(\varphi)+dF$}
+	\put(280,-17){$F(\varphi)$}
+	\put(230,-20){$dN$}
+	\put(218,-62){$d\varphi$}
+	\put(200,0){$dH_{\textrm{max}}$}
+}
+
+Das Kräftegleichgewicht an einem Seilelement ergibt
+\begin{eqnarray*}
+	dN &=& F(\varphi)\,d\varphi\\
+	dF &=& -dH_{\textrm{max}} = -\mu_0\, dN = -\mu_0 F(\varphi)\,d\varphi
+\end{eqnarray*}
+Dieser differentielle Zusammenhang kann durch Trennen der Veränderlichen integriert werden:
+$$ F(\varphi) = F_1 e^{-\mu_0 \varphi} $$
+insbesondere
+$$ F_2 = F_1 e^{-\mu_0 \alpha}$$
+
+\vspace*{0.5cm}
+Die Kräftereduktion infolge Seilreibung ist zahlenmäßig beachtlich: Mit $\mu_0 = 0,5$ erhält man bei $\alpha = \pi$ den Faktor 0,2 und bei einmaligem Umschlingen des Zylinders ($\alpha=2\pi$) den Faktor 0,04.\\
+
+Anwendungen: Poller, Riemenantriebe, Bandbremsen (mit $\mu$ statt $\mu_0$).
+\newpage
+\subsection{Aufgaben}
+\paragraph{Aufgabe 2.1} An einem Punkt eines Körpers greifen drei Kräfte mit den Beträgen $F_1 = 1$ N, $F_2 = 2$ N, $F_3 = 3$ N unter den Winkeln $\alpha_1 = 0^\circ,\,\alpha_2=120^\circ,\,\alpha_3=-120^\circ$ bezüglich der Horizontalen an.
+Berechnen Sie Betrag und Winkel der Resultierenden $F_R,\,\alpha_R$.
+
+\paragraph{Aufgabe 2.2} Zwei glatte Walzen mit der Masse $m$ sind wie dargestellt angeordnet. Berechnen Sie die Kontaktkräfte in den Punkten $A,B,C,D$, die sich unter Wirkung der Fallbeschleunigung $g$ einstellen.
+
+\bildnocap{fig/aufgabe_walzen}{angle=-90,width=3cm}{
+	\put(90,-30){$g$}
+	\put(30,-35){$m$}
+	\put(55,-70){$m$}
+	\put(26,-89){$\alpha$}
+	\put(-9,-50){$A$}
+	\put(8,-80){$B$}
+	\put(62,-43){$C$}
+	\put(80,-95){$D$}
+}
+
+
+
+\paragraph{Aufgabe 2.3} Berechnen Sie die resultierende Kraft $\vec F_R$ und das Moment $M_R$, welches die eingezeichneten Kräfte auf den Ursprung ausüben.
+In der Darstellung ist die Längeneinheit 1 m und die Krafteinheit 1 kN.
+\bildnocap{fig/aufgabe_momente}{angle=-90,width=8cm}{
+	\put(85,-5){$y$}
+	\put(220,-105){$x$}
+	\put(0,-185){-3}
+	\put(25,-185){-2}
+	\put(50,-185){-1}
+	\put(77,-185){0}
+	\put(103,-185){1}
+	\put(125,-185){2}
+	\put(150,-185){3}
+	\put(175,-185){4}
+	\put(200,-185){5}
+	\put(-5,-25){3}
+	\put(-5,-50){2}
+	\put(-5,-75){1}
+	\put(-8,-100){0}
+	\put(-10,-122){-1}
+	\put(-10,-145){-2}
+	\put(-10,-172){-3}
+}
+
+\newpage
+\paragraph{Aufgabe 2.4} In einer glatten Kugelkalotte vom Radius $r$ liegt ein gewichtsloser Balken der Länge $l=\sqrt{2}r$.
+In welchem Abstand $x$ vom Punkt $A$ muß ein Gewicht $G$ angebracht werden, damit sich der Balken unter dem Winkel $\alpha=15^\circ$ im Gleichgewicht befindet?
+Wie groß sind dann die Kontaktkräfte in $A$ und $B$?
+\bildnocap{fig/aufgabe_kalotte}{angle=-90,width=5cm}{
+	\put(54,-5){$r$}
+	\put(40,-58){$A$}
+	\put(130,-40){$B$}
+	\put(70,-55){$G$}
+	\put(54,-30){$x$}
+	\put(30,-59){$\alpha$}
+	\put(95,-83){$l$}
+}
+
+\paragraph{Aufgabe 2.5} Ein Stab der Masse $m_1$ und der Länge $l$ ist am unteren Ende gelenkig gelagert. Am oberen Ende ist ein Seil befestigt, an welchem über eine Umlenkrolle ein Körper der Masse $m_2$ hängt.
+Unter welchem Winkel $\varphi>0$ befindet sich das System im statischen Gleichgewicht?
+
+\bildnocap{fig/aufgabe23}{angle=-90,width=4cm}{
+	\put(47,-60){$m_2$}
+	\put(66,-80){$m_1$}
+	\put(85,-95){$l$}
+	\put(-5,-75){$l$}
+	\put(40,-100){$\varphi$}
+	\put(115,-90){$g$}
+}
+\paragraph{Aufgabe 2.6} Gesucht ist die Schwerpunktlage des Kreisausschnitts.
+\bildnocap{fig/aufgabe_kreisausschnitt}{angle=-90,width=4cm}{
+	\put(45,-70){$a$}
+	\put(65,-10){$y$}
+	\put(55,-80){$\alpha$}
+	\put(90,-120){$x$}
+}
+\newpage
+\paragraph{Aufgabe 2.7} An einer dreieckigen Scheibe der Dicke $d$ mit der Dichte $\rho$ ist über einen masselosen Träger eine Kugel der Masse $m$ befestigt.
+Wo liegt der Schwerpunkt des Systems?
+
+\bildnocap{fig/aufgabe_sdreieck}{angle=-90,width=11cm}{
+	\put(115,-25){$x$}
+	\put(95,-10){$y$}
+	\put(230,-10){$y$}
+	\put(308,-25){$z$}
+	\put(110,-63){$a$}
+	\put(60,-103){$b$}
+	\put(40,-57){$c$}
+	\put(254,-57){$l$}
+	\put(245,-66){$d$}
+	\put(280,-20){$m$}
+}
+\paragraph{Aufgabe 2.8} Ein einseitig eingespannter Balken ist durch zwei Kräfte $F_1$ und $F_2$ belastet.
+Wie lauten die Lagerreaktionen?
+\bildnocap{fig/aufgabe_balkenlager}{angle=-90,width=6cm}{
+	\put(100,1){$F_1$}
+	\put(165,-65){$F_2$}
+	\put(145,-65){$\alpha$}
+	\put(75,-72){$l$}
+	\put(33,-25){$a$}
+}
+\paragraph{Aufgabe 2.9} Eine homogene Scheibe (gleichseitiges Dreieck, Gewicht $G_1$) wird durch ein Gewicht $G_2$ in der dargestellten Lage (linker Scheibenrand vertikal, Seil horizontal) im Gleichgewicht gehalten.
+Wie groß ist das Gewicht $G_2$ und wie groß sind die Lagerreaktionen bei $A$?
+\bildnocap{fig/aufgabe_dreieck}{angle=-90,width=5cm}{
+	\put(0,-50){$a$}
+	\put(35,-18){$A$}
+	\put(60,-70){$G_1$}
+	\put(145,-105){$G_2$}
+}
+\newpage
+\paragraph{Aufgabe 2.10} Zwei glatte Kugeln (Gewicht $G$, Radius $r$) liegen in einem kreiszylindrischen Rohrstück (Gewicht $G_R$, Radius $a$).
+Unter welcher Bedingung kippt das Rohr nicht?
+\bildnocap{fig/aufgabe_kugeln}{angle=-90,width=5cm}{
+	\put(65,0){$2a$}
+	\put(60,-65){$r$}
+	\put(110,-112){$r$}
+}
+
+\paragraph{Aufgabe 2.11} Auf einer Leiter (Länge $h$) steht ein Mann vom Gewicht $G$.
+Bis zu welcher Stelle $x$ kann er steigen, wenn die Wand glatt und der Boden rauh ist (Haftkoeffizient $\mu_0$)?
+\bildnocap{fig/aufgabe_leiter}{angle=-90,width=4cm}{
+	\put(40,-60){$G$}
+	\put(45,-162){$x$}
+	\put(65,-70){$h$}
+	\put(15,-75){$\alpha$}
+	\put(81,-132){$\mu_0$}
+}
+
+\paragraph{Aufgabe 2.12} Für welchen Wertebereich von $F$ befindet sich das System im Gleichgewicht?
+Gegeben sind $G$, $\alpha$, $\mu_0$ und $\mu_s$.
+\bildnocap{fig/aufgabe_seil}{angle=-90,width=6cm}{
+	\put(60,-105){$\mu_0$}
+	\put(170,0){$\mu_s$}
+	\put(30,-75){$G$}
+	\put(70,-75){$\alpha$}
+	\put(175,-100){$F$}
+}
+
+\end{document}

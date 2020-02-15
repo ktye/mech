@@ -1,0 +1,797 @@
+% $Id: tm-3.tex,v 1.14 2006/06/13 12:56:50 elmar Exp $
+\input{header}
+\setcounter{section}{2}
+
+\begin{document}
+\section{Einblick in die Elastostatik}
+Reale Körper verformen sich unter Wirkung äußerer Kräfte und Momente.
+In der Elastostatik geht es um die innere Beanspruchung elastisch deformierbarer Festkörper.
+Die Idealisierung des starren Körpers wird damit aufgegeben.
+Ziel der Untersuchungen ist es, die Beanspruchung von Bauteilen und ihre Verformung unter auftretenden (oder angenommenen) Belastungen vorauszuberechnen.
+Das ermöglicht dann, die Bauteile so zu dimensionieren, dass ihre Festigkeit gewährleistet werden kann.\\
+
+Wir beschränken uns hier auf stabförmige Körper.
+
+\subsection{Einachsiger Spannungszustand}
+In der Vorlesung werden zunächst wichtige Begriffe, physikalische Größen, ihre Formelzeichen und Einheiten sowie grundlegende Zusammenhänge erläutert.\\
+
+\textbf{Zugfeder:}\\
+
+\bildnocap{fig/zugfeder}{angle=-90,width=6cm}{
+	\put(50,-32){$l$}
+	\put(100,-40){$\Delta l$}
+	\put(150,-50){$F$}
+}
+
+\begin{tabular}{rll}
+	$l$ & [m] & Länge im unbelasteten Zustand\\
+	$\Delta l $ &  [mm] & Längenänderung unter Wirkung der Zugkraft $F$ [N]\\
+\end{tabular}
+
+\vspace*{1cm}
+Elastizitätsgesetz
+$$ F = c\Delta l$$
+$c$ $\displaystyle\left[\frac{\textrm{N}}{\textrm{mm}}\right]$ $\quad$ \textbf{Federkonstante}\\
+
+\vspace*{1cm}
+Zylindrischer \textbf{Zugstab}:\\
+
+
+\bildnocap{fig/zugstab}{angle=-90,width=6cm}{
+	\put(70,0){$l$}
+	\put(113,-25){$\Delta l$}
+	\put(152,-35){$F$}
+	\put(10,-35){$F$}
+	\put(10,-58){$F$}
+	\put(64,-31){$A$}
+	\put(105,-67){$\sigma$}
+}
+
+Länge $l$ und Längenänderung $\Delta l$ wie zuvor\\
+$A$ [mm$^2$]  $\quad$ Querschnittsfläche\\
+
+%\begin{tabular}{lll}
+%	\textbf{Dehnung} & $\displaystyle\varepsilon := \frac{\Delta l}{l}$ & [--]\\\\
+%	\textbf{Normalspannung} & $\displaystyle\sigma := \frac{F}{A}$ & $\displaystyle\left[\frac{\textrm{N}}{\textrm{mm}^2} = \textrm{MPa}\right]$ $\qquad$ beachte: 1 Pa = 1 $\displaystyle\frac{\textrm{N}}{\textrm{m}^2}$\\
+%\end{tabular}
+\begin{tabbing}
+	\textbf{Normalspannung}\quad\= $\displaystyle\sigma := \frac{F}{A}$ \= $\displaystyle\left[\frac{\textrm{N}}{\textrm{mm}^2} = \textrm{MPa}\right]$ $\qquad$ beachte: 1 Pa = 1 $\displaystyle\frac{\textrm{N}}{\textrm{m}^2}$\kill
+	\textbf{Dehnung} \> $\displaystyle\varepsilon := \frac{\Delta l}{l}$ \> [--]\\\\
+	\textbf{Normalspannung} \> $\displaystyle\sigma := \frac{F}{A}$ \> $\displaystyle\left[\frac{\textrm{N}}{\textrm{mm}^2} = \textrm{MPa}\right]$ $\qquad$ beachte: 1 Pa = 1 $\displaystyle\frac{\textrm{N}}{\textrm{m}^2}$\\
+\end{tabbing}
+\vspace*{-0.5cm}
+Spannungs-Dehnungs-Diagramm eines Werkstoffs im Zugversuch\\
+
+
+%\bildnocapcenter{fig/spannungs-dehnungs}{angle=-90,width=6cm}{
+\begin{figure}[htbp]
+\hspace*{1cm}
+\begin{picture}(0,0)(0,0)
+	\put(155,-130){$\varepsilon$}
+	\put(-7,-10){$\sigma$}
+	\put(32,-55){$P$}
+	\put(50,-40){$E$}
+	\put(100,-30){$B$}
+	\put(180,-50){$P$ -- Proportionalitätsgrenze}
+	\put(180,-70){$E$ -- Elastizitätsgrenze}
+	\put(180,-90){$B$ -- Bruchgrenze}
+\end{picture}
+\includegraphics[angle=-90,width=6cm]{fig/spannungs-dehnungs}
+\end{figure}
+
+Im linear-elastischen Bereich (bis zum Punkt $P$) gilt das \textbf{Hookesche Gesetz}
+$$ \sigma = E \varepsilon $$
+
+\vspace*{0.5cm}
+$E$ $\displaystyle\left[\frac{\textrm{N}}{\textrm{mm}^2}\right]$ $\quad$ \textbf{Elastizitätsmodul} des Werkstoffs\\
+
+Eliminiert man $\varepsilon$ und $\sigma$ mit den definierten Gleichungen, so erhält man
+$$ F = \frac{EA}{l}\Delta l\qquad\textrm{ oder }\qquad \Delta l = \frac{Fl}{EA} $$
+Somit ist $\displaystyle\frac{EA}{l}$ die Federkonstante eines Zugstabs.\\
+
+EA [N] heißt \textbf{Dehnsteifigkeit}.\\
+
+Ergänzungen:
+\newcounter{Lcount}
+\begin{list}{\alph{Lcount})}{\usecounter{Lcount}\setlength{\rightmargin}{\leftmargin}}
+	\item	Schneidet man einen Zugstab schräg zur Richtung der eingeleiteten Kraft, so findet man in dieser Schnittfläche nicht nur eine Normalspannung, sondern auch eine Tangentialspannung (Schubspannung).
+	\item	Zum einachsigen Spannungszustand eines Zugstabs gehört ein mehrachsiger Verzerrungszustand, denn mit der Längenänderung $\Delta l$ ist in der Regel eine Änderung $\Delta d$ des Stabdurchmessers $d$ verbunden.
+		Es tritt also auch eine Querdehnung $\varepsilon_q := \Delta d/d$ auf.\\
+
+		Die \textbf{Querkontraktionszahl}
+		$$ \nu := -\frac{\textrm{Querdehnung}}{\textrm{Längsdehnung}}  = -\frac{\varepsilon_q}{\varepsilon}$$
+		ist ein zweiter, vom E-Modul unabhängiger Materialparameter bei linear-elastischer Werkstoffbeanspruchung.
+	\item	Erwärmt man einen Stab, so erfährt er eine zur Temperaturdifferenz $\Delta T$ [K] proportionale \textbf{Wärmedehnung}
+		$$ \varepsilon_T = \alpha \,\Delta T$$
+		$\alpha$ $\displaystyle\left[\frac{1}{\textrm{K}}\right]$ heißt \textbf{thermischer Ausdehnungskoeffizient}\\
+
+		\bildnocap{fig/erwaermung}{angle=-90,width=5cm}{
+			\put(55,5){$l$}
+			\put(55,-50){$l+\Delta l$}
+			\put(150,-15){$T$}
+			\put(150,-70){$T+\Delta T$}
+		}
+		Bei gleichzeitiger mechanischer und thermischer Belastung des Stabes ergibt sich die Gesamtdehnung $\varepsilon$ als Summe der Teildehnungen:
+		$$ \varepsilon = \frac{\sigma}{E} + \alpha \,\Delta T $$
+	\item 	In einem Zugstab, dessen Querschnittsfläche $A(x)$ oder dessen Schnittkraft $N(x)$ sich in Längsrichtung ($x$-Richtung) ändern, gilt das Hookesche Gesetz
+		$$ \sigma(x) = E\varepsilon(x) $$
+		an jeder Position $x$ mit den lokalen Werten für $\displaystyle\sigma(x) = \frac{N(x)}{A(x)}$ und $\varepsilon(x)$.\\
+		
+		Zur Identifikation der lokalen Dehnung $\varepsilon(x)$ betrachten wir ein Stabelement der Länge $dx$.
+		Seine Längenänderung ergibt sich aus den Verschiebungen der Randquerschnitte.\\
+
+		\bildnocap{fig/lokaledehnung}{angle=-90,width=8cm}{
+			\put(40,0){$x$}
+			\put(60,0){$dx$}
+			\put(20,-56){$A(x)$}
+			\put(77,-65){$u(x)$}
+			\put(109,-50){$u(x+dx)$}
+			\put(210,-80){$F$}
+			\put(240,-30){unbelastet}
+			\put(240,-90){belastet}
+		}
+
+		$u(x)$ [mm] ist die \textbf{Verschiebung} des Querschnitts $A(x)$ infolge der Belastung.
+		\begin{eqnarray*}
+			\textrm{Dehnung} &=& \frac{\textrm{Längenänderung}}{\textrm{Länge}}\\
+			\varepsilon(x) &=& \frac{u(x+dx)-u(x)}{dx}\\
+			\varepsilon(x) &=& \frac{du(x)}{dx}\\
+			\to\qquad\frac{du(x)}{dx}&=& \frac{N(x)}{EA(x)}
+		\end{eqnarray*}
+		Die Längenänderung des Stabes ergibt sich dann durch Integration:
+		$$ \Delta l = u(l) - u(0) = \int_0^l \frac{du(x)}{dx} dx = \int_0^l \frac{N(x)}{EA(x)} dx $$
+\end{list}
+
+Die Tabelle enthält Richtwerte für die in der Elastostatik benötigten Stoffwerte technisch relevanter Werkstoffe.
+\begin{table}[htbp]\begin{center}\begin{tabular}{l|c|c|c}
+	\hline
+	Werkstoff & Elastizitätsmodul & Querkontraktionszahl & thermischer Ausdehnungs-\\
+	& $E$ $\left[\frac{\textrm{N}}{\textrm{mm}^2}\right]$ & $\nu$ [--] & koeffizient $\alpha$ $\left[\frac{1}{\textrm{K}}\right]$\\\hline
+	Stahl & 200 000 & 0,3 & $1,2\cdot 10^{-5}$\\
+	Kupfer & 120 000 & 0,35 & $1,6\cdot 10^{-5}$\\
+	Gusseisen & 100 000 & 0,25 & $0,9\cdot 10^{-5}$\\
+	Aluminium & 70 000 & 0,33 & $2,3\cdot 10^{-5}$\\
+	Glas & 60 000 & 0,25 & $0,9\cdot 10^{-5}$\\\hline
+\end{tabular}\end{center}\end{table}
+
+
+\subsection{Statisch unbestimmte Stabsysteme}
+Bei statisch unbestimmten Stabsystemen können die Lagerreaktionen und/oder die Stabkräfte nicht aus den Gleichgewichtsbedingungen allein ermittelt werden.
+Außer den Gleichgewichtsbedingungen müssen dann auch die Elastizitätsgesetze der einzelnen Stäbe und die Geometrie der Verformung (\textbf{Kompatibilität}) betrachtet werden.\\
+
+Nähere Erläuterung in der Vorlesung anhand einiger Beispiele.
+
+\paragraph{Beispiel 3.1:} Ein starrer Balken ist an zwei verschieden langen, zylindrischen Stäben mit der gleichen Dehnsteifigkeit EA aufgehängt und wird an seinem Ende durch die Kraft $F$ belastet.
+Gesucht sind die Kräfte in den Stäben und die Auflagerreaktionen bei $A$.\\
+
+\bildnocap{fig/beispiel31}{angle=-90,width=7cm}{
+	\put(50,-25){$l$}
+	\put(135,-25){$l$}
+	\put(104,-60){1}
+	\put(165,-90){2}
+	\put(200,-35){$l/2$}
+	\put(200,-90){$l/2$}
+	\put(180,-135){$F$}
+	\put(0,-105){$A$}
+	\put(40,-125){starr}
+}
+
+Freischneiden des starren Balkens und Auswertung der Gleichgewichtsbedingungen liefert\\
+
+
+%\bildnocap{fig/beispiel31frei}{angle=-90,width=6cm}{
+\begin{figure}[htbp]\begin{picture}(0,0)(0,0)
+	\put(10,-40){$A_H$}
+	\put(47,-80){$A_V$}
+	\put(52,-58){$A$}
+	\put(70,-30){$l$}
+	\put(130,-30){$l$}
+	\put(112,-10){$S_1$}
+	\put(172,-10){$S_2$}
+	\put(172,-80){$F$}
+	\put(250,-20){$A_H=0$}
+	\put(250,-39){$A_V+S_1+S_2-F=0$}
+	\put(250,-58){$S_1l+S_22l-F2l=0$}
+\end{picture}\includegraphics[angle=-90,width=6cm]{fig/beispiel31frei}\end{figure}
+
+Außerdem gelten die Beziehungen für elastische Stäbe
+$$ \Delta l_1 = \frac{S_1 l}{EA}, \qquad \Delta l_2 = \frac{S_2 l}{2 EA} $$
+Da der Balken starr ist, besteht im übrigen der folgende geometrische Zusammenhang zwischen den Längenänderungen der Stäbe:\\
+
+\bildnocap{fig/beispiel31geom}{angle=-90,width=5cm}{
+	\put(35,0){$l$}
+	\put(100,0){$l$}
+	\put(0,-30){$A$}
+	\put(75,-30){$\Delta l_1$}
+	\put(135,-50){$\Delta l_2$}
+	\put(180,-50){$\Delta l_2 = 2\Delta l_1$}
+}
+
+Die Elimination der Längenänderungen ergibt zunächst das Zwischenergebnis $S_2 = 4 S_1$.
+Mit den Gleichgewichtsbedingungen folgt dann
+$$ S_1 = \frac{2}{9}F, \quad S_2 = \frac{8}{9} F,\quad A_V = -\frac{1}{9}F $$
+
+\paragraph{Beispiel 3.2:} Ein Stahlzylinder (Querschnittsfläche $A_{\textrm{St}}$, Elastizitätsmodul $E_{\textrm{St}}$) und ein gleich langer kupferner Mantel ($A_{\textrm{Cu}},\,E_{\textrm{Cu}}$) werden durch eine Kraft $F$ zwischen zwei starren Platten gepresst.
+Wie groß sind die Kräfte im Zylinder und im Mantel und deren Dehnungen?\\
+
+\bildnocap{fig/beispiel32}{angle=-90,width=2.5cm}{
+	\put(45,-20){$F$}
+	\put(45,-140){$F$}
+	\put(75,-60){St}
+	\put(75,-90){Cu}
+}
+
+Allgemeiner Hinweise: Erst formelmäßig lösen, dann Zahlen einsetzen!\\
+
+Hier: $A_{\textrm{St}} = 360$ cm$^2$, $E_{\textrm{St}}=2,0\cdot 10^5$ MPa, $A_{\textrm{Cu}} = 300$ cm$^2$, $E_{\textrm{Cu}} = 1,2\cdot10^5$ MPa, $F=600$ kN.\\
+
+Freischneiden führt zur Gleichgewichtsbedingung\\
+
+\bildnocap{fig/beispiel32frei}{angle=-90,width=2.5cm}{
+	\put(40,-130){$F$}
+	\put(40,-10){$F_{\textrm{Cu}}$}
+	\put(40,-35){$F_{\textrm{St}}$}
+	\put(-150,-80){$F_{\textrm{St}}+F_{\textrm{Cu}}+F=0$}
+}
+
+Außerdem haben wir die Beziehungen für elastische Zugstäbe
+$$ \Delta l_{\textrm{St}} = \frac{F_{\textrm{St}} l}{E_{\textrm{St}} A_{\textrm{St}}}, \quad \Delta l_{\textrm{Cu}} = \frac{F_{\textrm{Cu}} l}{E_{\textrm{Cu}} A_{\textrm{Cu}}}$$
+und die geometrische Zwangsbedingung
+$$ \Delta l_{\textrm{St}} = \Delta l_{\textrm{Cu}} $$
+Auflösen dieses linearen Gleichungssystems ergibt
+$$ F_{\textrm{St}} = -\frac{E_{\textrm{St}} A_{\textrm{St}}}{E_{\textrm{St}} A_{\textrm{St}} + E_{\textrm{Cu}} A_{\textrm{Cu}}} F,\quad F_{\textrm{Cu}} = -\frac{E_{\textrm{Cu}} A_{\textrm{Cu}}}{E_{\textrm{St}} A_{\textrm{St}} + E_{\textrm{Cu}} A_{\textrm{Cu}}} F $$
+$$ \Delta l_{\textrm{St}} = \Delta l_{\textrm{Cu}} = -\frac{Fl}{E_{\textrm{St}}A_{\textrm{St}}+E_{\textrm{Cu}}A_{\textrm{Cu}}}\quad\to\quad\varepsilon_{\textrm{St}} = \varepsilon_{\textrm{Cu}} = -\frac{F}{E_{\textrm{St}}A_{\textrm{St}}+E_{\textrm{Cu}}A_{\textrm{Cu}}}$$\\
+
+Zahlenergebnisse: $F_{\textrm{St}} = -400$ kN, $F_{\textrm{Cu}} = -200$ kN, $\varepsilon = -5,6\cdot10^{-5}$
+\begin{itemize}
+	\item Bei der Parallelschaltung gleich langer Stäbe (Federn) addieren sich die Dehnsteifigkeiten (Federkonstanten).
+\end{itemize}
+
+\paragraph{Beispiel 3.3:} Ein abgesetzter Aluminiumstab liegt zunächst spannungsfrei zwischen zwei starren Wänden.
+Im linken Teil wird nun die Temperatur um $\Delta T = 50$ K erhöht.
+Welche Spannungen treten in den beiden Stabteilen auf, und wie groß ist die Verschiebung an der Fügestelle?\\
+
+Gegeben sind $l_1 = 60$ cm, $l_2 = 40$ cm, $A_1 = 30$ cm$^2$, $A_2 = 10$ cm$^2$, $\alpha = 2.3\cdot10^{-5}$ K$^{-1}$, $E=70\,000$ MPa\\
+
+\newpage
+\bildnocap{fig/beispiel33}{angle=-90,width=5cm}{
+	\put(30,-5){$A_1,\,\Delta T$}
+	\put(100,-7){$A_2$}
+	\put(40,-50){$l_1$}
+	\put(100,-50){$l_2$}
+}
+
+Lösungsskizze:\\
+
+Gleichgewichtsbedingung
+$$ F_1 = F_2 \quad (=F) $$
+Hookesches Gesetz unter Berücksichtigung der Wärmedehnung
+$$ \frac{\Delta l_1}{l_1} = \frac{F}{EA_1} + \alpha \Delta T,\quad \frac{\Delta l_2}{l_2} = \frac{F}{EA_2} $$
+Geometrische Verträglichkeit
+$$ \Delta l_1 + \Delta l_2 = 0 $$
+Auflösen des Gleichungssystems ergibt
+$$ \displaystyle F = -\frac{\alpha \Delta T l_1}{\frac{l_1}{EA_1}+\frac{l_2}{EA_2}} = -80,5 \textrm{ kN} $$
+$$ \to\qquad\sigma_1 = \frac{F}{A_1} = -26,8 \textrm{ MPa},\quad \sigma_2 = \frac{F}{A_2} = -80,5\textrm{ MPa} $$
+$$ \Delta l_1 = -\Delta l_2 = -\frac{Fl_2}{EA_2} = 0,46\textrm { mm} $$
+
+\subsection{Biegung gerader Balken}
+Modellbildung der technischen Biegelehre:
+\begin{itemize}
+	\item Stabförmige schlanke Bauteile, Querschnittsabmessungen klein im Verhältnis zur Länge,
+	\item geradlinige Achse ($x$-Achse),
+	\item homogene (überall gleiche) linear-elastische Werkstoffeigenschaften,
+	\item Belastung senkrecht zur Achse, Beansprungung auf Biegung,
+	\item bei der Verformung des Balkens bleiben die Querschnitte eben und senkrecht zur Achse (\textbf{Bernoulli-Hypothese}),
+	\item hier außerdem: Beschränkung auf Balken mit einer Symmetrieebene ($x$-$z$-Ebene), die äußere Belastung greife in dieser Ebene an, man spricht von \textbf{ebener Biegung},
+	\item aber: Querschnitt muss in Längsrichtung nicht notwendigerweise konstant sein.
+\end{itemize}
+
+\newpage
+Bei ebener Biegung treten im Balken folgende Schnittgrößen auf:
+\begin{tabbing}
+	\textbf{Biegemoment}\quad\= $N$\quad\= um die Schwerpunktachse senkrecht\kill
+	\textbf{Normalkraft} \> $N$ \> in Richtung der Balkenachse ($x$-Richtung), hier: $N=0$\\
+	\textbf{Querkraft} \> $Q$ \> quer zur Balkenachse innerhalb\\
+	\>\> der Symmetrieebene ($z$-Richtung)\\	
+	\textbf{Biegemoment} \> $M$ \> um die Schwerpunktachse senkrecht\\
+	\>\> zur Lastebene ($y$-Achse)
+\end{tabbing}
+%\begin{table}[htbp] \begin{tabular}{lll}
+%	\textbf{Normalkraft} & $N=0$ & in Richtung der Balkenachse ($x$-Richtung)\\	
+%	\textbf{Querkraft} & $Q$ & quer zur Balkenachse innerhalb\\
+%	&& der Symmetrieebene ($x$-Richtung)\\	
+%	\textbf{Biegemoment} & $M$ & um die Schwerpunktachse senkrecht\\
+%	&& zur Lastebene ($y$-Achse)
+%\end{tabular} \end{table}
+
+\bildnocap{fig/schnittufer}{angle=-90,width=9cm}{
+	\put(-5,-22){$y$}
+	\put(13,-22){$x$}
+	\put(-6,-42){$z$}
+	\put(60,-50){$Q$}
+	\put(80,-7){$M$}
+	\put(100,-22){$N$}
+	\put(175,-22){$N$}
+	\put(190,-15){$M$}
+	\put(215,-10){$Q$}
+	\put(80,-55){positives}
+	\put(160,-55){negatives}
+	\put(110,-72){Schnittufer}
+}
+
+Vorzeichenkonventionen:
+\begin{itemize}
+	\item Ein Schnittufer heißt positiv, wenn die $x$-Achse aus der Schnittfläche heraus zeigt.
+	\item Schnittgrößen sind positiv, wenn sie am positiven Schnittufer in die positive Koordinatenrichtung zeigen.
+	\item Positive Schnittgrößen zeigen am negativen Schnittufer in die negative Koordinatenrichtung (Reaktionsaxiom).
+\end{itemize}
+
+In einem quer zur Achse belasteten Balken ändern sich die Schnittgrößen $Q$ und $M$ in Längsrichtung $x$.\\
+
+\bildnocap{fig/balkenschnitt}{angle=-90,width=6cm}{
+	\put(45,-68){$x$}
+	\put(95,-68){$dx$}
+	\put(35,-10){$Q$}
+	\put(18,-15){$M$}
+	\put(95,5){$q(x)$}
+	\put(165,-12){$M+dM$}
+	\put(155,-60){$Q+dQ$}
+}
+
+Die Gleichgewichtsbedingungen am Balkenelement unter Wirkung einer Streckenlast $q$ [N/m] ergibt
+$$ dQ + q(x) dx = 0 \quad \to \quad \frac{dQ(x)}{dx} = -q(x) $$
+$$ dM - Q(x) dx = 0 \quad \to \quad \frac{dM(x)}{dx} =  Q(x) $$\\
+
+Mit der Biegung des Balkens ist eine Drehung der Querschnitte und eine Verschiebung der materiellen Punkte verbunden.
+Zur Beschreibung führt man folgende Größen ein:
+\newpage
+\begin{table}[htbp]\begin{tabular}{ll}
+	$\psi(x)$ & Drehwinkel des Querschnitts am Ort $x$ \\
+	$w(x)$ & Verschiebung der Achse in $z$-Richtung \\
+	$u(x,z)$ & Verschiebung des Punktes $P(x,z)$ in $x$-Richtung
+\end{tabular}\end{table}
+
+\bildnocap{fig/balkengeo}{angle=-90,width=6cm}{
+	\put(5,-35){$z$}
+	\put(77,-12){$x$}
+	\put(93,-25){$P(x,z)$}
+	\put(140,-60){$w(x)$}
+	\put(65,-70){$\psi(x)$}
+	\put(95,-120){$P'$}
+	\put(85,-142){$u(x,z)$}
+}
+
+Die Bernoulli-Hypothese ergibt folgende (geometrische) Zusammenhänge:
+\begin{eqnarray*}
+	\frac{dw(x)}{dx} &=& -\tan \psi(x) \approx -\psi(x)\\
+	u(x,z) &=& z\sin\psi(x)\approx z\psi(x)\\
+	\to\quad\varepsilon(x,z)&=&\frac{d\psi(x)}{dx}z\quad\textrm{Dehnung}\\
+	\to\quad\sigma(x,z)&=&E\psi'(x)z\quad\textrm{Normalspannung}
+\end{eqnarray*}
+
+\bildnocap{fig/schnittverteilung}{angle=-90,width=10cm}{
+	\put(0,3){Balken}
+	\put(70,-65){$x$}
+	\put(10,-75){$z$}
+	\put(4,-49){$y$}
+	\put(72.25,-11.5){$\ominus$}
+	\put(85,-12){Druck}
+	\put(95.5,-110.25){$\oplus$}
+	\put(113,-111){Zug}
+	\put(110,-50){neutrale Faser}
+	\put(110,-80){$\sigma(x,z)$}
+	\put(120,-2){Querschnittsfläche $A$}
+	\put(247,-55){$S$}
+	\put(225,-49){$y$}
+	\put(248,-75){$z$}
+}
+
+Die resultierende Normalkraft $N$ entspricht dem Integral der Normalspannungsverteilung.
+$N$ verschwindet bei Biegung, d.h.
+$$ N = \int_A \sigma(x,z)\,dA = E\psi'(x)\int_Az\,dA = E\psi'(x)z_SA=0$$
+$$ \to\quad z_S=0$$
+
+\begin{itemize}
+	\item Die neutrale Faser eines gebogenen Balkens geht durch den Schwerpunkt der Querschnittsfläche.
+\end{itemize}
+
+Das aus der Spannungsverteilung resultierende Moment bezüglich der $y$-Achse ist
+$$ M(x) = \int_A z\sigma(x,z)\,dA = E\psi'(x)\int_A z^2\,dA = E\psi'(x) I_y$$
+Wir begegnen hier dem \textbf{Flächenmoment 2. Ordung} bezüglich der $y$-Achse, das auch als (axiales) \textbf{Flächenträgheitsmoment} bezeichnet wird,
+$$ I_y := \int_A z^2\,dA$$
+
+Beachte: Die $y$-Achse geht durch den Flächenschwerpunkt $S$.\\
+
+Die Tabelle enthält einige Beispiele.\\
+
+Demnach ändert sich der Drehwinkel in $x$-Richtung proportional zum örtlichen Biegemoment:
+$$\frac{d\psi(x)}{dx} = \frac{M(x)}{EI_y}$$
+Das Produkt $EI_y$ heißt \textbf{Biegesteifigkeit}.\\
+
+Die Normalspannungsverteilung im gebogenen Balken kann deshalb auch folgendermaßen dargestellt werden:
+$$ \sigma(x,z) = \frac{M(x)}{I_y(x)}z$$
+\begin{itemize}
+	\item Die größte Zugspannung tritt in einer Randfaser auf.
+\end{itemize}
+
+Wenn also wegen begrenzter Festigkeit des Werkstoffs zu fordern ist, dass eine \textbf{zulässige Spannung} nicht überschritten werden darf,
+$$|\sigma|_{\textrm{max}}\leq\sigma_{\textrm{zul}}$$
+dann ist der Balken entweder so zu dimensionieren, dass an jeder Stelle $x$ gilt:
+$$\frac{I_y}{|z|_{\textrm{max}}}\geq\frac{|M|}{\sigma_{\textrm{zul}}}$$
+Oder er darf nur so belastet werden, dass
+$$ |M| \leq \frac{I_y}{|z|_{\textrm{max}}}\sigma_{\textrm{zul}}$$
+
+\bildnocap{fig/tabtraegheit}{angle=-90,width=\textwidth}{
+	\put(10,-14){Form der Fläche}
+	\put(170,-14){Flächeninhalt}
+	\put(290,-14){Flächenträgheitsmoment}
+	\put(10,-40){Rechteck}
+	\put(85,-45){$b$}
+	\put(123,-90){$h$}
+	\put(40,-85){$y$}
+	\put(93,-140){$z$}
+	\put(92,-92){$S$}
+	\put(190,-92){$A=bh$}
+	\put(320,-92){$\displaystyle I_y=\frac{bh^3}{12}$}
+
+	\put(10,-160){Kreis}
+	\put(92,-220){$S$}
+	\put(80,-200){$R$}
+	\put(40,-210){$y$}
+	\put(93,-265){$z$}
+	\put(190,-220){$A=\pi R^2$}
+	\put(320,-220){$\displaystyle I_y=\frac{\pi R^4}{4}$}
+	
+	\put(10,-285){dünner Kreisring}
+	\put(10,-298){mit $t\ll R_\textrm{m}$}
+	\put(92,-343){$S$}
+	\put(40,-330){$y$}
+	\put(93,-390){$z$}
+	\put(125,-300){$t$}
+	\put(76,-320){$R_\textrm{m}$}
+	\put(190,-343){$A=2 \pi R_\textrm{m} t$}
+	\put(320,-343){$\displaystyle I_y=\pi R_\textrm{m}^3 t$}
+
+	\put(10,-412){dünnes I-Profil}
+	\put(10,-426){mit $t\ll b$}
+	\put(94,-500){$S$}
+	\put(92,-450){$b$}
+	\put(123,-455){$t$}
+	\put(123,-543){$t$}
+	\put(95,-550){$z$}
+	\put(40,-489){$y$}
+	\put(65,-480){$d$}
+	\put(129,-500){$h$}
+	\put(190,-480){$A=hd+2bt$}
+	\put(320,-480){$\displaystyle I_y=\frac{dh^3}{12}+\frac{h^2bt}{2}$}
+
+}
+\newpage
+
+
+\paragraph{Beispiel 3.4:} Ein zylindrischer Balken mit quadratischem Querschnitt (Kantenlänge $b=h=0,2$ m, Länge $l=3$ m) ist einseitig eingespannt.
+Wie groß darf die Kraft $F$ höchstens sein, damit die zulässige Spannung $\sigma_{\textrm{zul}} = 150$ N/mm$^2$ nicht überschritten wird?\\
+
+\bildnocap{fig/beispiel34}{angle=-90,width=6cm}{
+	\put(60,-40){$l$}
+	\put(128,-40){$F$}
+	\put(163,-42){$b$}
+	\put(173,-55){$h$}
+}
+
+Lösung: Das größte Moment tritt an der Einspannungsstelle auf, es hat den Betrag $M_{\textrm{max}} = Fl$.\\
+Beim quadratischen Querschnitt sind (s. Tabelle) $I_y = h^4/12$ und $|z|_{\textrm{max}} = h/2$.
+Die Bedingung $|\sigma|_{\textrm{max}}\leq\sigma_{\textrm{zul}}$ führt damit zu
+$$F\leq\frac{h^4/12}{(h/2)l}\sigma_{\textrm{zul}}=66,7\textrm{ kN}$$
+
+\paragraph{Ergänzung:} Die \textbf{Biegelinie} $w(x)$\\
+Die oben erläuterten Zusammenhänge
+$$Q'(x)=-q(x),\quad M'(x)=Q(x),\quad\psi'(x)=\frac{M(x)}{EI_y},\quad w'(x)=-\psi(x)$$
+bilden ein Dgl.-System 4. Ordnung zur Berechnung von $Q(x)$, $M(x)$, $\psi(x)$ und $w(x)$ bei vorgegebener Belastung $q(x)$ und bekannter Biegesteifigkeit $EI$.
+Es kann in eine Dgl. 4. Ordnung für $w(x)$ überführt werden (\textbf{Differentialgleichung der Biegelinie})
+$$ [EIw''(x)]''=q(x)$$
+Bei der Integration sind \textbf{Randbedingungen} an den Auflagerpunkten zu beachten, die den Bindungen der Lagerung entsprechen.
+
+\paragraph{Beispiel 3.5:} Balken konstanter Beigesteifigkeit $EI$ unter konstanter Streckenlast $q_0$ bei unterschiedlicher Lagerung:\\
+
+\vspace*{0.5cm}
+\bildnocap{fig/beispiel35}{angle=-90,width=10cm}{
+	\put(-20,16){a) einseitig eingespannt}
+	\put(160,16){b) beidseitig gelenkig gelagert}
+	\put(50,5){$q_0$}
+	\put(220,5){$q_0$}
+	\put(50,-42){$l$}
+	\put(220,-42){$l$}
+	\put(50,-104){$w(x)$}
+	\put(101,-95){$w_{\textrm{max}}$}
+	\put(40,-75){$x$}
+	\put(200,-75){$x$}
+	\put(200,-110){$w(x)$}
+	\put(260,-110){$w_{\textrm{max}}$}
+}
+
+In beiden Fällen gilt
+\begin{eqnarray*}
+	EIw^{IV} &=& q_0\\
+	-Q(x)=EIw'''(x)&=&q_0x+C_1\\
+	-M(x)=EIw''(x)&=&\frac{1}{2}q_0x^2+C_1x+C_2\\
+	EIw'(x)&=&\frac{1}{6}q_0x^3+\frac{1}{2}C_1x^2+C_2x+C_3\\
+	EIw(x)&=&\frac{1}{24}q_0x^4+\frac{1}{6}C_1x^3+\frac{1}{2}C_2x^2+C_3x+C_4
+\end{eqnarray*}
+Die unterschiedlichen Randbedingungen führen jedoch auf unterschiedliche Werte der Integrationskonstanten.\\
+
+a) einseitig eingespannt
+\begin{eqnarray*}
+	 w(0)=0  &\to&  C_4 = 0\\
+	 w'(0)=0  &\to&  C_3 = 0\\
+	 Q(l)=0  &\to&  q_0l+C_1 = 0\,\to\,C_1=-q_0l\\
+	 M(l)=0  &\to&  \frac{1}{2}q_0l^2+C_1l+C_2 = 0\,\to\,C_2=\frac{1}{2}q_0l^2
+\end{eqnarray*}
+Damit erhält man die Biegelinie und den Momentenverlauf
+$$ w(x) = \frac{q_0l^4}{24EI}\left[\left(\frac{x}{l}\right)^4-4\left(\frac{x}{l}\right)^3+6\left(\frac{x}{l}\right)^2\right]$$
+$$ M(x) = -\frac{1}{2}q_0(l-x)^2$$
+$$ \to \qquad w_{\textrm{max}} = w(l) = \frac{q_0l^4}{8EI} \qquad M_{\textrm{max}} = M(0) = -\frac{1}{2}q_0l^2 $$
+
+b) beidseitig gelenkig gelagert
+\begin{eqnarray*}
+	 w(0)=0  &\to&  C_4 = 0\\
+	 M(0)=0  &\to&  C_2 = 0\\
+	 M(l)=0  &\to&  \frac{1}{2}q_0l^2+C_1l = 0\,\to\,C_1=-\frac{1}{2}q_0l\\
+	 w(l)=0  &\to&  \frac{1}{24}q_0l^4+\frac{1}{6}C_1l^3+C_3l = 0\,\to\,C_3=\frac{1}{24}q_0l^3
+\end{eqnarray*}
+Daraus folgt dann
+$$ w(x) = \frac{q_0l^4}{24EI}\left[\left(\frac{x}{l}\right)^4-2\left(\frac{x}{l}\right)^3+\frac{x}{l}\right]$$
+$$ M(x) = \frac{1}{2}q_0x(l-x)$$
+$$ w_{\textrm{max}} = w\left(\frac{l}{2}\right) = \frac{5q_0l^4}{384 EI} $$
+$$ M_{\textrm{max}} = M\left(\frac{l}{2}\right) = \frac{1}{8} q_0 l^2$$
+
+Zum Festigkeitsnachweis tragender Bauteile benötigt man insbesondere das maximale Biegemoment.
+In diesem Zusammenhang diskutiert man zweckmäßigerweise den Verlauf der Schnittgrößen $Q(x)$ und $M(x)$ anhand der Differentialgleichungen
+$$ \frac{dQ(x)}{dx} = -q(x),\quad\frac{dM(x)}{dx} = Q(x)$$
+unter Beachtung der Randbedingungen für $Q$ und $M$ (Lagerreaktionen).
+Die Tabelle enthält einige Beispiele.\\
+
+\paragraph{Ergänzung:} \textbf{Superposition von Biegung und Zug}\\
+
+Wird bei einer ebenen Biegung der Balkenquerschnitt außer durch ein Biegemoment $M(x)$ noch durch eine Normalkraft $N(x)$ beansprucht, so überlagern sich die zugehörigen Spannungsverteilungen additiv:
+
+\vspace*{1cm}
+\bildnocap{fig/balkensuper}{angle=-90,width=12cm}{
+	\put(-30,12){Biege-Normalspannung + Zug-Normalspannung = Gesamt-Normalspannung}
+	\put(92,-25){$+$}
+	\put(220,-25){$=$}
+	\put(-5,-15){$y$}
+	\put(48,-30){$x$}
+	\put(6,-50){$z$}
+	\put(30,-70){$\displaystyle\frac{M(x)}{I_y(x)}z$}
+	\put(92,-70){$+$}
+	\put(140,-70){$\displaystyle\frac{N(x)}{A(x)}$}
+	\put(220,-70){$=$}
+	\put(260,-70){$\sigma(x,z)$}
+}
+
+\bildnocap{fig/lastfalltabelle}{height=\textheight}{
+	\put(-8,200){\begin{rotate}{90}Zustandslinien $Q(x)$ und $M(x)$ für ausgewählte Lastfälle\end{rotate}}
+
+	\put(203,112){$\oplus$}
+	\put(15,150){\begin{rotate}{90}$q$\end{rotate}}
+	\put(15,310){\begin{rotate}{90}$q$\end{rotate}}
+	\put(70,150){\begin{rotate}{90}$l$\end{rotate}}
+	\put(70,310){\begin{rotate}{90}$l$\end{rotate}}
+	\put(75,460){\begin{rotate}{90}$a$\end{rotate}}
+	\put(90,470){\begin{rotate}{90}$l$\end{rotate}}
+	\put(20,505){\begin{rotate}{90}$F$\end{rotate}}
+	\put(20,660){\begin{rotate}{90}$F$\end{rotate}}
+	\put(92,613){\begin{rotate}{90}$a$\end{rotate}}
+	\put(118,640){\begin{rotate}{90}$l$\end{rotate}}
+	\put(55,50){\begin{rotate}{90}$x$\end{rotate}}
+	\put(50,10){\begin{rotate}{90}$y$\end{rotate}}
+	\put(100,5){\begin{rotate}{90}$z$\end{rotate}}
+	\put(200,30){\begin{rotate}{90}$Q(x)$\end{rotate}}
+	\put(350,30){\begin{rotate}{90}$M(x)$\end{rotate}}
+	\put(250,100){\begin{rotate}{90}$ql$\end{rotate}}
+	\put(365,120){\begin{rotate}{90}$\ominus$\end{rotate}}
+	\put(250,265){\begin{rotate}{90}$\displaystyle\frac{1}{2}ql$\end{rotate}}
+	\put(210,265){$\oplus$}
+	\put(335,290){$\oplus$}
+	\put(210,350){\begin{rotate}{90}$\displaystyle\frac{1}{2}ql$\end{rotate}}
+	\put(235,350){\begin{rotate}{90}$\ominus$\end{rotate}}
+	\put(370,90){\begin{rotate}{90}$\displaystyle\frac{1}{2}ql^2$\end{rotate}}
+	\put(380,335){\begin{rotate}{90}$\displaystyle\frac{1}{8}ql^2$\end{rotate}}
+	\put(180,425){\begin{rotate}{90}$F$\end{rotate}}
+	\put(205,450){$\oplus$}
+	\put(332,427){\begin{rotate}{90}$Fa$\end{rotate}}
+	\put(365,435){\begin{rotate}{90}$\ominus$\end{rotate}}
+	\put(175,585){\begin{rotate}{90}$\displaystyle\left(1-\frac{a}{l}\right)F$\end{rotate}}
+	\put(205,680){\begin{rotate}{90}$\displaystyle\frac{a}{l}F$\end{rotate}}
+	\put(205,610){$\oplus$}
+	\put(250,675){\begin{rotate}{90}$\ominus$\end{rotate}}
+	\put(330,625){$\oplus$}
+	\put(385,645){\begin{rotate}{90}$\displaystyle\left(1-\frac{a}{l}\right)Fa$\end{rotate}}
+}
+\newpage
+
+\subsection{Formänderungsenergien}
+Festkörper verformen sich unter Wirkung äußerer Kräfte, die dadurch verschoben werden und am Körper Arbeit verrichten (\textbf{Formänderungsarbeit}).
+In einem elastischen Körper wird diese Arbeit vollständig in Form von innerer Energie gespeichert (\textbf{Formänderungsenergie}).\\
+
+Zur Illustration betrachten wir einen zylindrischen Zugstab, an dessen Ende eine Kraft $S$ aufgebracht wird, die ``langsam'' (quasistatisch) von $0$ auf $F$ zunimmt.\\
+
+%\bildnocap{fig/formaenderung}{angle=-90,width=7.5cm}{
+\begin{figure}[htbp]\hspace*{1cm}\begin{picture}(0,0)(0,0)
+	\put(30,-38){$EA$}
+	\put(50,0){$l$}
+	\put(105,-38){$u$}
+	\put(170,-57){$S(u)$}
+	\put(215,-90){$F$}
+	\put(144,-70){$du$}
+	\put(118,-111){$\Delta l$}
+	\put(280,-20){unbelasteter Zustand}
+	\put(280,-55){Zwischenzustand}
+	\put(280,-90){verformter Zustand}
+\end{picture}\includegraphics[angle=-90,width=7.5cm]{fig/formaenderung}\end{figure}
+
+\begin{eqnarray*}
+\textrm{Bekanntlich gilt}\qquad F &=&\frac{EA}{l}\Delta l\\
+\textrm{analog}\qquad S(u) &=& \frac{EA}{l}u
+\end{eqnarray*}
+%$$ \textrm{Bekanntlich gilt}\qquad F=\frac{EA}{l}\Delta l$$
+%$$ \textrm{analog}\qquad S(u) = \frac{EA}{l}u $$
+Die differentielle Arbeit der Kraft $S$ ist $\displaystyle dW=S(u)\,du=\frac{EA}{l}u\,du$,\\
+die Formänderungsarbeit beim Aufbau der Kraft $F$ demzufolge
+$$ W = \frac{EA}{l}\int_0^{\Delta l} u\,du = \frac{1}{2} \frac{EA}{l}(\Delta l)^2 = \frac{F^2}{2EA}l$$
+Diese Arbeit ist als potentielle innere Energie $U$ im Stab gespeichert.\\
+
+Bei einem Stab, dessen Dehnsteifigkeit oder dessen Schnittkraft sich in Längsrichtung ändern, gilt diese Formel sinngemäß für jedes infinitesimale Stabelement
+$$ l\to dx,\quad F\to N(x)$$
+Die gesamte \textbf{Formänderungsenergie eines Stabs} ergibt sich dann durch Integration über die Stablänge:
+$$ U = \frac{1}{2} \int_0^l \frac{N^2(x)}{EA(x)}\,dx$$
+Analog gilt für die \textbf{Formänderungsenergie eines gebogenen Balkens}
+$$ U = \frac{1}{2} \int_0^l \frac{M^2(x)}{EI_y(x)}\,dx$$
+
+\paragraph{Anwendung} auf ein Stabilitätsproblem der Elastostatik: Eulerscher Knickstab\\
+
+\hspace*{1cm}
+\begin{picture}(0,0)(0,0)
+	\put(70,0){$l$}
+	\put(180,0){$F$}
+	\put(170,-49){$F$}
+	\put(40,-50){$x$}
+	\put(50,-80){$w(x)$}
+	\put(127,-37){$u$}
+	\put(220,-10){Grundzustand, bedingt stabil}
+	\put(220,-58){Nachbarzustand}
+\end{picture}
+\includegraphics[angle=-90,width=7cm]{fig/knickstab}
+\vspace*{1cm}
+
+Energieaussage: Der Grundzustand ist stabil, wenn die äußere Last weniger Arbeit verrichtet als zum Biegen erforderlich ist, d.h.
+$$ Fu < \frac{1}{2}\int_0^l \frac{M^2(x)}{EI_y}\,dy = \frac{1}{2}\int_0^l EI_y[w''(x)]^2\,dx$$
+Geometrischer Zusammenhang zwischen der Verschiebung $u$ und der Form der Biegelinie $w(x)$:
+$$ u = \frac{1}{2}\int_0^l [w'(x)]^2\,dx$$
+Das Stabilitätskriterium ist demnach $F<F_{\textrm{krit}}$ mit 
+$$ F_{\textrm{krit}} = \frac{\int_0^l EI_y[w''(x)]^2\,dx}{\int_0^l[w'(x)]^2\,dx}$$
+Mit dieser Formel ist eine Abschätzung der \textbf{kritischen Last} möglich, indem $w(x)$ sinnvoll angenommen wird.
+Im Fall der oben skizzierten Lagerung ist jede zweimal differenzierbare Funktion $w(x)$ zulässig, die den Randbedingungen $w(0)=0$ und $w(l)=0$ genügt, z.B.
+\begin{eqnarray*}
+	w(x) &=& w_0\sin\left(\pi\frac{x}{l}\right)\qquad\textrm{Ansatz}\\
+	w'(x) &=& w_0 \frac{\pi}{l}\cos\left(\pi\frac{x}{l}\right)\\
+	w''(x) &=& -w_0 \frac{\pi^2}{l^2} \sin\left(\pi\frac{x}{l}\right)
+\end{eqnarray*}
+$$ \to \qquad F_{\textrm{krit}} = \frac{\pi^2}{l^2} EI_y $$
+
+\newpage
+\subsection{Aufgaben}
+\paragraph{Aufgabe 3.1} Wie groß ist die maximale Länge eines frei hängenden Seils konstanten Querschnitts unter Eigengewicht?\\
+
+\begin{tabular}{lcc}
+	& Dichte $\rho [\textrm{Mg}/\textrm{m}^3]$ & Bruchspannung $\sigma_\textrm{B} [\textrm{N}/\textrm{mm}^2]$\\\\
+	a) Stahl & 7,85 & 1280\\
+	b) Dural & 2,7 & 500\\
+	c) Nylon & 1,15 & 540
+\end{tabular}
+
+\vspace*{1cm}
+\paragraph{Aufgabe 3.2} Wie groß ist die Ersatzfedersteifigkeit des Systems in $x$-Richtung?\\
+
+\bildnocap{fig/aufgabe32}{angle=-90,width=7cm}{
+	\put(40,-5){$l$}
+	\put(70,0){$E,A_1$}
+	\put(30,-80){$E,A_2$}
+	\put(110,-28){$c$}
+	\put(180,-30){$x$}
+}
+
+\paragraph{Aufgabe 3.3} Auf einem rotationssymmetrischen starren Körper (Dichte $\rho$) liegt ein Gewicht $G$.
+Wie muß die Querschnittsfläche $A(x)$ gestaltet sein, damit längs des Körpers an jeder Stelle $x$ die gleiche Normalspannung herrscht?\\
+
+\bildnocap{fig/aufgabe33}{angle=-90,width=6cm}{
+	\put(130,-25){$G$}
+	\put(10,-40){$g$}
+	\put(35,-55){$A_0$}
+	\put(22,-90){$A(x)$}
+	\put(170,-60){$x$}
+	\put(150,-95){$\rho$}
+}
+
+\newpage
+\paragraph{Aufgabe 3.4} Ein Stab ist spannungsfrei zwischen zwei festen Gelenken gelagert.
+Aus dem Ausgangszustand wird er homogen um $\Delta T$ erwärmt. Wie groß darf $\Delta T$ höchstens sein, damit die Druckspannung einen zulässigen Wert $\sigma_\textrm{zul}$ nicht überschreitet?\\
+Wie groß sind dann die Lagerreaktionen in $A$ und $B$?
+
+\bildnocap{fig/aufgabe_stabwarm}{angle=-90,width=6cm}{
+	\put(40,-15){$\Delta T,\,E,\,A,\,\alpha$}
+	\put(80,-37){$l$}
+	\put(10,-40){$A$}
+	\put(150,-40){$B$}
+}
+
+Gegeben: $E=200\,000$ N/mm$^2$, $A=9$ cm$^2$, $l=80$ cm, $\alpha=1,2\cdot10^{-5}$ K$^{-1}$, $\sigma_{\textrm{zul}} = 300$ N/mm$^2$.\\
+
+\paragraph{Aufgabe 3.5} Ein Stabwerk bestehend aus 3 identischen Stäben wird durch eine Kraft $F$ belastet.
+Um wieviel verschiebt sich das Loslager in Punkt $A$?\\
+Die Stäbe haben im unbelasteten Fall die Länge $l$ und die Dehnsteifigkeit $EA$.\\
+\bildnocap{fig/aufgabe34}{angle=-90,width=4cm}{
+	\put(65,-40){$F$}
+	\put(110,-100){$A$}
+}
+
+\vspace*{-0.5cm}
+\paragraph{Aufgabe 3.6} Ein starrer Balken wird durch ein Festlager und zwei Stäbe mit der Dehnsteifigkeit $EA$ gehalten.\\
+Wie groß sind die Auflagerreaktionen im Lager $A$ unter der Last $F$?
+Wie groß sind die Stabkräfte?
+
+\bildnocap{fig/aufgabe_statunbest}{angle=-90,width=6cm}{
+	\put(50,-75){$a$}
+	\put(95,-100){$2a$}
+	\put(30,-15){$a$}
+	\put(85,-15){$a$}
+	\put(135,-15){$a$}
+	\put(170,-10){$F$}
+	\put(-5,-30){$A$}
+	\put(65,-80){1}
+	\put(120,-105){2}
+}
+Gegeben: $a=1$ m, $E=200\,000$ N/mm$^2$, $A=10$ cm$^2$, $F=3$ kN.\\
+
+\newpage
+\paragraph{Aufgabe 3.7} Wie groß ist das Flächenträgheitsmoment bezüglich der $y$-Achse $I_y$ des Dreiecks?\\
+
+\bildnocap{fig/aufgabe35}{angle=-90,width=5cm}{
+	\put(145,-30){$h$}
+	\put(100,-35){$S$}
+	\put(100,-80){$z$}
+	\put(5,-23){$y$}
+	\put(75,-67){$a$}
+}
+
+\paragraph{Aufgabe 3.8} Ermitteln Sie Querkraft- und Momentenverläufe $Q(x)$ und $M(x)$ der Balkensysteme.
+Beide Balken haben den Elastizitätsmodul $E$ und das Flächenträgheitsmoment $I_y$.\\
+
+\bildnocap{fig/aufgabe36}{angle=-90,width=6cm}{
+	\put(-20,-20){a)}
+	\put(-20,-110){b)}
+	\put(80,-15){$l$}
+	\put(121,-12){$M_0$}
+	\put(80,-75){$q$}
+	\put(45,-136){$a$}
+	\put(120,-136){$b$}
+}
+
+\paragraph{Aufgabe 3.9} Wie groß ist die Formänderungsenergie der Balken mit den Lastfällen der Aufgabe 3.8?\\
+
+Gegeben: $A=90$ cm$^2$ (quadratischer Querschnitt), $M_0=10$ kNm, $q=2000$ N/m, $a=2$ m, $b=3$ m, $l=5$ m.\\
+
+\newpage
+\paragraph{Aufgabe 3.10} Ein einseitig eingespannter Balken wird durch eine Streckenlast $q$ belastet.
+Am freien Ende befindet sich eine Feder mit der Federsteifigkeit $c$, die in der unausgelenkten Lage des Balkens entspannt ist.\\
+
+Wieweit biegt sich das freie Ende des Balkens durch?\\
+
+\bildnocap{fig/aufgabe37}{angle=-90,width=6cm}{
+	\put(80,5){$q$}
+	\put(170,-70){$c$}
+	\put(70,-55){$EI_y$, $l$}
+}
+
+\end{document}

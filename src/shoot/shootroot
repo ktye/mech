@@ -1,0 +1,88 @@
+#!/bin/sh
+#
+# $ID$
+
+# uses $SRC/draw
+
+echo=/bin/echo
+shoot=$HOME/bin/shoot
+
+if [ "$#" != 4 ]; then
+	$echo usage: $0 n k R N 
+	exit 1
+fi
+if [ -z $xmin ] || [ -z $xmax ] || [ -z $ymin ] || [ -z $ymax ] || [ -z $zmin ] || [ -z $zmax ]; then
+	$echo "export xmin xmax ymin ymax (complex omega-plane)"
+	exit 1
+fi
+
+_scale () {
+	echo $* | awk '{
+		print $5*($3-$4)/($1-$2)+($1*$4-$2*$3)/($1-$2)  
+	}'
+}
+
+_getcolour () {
+	echo $* | awk '{x=100-int(100*($1-$2)/($3-$2)); if (x>100) x=100; if (x<0) x=0; print "grey"x}'
+}
+
+_f () {
+	echo $* | awk '{print $1*$1+$2*$2}'
+}
+
+n=$1
+k=$2
+R=$3
+N=$4
+
+$echo "ODE=$ODE"
+$echo "n=$n"
+$echo "omega=($omegar, $omegai) [$xmin $xmax]x[$ymin $ymax]"
+$echo "k=$k"
+$echo "R=$R"
+$echo "N=$N"
+$echo "z [$zmin, $zmax]"
+
+width=1280
+height=960
+(
+echo clear
+echo bg black
+for scale in 0 1 2 3 4 5 6 7; do
+	X=0
+	Y=0
+	x=0
+	y=0
+	dx=`echo $scale $width| awk '{print $2/(2^$1)}'`
+	dy=`echo $scale $height| awk '{print $2/(2^$1)}'`
+	$echo "scale=$scale dx=$dx dy=$dy" 1>&2
+	while [ $Y -lt $height ]; do (
+		while [ $X -lt $width ]; do
+			x=`echo $X $dx | awk '{print $1+$2/2}'`
+			y=`echo $Y $dy | awk '{print $1+$2/2}'`
+			OMEGAR=`_scale 0.0 $width.0 $xmin $xmax $x.0`
+			OMEGAI=`_scale $height 0.0 $ymin $ymax $y.0`
+#			z=`$shoot $n $OMEGAR $OMEGAI $k $R $N 2>&1 1>&-`
+			z=`_f $OMEGAR $OMEGAI`
+			colour=`_getcolour $z $zmin $zmax`
+			$echo "x=$x y=$y X=$X Y=$Y OMEGAR=$OMEGAR OMEGAI=$OMEGAI z=$z colour=$colour" 1>&2
+			echo fg $colour
+			echo fillrectangle $X $Y $dx $dy
+			let "X += $dx"
+		done )
+		if [ $Y -gt 20 ]; then
+			echo fg green
+			echo text `echo $width | awk '{print $1/2-100}'` 20 $0
+			echo text 0 20 "$xmin,$ymax"
+			xmax_l=`echo "$xmax, $ymax" | wc -c | awk '{print ('$width'-10*$1)}'`
+			echo text $xmax_l 20 "$xmax, $ymax"
+		fi
+		if [ $Y -gt 20 ]; then
+			echo text 0 $height "$xmin,$ymin"
+			xmax_l=`echo "$xmin, $ymax" | wc -c | awk '{print ('$width'-10*$1)}'`
+			echo text $xmax_l $height "$xmin, $ymax"
+		fi
+		let "Y += $dy"
+	done
+done
+) | draw

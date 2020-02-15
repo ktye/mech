@@ -1,0 +1,11 @@
+#!/usr/bin/awk -f
+BEGIN {
+	R=1
+}
+{
+	if ($1 != R) {
+		printf("\n")
+		R = $1
+	}
+	print $1,$2,$4
+}

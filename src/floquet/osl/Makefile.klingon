@@ -1,0 +1,20 @@
+.SUFFIXES:      .o .c
+CFLAGS=-I$(HOME)/include
+LDADD=  $(HOME)/lib/lapack_HP-UX-ia64.a  $(HOME)/lib/blas_HP-UX-ia64.a $(HOME)/lib/libF77.a $(HOME)/lib/libI77.a -lm
+OBJS= base.o baseflow.o debug.o la.o loop.o main.o quad.o solve.o
+
+osl:	$(OBJS)
+	cc -o osl $(OBJS) $(LDADD)
+
+.c.o:
+	cc $(CFLAGS) -c $<
+
+install:
+	cp osl $(HOME)/bin && chmod 744 $(HOME)/bin/osl
+
+getsrc:
+	scp 'lighthill:src/floquet/osl/{Makefile.klingon,*.[ch]}' .
+
+clean:
+	rm *.o osl
+

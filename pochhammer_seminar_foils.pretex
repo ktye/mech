@@ -1,0 +1,111 @@
+% $Id: pochhammer_seminar_foils.pretex,v 1.1 2004/04/21 13:31:11 elmar Exp $
+% POOLFILE=pochhammer_seminar_foils
+% DESCRIPTION=Pochhammer Dispersion im Zylinder
+% TITLE={Dispersion im elastischen Zylinder}
+\title{Dispersion im elastischen Zylinder}
+\maketitle
+[@] 
+\noindent Feldgleichungen des Verschiebungsvektors $\vec{s}$ (linear elastischer Festkörper)
+\begin{equation*}
+          \pd2\vec{s}:t^2 = (a^2-b^2) \grad \div \vec{s} + b^2 \div \grad \vec{s}
+\end{equation*}
+Randbedingungen: Kräftefreie Oberfläche
+\begin{equation*}
+	\sigma_{rr} = \sigma_{r\varphi} = \sigma_{rz} =  0,\qquad \sigma = f( \grad \vec{s} ) 
+\end{equation*}
+in Zylinderkoordinaten $r,\,\varphi,\,z$ \\
+Elastische Koeffizienten\\
+ $\bullet \quad a, b\quad$ Wellengeschwindigkeiten\\
+ $\bullet \quad \lambda, \mu\quad $ \textit{Lame}-Konstanten\\
+ $\bullet \quad E, \nu\quad$ Elastizitätskonstanten
+
+[@] 
+\noindent Zerlegung: Potential $\phi$, Vektorpotential $\Psi$
+\begin{equation*}
+	 \vec{s} =  \grad \phi + \rot \Psi
+\end{equation*}
+Torsion $\Omega$, Volumendilatation $\vartheta$ 
+\begin{equation*}
+	 \Omega = \rot \vec{s},\quad \vartheta = \div \vec{s} 
+\end{equation*}
+Skalare und vektorielle Wellengleichung
+\begin{equation*}
+	 \pd2\phi:t^2 = a^2 \div \grad \phi,\quad \pd2\Psi:t^2 = b^2 \div \grad \Psi
+\end{equation*}
+\begin{equation*}
+	 \pd2\vartheta:t^2 = a^2 \div \grad \vartheta,\quad \pd2\Omega:t^2 = b^2 \div \grad \Omega
+\end{equation*}
+
+[@]
+\noindent Wellenansatz $\qquad \sim \exp i(kz+n\varphi-\omega t) $
+\begin{equation*}
+	\begin{aligned}
+	 \vec s = [ u, v, w ] &= [U(r), iV(r), -iW(r)] &\exp i(kz+n\varphi-\omega t)\\
+	 \phi &= \Phi(r) &\exp i(kz+n\varphi-\omega t) \\
+	 \Psi &= [ \xi(r)\,,i\eta(r)\,,-i\zeta(r) ] &\exp i(kz+n\varphi-\omega t)
+	\end{aligned}
+\end{equation*}
+Moden
+\begin{itemize}
+	\item $n=0$:  Torsion, Längswellen
+	\item $n=1$:  Biegewellen
+\end{itemize}
+
+[@]
+%\noindent Lösung für $n=0$
+\begin{equation*}
+	\begin{array}{l}
+		\text{L"osung} \qquad \raise3pt\hbox{\hugeeleftbrace} \begin{array}{lcr}
+		\Phi &=& A J_n(\alpha r),\quad \alpha^2 = \omega^2/a^2 - k^2\\
+		\zeta &=& B J_n(\beta r),\quad \beta^2 = \omega^2/b^2 - k^2 \\
+		\xi &=& C J_{n-1}(\beta r) + D J_{n+1}(\beta r)\\
+		\eta &=& C J_{n-1}(\beta r) - D J_{n+1}(\beta r)
+		\end{array}\\\\
+		(n=0)\rightarrow \quad\raise3pt\hbox{\largeleftbrace} \begin{array}{lcr}
+		U  &=&  \alpha A J_1(\alpha r) + kC J_1(\beta r) \\
+		V  &=&  B J_1(\beta r) \\
+		W  &=&  kA J_0(\alpha r) - C\beta J_0(\beta r)
+		\end{array}\\\\
+%		\mathrm{RB}\left|
+		\begin{array}{lcr}
+			c^2 U' + (c^2-2)(U+kW') &=& 0\\
+			V' - V &=& 0\\
+			kU-W' &=& 0
+		\end{array}\raise3pt\hbox{\largebrace}\qquad \text{RB an } r=1
+	\end{array}
+\end{equation*}
+
+[@]
+\noindent Torsion
+\begin{equation*}
+	 \left(\frac{\omega^2}{b^2}-k^2\right)\, J_2\left( \sqrt{\frac{\omega^2}{b^2}-k^2} \right) = 0
+\end{equation*}
+\begin{equation*}
+	\text{explizit}\quad \omega^2 = b^2 k^2,\qquad \omega^2 = b^2 (j_{2,m}^2 + k^2)
+\end{equation*}
+Längswellen
+\begin{equation*}
+\left| \begin{array}{cc}
+                        \{\frac{a^2}{b^2}(k^2+\alpha^2)-2k^2\}J_0(\alpha)-2\alpha J_1(\alpha) & 2\beta J_0(\beta)-2kJ_1(\beta)\\
+                        2\alpha k J_1(\alpha) & (k^2-\beta^2)J_1(\beta)
+                \end{array}
+        \right| = 0.
+\end{equation*}
+[@]
+\noindent
+Langwellennäherung (Taylor um $k=0$, $\omega=0$)
+\begin{equation*}
+        \omega^2 \simeq \frac{(3a^2-4b^2)b^2}{a^2-b^2}k^2 + \frac{(3a^2-4b^2)b^2}{4(a^2-b^2)}\omega^2 k^4 - \frac{6a^4-3a^2b^2-4b^4}{8a^2(a^2-b^2)} \omega^2k^2
+\end{equation*}
+\textit{Rayleigh--Love}: $ \pd2u:t^2 = \frac{E}{\rho} \pd2u:z^2 + \frac{\nu^2I}{A} \pd4u:z^2:t^2 $
+\begin{equation*}
+       \omega^2 = \frac{(3a^2-4b^2)b^2}{a^2-b^2}k^2 - \frac{a^2-2b^2}{4(a^2-b^2)}\omega^2 k^2
+\end{equation*}
+Kurzwellen $\rightarrow$ \textit{Rayleigh}sche Oberflächenwellen (nicht dispersiv)
+\begin{equation*}
+    \left( k^2 - \frac{\omega^2}{2b^2}\right)^2 = k^2\sqrt{k^2-\frac{\omega^2}{a^2}}\sqrt{k^2-\frac{\omega^2}{b^2}}
+\end{equation*}
+
+
+\end{document}
+

@@ -1,0 +1,384 @@
+% $Id: tm-4.tex,v 1.11 2006/06/13 12:56:50 elmar Exp $
+\input{header}
+\setcounter{section}{3}
+
+\begin{document}
+\section{Kinematik}
+Aufgabe der Kinematik ist es, die Lage mechanischer Systeme im Raum sowie die Lageänderungen als Funktionen der Zeit zu beschreiben.
+Kinematik kann deshalb als Geometrie von Lagebeziehungen und Bewegungen aufgefasst werden.
+Nach der Ursache der Bewegung wird dabei (noch) nicht gefragt.
+\subsection{Punkt-Bewegungen}
+Die Lage eines Punktes $P$ im Raum kann durch einen \textbf{Ortsvektor} $\vec r$ gekennzeichnet werden, der von einem Bezugspunkt $O$ aus zum Punkt $P$ zeigt.
+Bewegt sich $P$ im Raum, dann ändert sich $\vec r$ mit der Zeit $t$.
+
+\bildnocap{fig/punktbahn}{angle=-90,width=5cm}{
+	\put(30,-135){$\vec e_x$}
+	\put(-10,-90){$\vec e_y$}
+	\put(-5,-135){$O$}
+	\put(80,-110){$\vec r(t)$}
+	\put(40,-60){$\vec r(t+\Delta t)$}
+	\put(145,-100){Bahn}
+	\put(145,-80){$P$}
+	\put(134,-35){$P'$}
+}
+
+Der \textbf{Geschwindigkeitsvektor} $\vec v$ des Punktes $P$ ist definiert als Grenzwert der zeitlichen Änderung des Ortsvektors:
+$$\vec v(t) = \lim_{\Delta t\to0}\frac{\vec r(t+\Delta t)-\vec r(t)}{\Delta t} = \frac{d\vec r(t)}{dt}$$
+kurz: $\quad\vec v(t) = \dot{\vec r}(t)$
+\begin{itemize}
+	\item Der Geschwindigkeitsvektor hat stets die Richtung der Bahntangente.
+	Sein Richtungssinn zeigt, wie die Bahn durchlaufen wird.
+\end{itemize}
+
+Der \textbf{Beschleunigungsvektor} $\vec a$ eines Punktes ist ein Maß für die zeitliche Änderung seiner Geschwindigkeit.
+Er wird aus dem Geschwindigkeitsvektor $\vec v$ in der selben Weise gebildet wie dieser aus dem Ortsvektor $\vec r$.
+Es gilt demnach
+$$\vec a(t) = \lim_{\Delta t\to0}\frac{\vec v(t+\Delta t)-\vec v(t)}{\Delta t} = \frac{d\vec v(t)}{dt}$$
+kurz: $\qquad\vec a(t) = \dot{\vec v}(t)\qquad$ oder $\qquad \vec a(t) = \ddot{\vec r}(t)$\\
+
+Zur Darstellung der Vektoren benötigt man ein geeignetes Koordinatensystem.
+Wir verwenden nunächst ein \textbf{kartesisches Koordinatensystem} mit raumfesten, orthogonalen Einsvektoren $\vec e_x$, $\vec e_y$ und $\vec e_z$ als Basis:
+\begin{eqnarray*}
+	\vec r(t) &=& x(t) \vec e_x + y(t) \vec e_y + z(t) \vec e_z\\
+	\vec v(t) &=& \dot x(t) \vec e_x + \dot y(t) \vec e_y + \dot z(t) \vec e_z\\
+	\vec a(t) &=& \ddot x(t) \vec e_x + \ddot y(t) \vec e_y + \ddot z(t) \vec e_z
+\end{eqnarray*}
+Im Sonderfall einer \textbf{geradlinigen Bewegung} längs der $x$-Achse zeigen alle drei Vektoren in die $x$-Richtung, besitzen also jeweils nur eine Koordinate $x$, $v$ bzw. $a$.
+Zum Studium solcher Bewegungen genügen deshalb die skalaren Beziehungen
+$$v(t) = \dot x(t)\qquad\textrm{ und }\qquad a(t) = \dot v(t) = \ddot x(t)$$
+
+Eine Bewegung mit konstanter Geschwindigkeit heißt \textbf{gleichförmige Bewegung}.
+Für sie gilt
+$$v = v_0\quad\to\quad x=v_0t+x_0\quad\textrm{ und }\quad a=0$$
+
+Eine Bewegung mit konstanter Beschleunigung heißt \textbf{gleichförmig beschleunigte Bewegung}.
+Für sie gilt
+$$a=a_0\quad\to\quad v=a_0t+v_0\quad\to\quad x=\frac{1}{2}a_0t^2+v_0t+x_0$$
+
+Zur Veranschaulichung einer geradlinigen Bewegung sind grafische Darstellungen der Funktionen $x(t)$, $v(t)$, $a(t)$ in \textbf{kinematischen Diagrammen} hilfreich.
+
+\paragraph{Beispiel 4.1:} Ein Fahrzeug beschleunigt aus dem Stand in 10 s gleichförmig auf 90 km/h und fährt dann gleichförmig mit der Geschwindigkeit 90 km/h weiter.
+Welchen Weg legt es in der Beschleunigungsphase zurück, und wie sehen die kinematischen Diagramme aus?\\
+
+Umrechnung in SI-Einheiten:$\displaystyle\qquad 90\,\frac{\textrm{km}}{\textrm{h}}=\frac{90}{3,6}\,\frac{\textrm{m}}{\textrm{s}}=25\,\frac{\textrm{m}}{\textrm{s}}$\\
+Berechnung der Beschleunigung: $\displaystyle\qquad a_0=\frac{25\,\textrm{m}/\textrm{s}}{10\,\textrm{s}}=2,5\,\frac{\textrm m}{\textrm s^2}$\\
+zurückgeleger Weg in den ersten 10 s: $\displaystyle\qquad \frac{1}{2}\,2,5\,\frac{\textrm m}{\textrm s^2}\,(10\,\textrm s)^2=125\,\textrm m$\\
+
+\bildnocap{fig/beispiel_fahrzeug}{angle=-90,width=6cm}{
+	\put(170,-80){$t$ [s]}
+	\put(170,-175){$t$ [s]}
+	\put(170,-270){$t$ [s]}
+	\put(-8,-10){$a$}
+	\put(-30,-22){[m/s$^2$]}
+	\put(-8,-105){$v$}
+	\put(-25,-117){[m/s]}
+	\put(-10,-200){$x$}
+	\put(-15,-212){[m]}
+	\put(3,-80){$0$}
+	\put(-5,-70){$0$}
+	\put(3,-175){$0$}
+	\put(-5,-167){$0$}
+	\put(3,-270){$0$}
+	\put(-5,-262){$0$}
+	\put(-15,-40){2,5}
+	\put(70,-80){10}
+	\put(70,-175){10}
+	\put(70,-270){10}
+	\put(-15,-130){25}
+	\put(-20,-245){120}
+	\put(125,-239){4}
+	\put(140,-225){100}
+}
+
+Eindimensionale Bewegungen können auch im \textbf{Phasendiagramm} ($x$-$v$-Ebene) veranschaulicht werden.\\
+
+\paragraph{Beispiel 4.2:} Harmonische Schwingung längs der $x$-Achse mit der Wegamplitude $A$ und der Kreisfrequenz $\omega$, d.h.
+$$x=A\sin(\omega t)\quad\to\quad v=A\omega\cos(\omega t)$$
+Das ist die Parameterdarstellung einer Ellipse im $x$-$v$-Diagramm:
+$$\left(\frac{x}{A}\right)^2+\left(\frac{v}{A\omega}\right)^2=1$$
+
+\bildnocap{fig/schwingung_ellipse}{angle=-90,width=6cm}{
+	\put(65,-5){$v$}
+	\put(170,-75){$x$}
+	\put(100,-20){$\omega t=0$}
+	\put(20,-15){$\omega t=2\pi$}
+	\put(155,-55){$\displaystyle\omega t=\frac{\pi}{2}$}
+	\put(-40,-90){$\displaystyle\omega t=\frac{3\pi}{2}$}
+	\put(100,-125){$\omega t=\pi$}
+	\put(100,-65){$A$}
+	\put(77,-50){$A\omega$}
+}
+
+\textbf{Ebene Bewegung in Polarkoordinaten}\\
+Ein dem Punkt $P$ zugeordneter Vektor $\vec b$ wird dann folgendermaßen dargestellt:
+$$\vec b=b_r\vec e_r+b_\varphi\vec e_\varphi$$
+
+\bildnocap{fig/bewegung_polar}{angle=-90,width=6cm}{
+	\put(30,-152){$\vec e_x$}
+	\put(-10,-110){$\vec e_y$}
+	\put(-2,-152){$O$}
+	\put(40,-133){$\varphi$}
+	\put(110,-152){$x$}
+	\put(-7,-80){$y$}
+	\put(55,-105){$r$}
+	\put(113,-85){$P$}
+	\put(142,-71){$\vec e_r$}
+	\put(80,-60){$\vec e_\varphi$}
+	\put(117,-40){$\vec b$}
+	\put(160,-25){$b_\varphi$}
+	\put(102,-12){$b_r$}
+}
+
+\newpage
+Bei der Zeitableitung von $\vec b$ ist zu berücksichtigen, dass sich nicht nur $b_r$ und $b_\varphi$, sondern auch die Basisvektoren $\vec e_r$ und $\vec e_\varphi$ längs der Bahn ändern:
+$$\dot{\vec b}=\dot b_r\vec e_r+b_r\dot{\vec e}_r+\dot b_\varphi\vec e_\varphi+b_\varphi\dot{\vec e}_\varphi$$
+
+\bildnocap{fig/polar_zeitableitung}{angle=-90,width=5cm}{
+	\put(40,-158){$\vec e_x$}
+	\put(-10,-115){$\vec e_y$}
+	\put(50,-138){$\varphi$}
+	\put(30,-120){$\Delta\varphi$}
+	\put(122,-105){Bahnkurve}
+	\put(140,-75){$\vec e_r(t)$}
+	\put(67,-63){$\vec e_\varphi(t)$}
+	\put(102,-17){$\vec e_r(t+\Delta t)$}
+	\put(35,-5){$\vec e_\varphi(t+\Delta t)$}
+	\put(190,-30){Es gilt}
+	\put(190,-49){$\dot{\vec e}_r = \dot\varphi\,\vec e_\varphi$}
+	\put(190,-68){$\dot{\vec e}_\varphi = -\dot\varphi\,\vec e_r$}
+}
+
+$$\to\quad\dot{\vec b}=(\dot b_r-b_\varphi\dot\varphi)\vec e_r+(\dot b_\varphi+b_r\dot\varphi)\vec e_\varphi$$
+
+Anwendung auf den Ortsvektor
+$$\vec r=r\vec e_r$$
+und danach auf den Geschwindigkeitsvektor ergibt die wichtigen Formeln
+\begin{eqnarray*}
+	\vec v&=&\dot r\,\vec e_r + r\dot\varphi\,\vec e_\varphi\\
+	\vec a&=&(\ddot r-r\dot\varphi^2)\,\vec e_r+(r\ddot\varphi+2\dot r\dot\varphi)\,\vec e_\varphi
+\end{eqnarray*}
+oder komponentenweise
+\begin{center}\begin{tabular}{ll}
+	$\displaystyle v_r=\dot r$,&$v_\varphi=r\dot\varphi$\\
+	$\displaystyle a_r=\ddot r-r\dot\varphi^2$,$\quad$&$a_\varphi=r\ddot\varphi+2\dot r\dot\varphi$
+\end{tabular}\end{center}
+
+Die Größe $\dot\varphi$ heißt \textbf{Winkelgeschwindigkeit}, $\ddot\varphi$ \textbf{Winkelbeschleunigung}.\\
+
+Im Sonderfall der \textbf{Kreisbewegung} ist die Koordinate $r$ konstant, und $\vec e_\varphi$ zeigt stets in Richtung der Bahntangente.
+Die Geschwindigkeit besitzt dann nur die zirkulare Komponente
+$$v=v_\varphi=r\dot\varphi\qquad\textrm{ ``Umfangsgeschwindigkeit''}$$
+
+\bildnocap{fig/kreisbewegung}{angle=-90,width=3.5cm}{
+	\put(45,-75){$O$}
+	\put(61,-57){$\varphi$}
+	\put(60,-40){$r$}
+	\put(90,-25){$P$}
+	\put(60,0){$v=r\dot\varphi$}
+}
+
+Die Beschleunigung hat dann die Komponenten
+\begin{center}\begin{tabular}{ll}
+	$\displaystyle a_\varphi=r\ddot\varphi$ & \textrm{Bahnbeschleunigung}\\
+	$\displaystyle a_r=-r\dot\varphi^2$ & \textrm{Zentralbeschleunigung} (zum Zentrum hin gerichtet) 
+\end{tabular}\end{center}
+
+\paragraph{Beispiel 4.3:} Ein Rotor rotiert gleichförmig mit einer Drehzahl von $n=1000$ min$^{-1}$.
+Wie groß sind die Geschwindigkeit und die Beschleunigung eines Punktes im Rotor mit dem Abstand $r=10$ cm von der Drehachse?
+
+\begin{tabbing}
+	Gleichförmig bedeutet: \quad \= $\dot\varphi=\textrm{konst}\quad\to\quad\ddot\varphi=0\quad\to\quad a_\varphi=0$\kill
+	Gleichförmig bedeutet: \> $\dot\varphi=\textrm{konst}\quad\to\quad\ddot\varphi=0\quad\to\quad a_\varphi=0$\\
+	Winkelgeschwindigkeit: \> $\displaystyle\dot\varphi=2\pi n=2\pi\frac{1000}{60\textrm{ s}}=105$ s$^{-1}$\\
+	Geschwindigkeit: \> $v=r\dot\varphi=0,1$ m$\cdot105$ s$\displaystyle ^{-1}=10,5\,\frac{\textrm m}{\textrm s}$\\
+	Beschleunigung: \> $\displaystyle a=a_r=-0,1\textrm{ m}\cdot(105\textrm{ s}^{-1})^2=-1100\frac{\textrm m}{\textrm s^2}$\\
+\end{tabbing}
+
+\subsection{Ebene Bewegung starrer Körper}
+Ein starrer Körper ist dadurch gekennzeichnet, dass der Abstand beliebiger Punkte des Körpers zeitlich konstant ist.\\
+
+Eine \textbf{ebene Bewegung} liegt vor, wenn die Geschwindigkeitsvektoren $\vec v_P$ aller Punkte $P$ des Körpers parallel zu einer festen Ebene sind.
+Man denke an ein Blatt Papier, das auf dem Tisch liegt.
+Es kann in der Tischebene verschoben werden (2 Freiheitsgrade der \textbf{Translation}), und es kann um eine Achse senkrecht zur Tischebene gedreht werden (1 Freiheitsgrad der \textbf{Rotation}).\\
+
+Die Bewegung eines Punktes $P$ eines starren Körpers lässt sich zusammensetzen aus der Translationsbewegung eines Bezugspunktes $A$ im Körper und der Relativbewegung zwischen $P$ und $A$.
+
+\bildnocap{fig/starrkoerperbewegung}{angle=-90,width=5cm}{
+	\put(2,-109){$O$}
+	\put(35,-97){$\vec r_A$}
+	\put(90,-60){$\vec r_{AP}$}
+	\put(42,-58){$\vec r_P$}
+	\put(72,-83){$A$}
+	\put(105,-28){$P$}
+	\put(175,-20){$\vec r_P=\vec r_A+\vec r_{AP}$}
+	\put(175,-40){$\dot{\vec r}_P=\dot{\vec r}_A+\dot{\vec r}_{AP}$}
+	\put(175,-62){Im starren Körper gilt:}
+	\put(175,-82){$|\vec r_{AP}| = \textrm{konst}$}
+}
+
+
+
+$P$ kann sich deshalb relativ zu $A$ nur auf einem Kreis bewegen, d.h.
+$$\dot{\vec r}_{AP} = \vec\omega\times\vec r_{AP}$$
+Dabei bezeichnet $\vec\omega$ den ``axialen'' \textbf{Vektor der Winkelgeschwindigkeit} in Richtung der Drehachse;
+$\vec\omega$ steht also senkrecht auf der Ebene.
+
+\newpage
+\bildnocap{fig/winkelgeschwindigkeit}{angle=-90,width=8cm}{
+	\put(15,-70){$A$}
+	\put(171,-65){$A$}
+	\put(15,-50){$\vec v_A$}
+	\put(30,-24){$P$}
+	\put(195,-25){$P$}
+	\put(185,-50){$\vec r_{AP}$}
+	\put(140,0){$\vec\omega\times\vec r_{AP}$}
+	\put(110,-50){$+$}
+	\put(-70,-110){Translation:}
+	\put(-70,-130){Parallelverschiebung aller Punkte}
+	\put(-70,-146){des Körpers mit gleicher}
+	\put(-70,-162){Geschwindigkeit $\vec v_A$}
+	\put(150,-110){Rotation:}
+	\put(150,-130){Drehung aller Punkte des Körpers}
+	\put(150,-146){um den Bezugspunkt $A$ mit der}
+	\put(150,-162){Winkelgeschwindigkeit $\vec\omega$}
+}
+\vspace*{3cm}
+
+
+Es gilt also die Geschwindigkeitsformel (Euler)
+$$\vec v_P=\vec v_A+\vec\omega\times\vec r_{AP}$$
+Anmerkung: Der Winkelgeschwindigkeitsvektor $\vec\omega$ eines starren Körpers ist unabhängig vom Bezugspunkt $A$ (freier axialer Vektor).\\
+
+Für den Beschleunigungsvektor $\vec a_P$ folgt dann
+\begin{eqnarray*}
+	\dot{\vec v}_P&=&\dot{\vec v}_A+\dot{\vec\omega}\times\vec r_{AP}+\vec\omega\times\dot{\vec r}_{AP}\\
+	\vec a_P&=&\vec a_A+\dot{\vec\omega}\times\vec r_{AP}+\vec\omega\times(\vec\omega\times\vec r_{AP})
+\end{eqnarray*}
+Bei einer ebenen Bewegung steht der Vektor $\vec\omega$ senkrecht auf $\vec r_{AP}$.\\
+
+Unter Verwendung ebener Polarkoordianten $r$, $\varphi$ und der zugehörigen Zylinderkoordinate $z$ nehmen die kinematischen Beziehungen folgende Gestalt an:
+
+
+\begin{figure}[htbp]\hspace*{2cm}\begin{picture}(0,0)(0,0)
+	\put(0,-157){$O$}
+	\put(30,-155){$\vec e_x$}
+	\put(-10,-115){$\vec e_y$}
+	\put(40,-125){$\vec r_A$}
+	\put(60,-84){$A$}
+	\put(95,-35){$P$}
+	\put(75,-55){$r$}
+	\put(85,-75){$\varphi$}
+	\put(102,-10){$\vec e_r$}
+	\put(50,-30){$\vec e_\varphi$}
+	\put(200,-30){$\vec r_{AP} = r\,\vec e_r,\qquad \vec\omega=\omega\,\vec e_z$}
+	\put(200,-55){$\vec\omega\times\vec r_{AP}=r\omega\,\vec e_\varphi$}
+	\put(200,-80){$\vec v_P=\vec v_A+r\omega\,\vec e_\varphi$}
+	\put(200,-105){$\vec a_P=\vec a_A+r\dot{\omega}\,\vec e_\varphi-r\omega^2\,\vec e_r$}
+\end{picture}\includegraphics[angle=-90,width=4cm]{fig/polar_koerper}
+\end{figure}
+
+\newpage
+\paragraph{Beispiel 4.4:} Bei dem skizzierten Kurbeltrieb dreht sich die Kurbel $\overline{OA}$ gleichförmig mit konstanter Winkelgeschwindigkeit $\omega_0$.\\
+Wie groß sind die Winkelgeschwindigkeit und die Winkelbeschleunigung der Pleuelstange $\overline{AK}$ sowie die Geschwindigkeit und die Beschleunigung des Kolbens $K$ in Abhängigkeit vom Kurbelwinkel $\alpha$?
+
+\bildnocap{fig/kurbel}{angle=-90,width=9cm}{
+	\put(43,-60){$O$}
+	\put(67,-53){$\alpha$}
+	\put(192,-53){$\varphi$}
+	\put(35,-20){$\omega_0$}
+	\put(90,-5){$A$}
+	\put(120,-65){$x$}
+	\put(153,-30){$r$}
+	\put(230,-80){$K$}
+	\put(65,-32){$a$}
+}
+
+Lösungsskizze:
+$$\omega=\textrm{konst}\quad\to\quad\alpha=\omega_0t\quad\textrm{Kurbelwinkel wächst proportional zur Zeit}$$
+geometrische Zwangsbedingung: $\quad r\sin\varphi=a\sin\alpha$
+\begin{eqnarray*}
+	\to\quad\dot\varphi&=&\frac{a\cos\alpha}{r\cos\varphi}\omega_0\quad\textrm{Winkelgeschwindigkeit der Pleuelstange}\\
+	\textrm{mit}\qquad\cos\varphi&=&\sqrt{1-\frac{a^2}{r^2}\sin^2\alpha}\\\\
+	\to\quad\ddot\varphi&=&\cdots
+\end{eqnarray*}
+Lagekoordinate des Kolbens: $\quad x_k = a\cos\alpha+r\cos\varphi$
+\begin{eqnarray*}
+	\to\quad\dot x_k&=&-a\omega_0\sin\alpha-r\sin\varphi\cdot\dot\varphi\\
+	v_k=\dot x_k&=&-a\omega_0\sin\alpha\left[1+\frac{a\cos\alpha}{r\cos\varphi}\right]\quad\textrm{Geschwindigkeit des Kolbens}\\\\
+	a_k=\ddot x_k&=&\cdots
+\end{eqnarray*}
+
+\bildnocap{fig/kurbel_loesung}{angle=-90,width=5cm}{
+	\put(-7,-32){$1$}
+	\put(-17,-133){$-1$}
+	\put(27,-92){$1$}
+	\put(50,-92){$2$}
+	\put(79,-92){$3$}
+	\put(110,-92){$4$}
+	\put(-20,-5){$\displaystyle\frac{v_k}{a\omega_0}$}
+	\put(130,-96){$\displaystyle\frac{x_k}{a}$}
+	\put(180,-50){$\displaystyle\frac{a}{r}=\frac{1}{3}$}
+}
+
+\newpage
+Ergänzung: Jede ebene Bewegung eines starren Körpers kann zu jedem Zeitpunkt als Drehung um einen Pol aufgefasst werden.
+
+\bildnocap{fig/momentanpol}{angle=-90,width=5cm}{
+	\put(-53,-65){Momentanpol}
+	\put(50,-115){$A$}
+	\put(80,-100){$\vec v_A$}
+	\put(97,-55){$P$}
+	\put(90,0){$\vec v_P$}
+}
+
+\subsection{Aufgaben}
+\paragraph{Aufgabe 4.1:} Ein Fahrzeug fährt mit konstanter Geschwindigkeit von $v_1 = 100$ km/h.
+Zu welcher Zeit $t_1$ muß es bremsen, damit es insgesamt eine Strecke von 300 m zurückgelegt hat, wenn die Verzögerung $a_1=-5$ m/s$^2$ beträgt.\\
+
+\paragraph{Aufgabe 4.2:} Ein Punkt bewegt sich geradlinig mit der Geschwindigkeit $v(t)$.
+Dabei legt er die Strecke $s(t)$ zurück.
+Gegeben ist die Geschwindigkeit $v$ am jeweiligen Ort $s$. Sie nimmt entsprechend der Abbildung linear ab.
+Nach welcher Zeit ist der Punkt am Ort $s_1$?
+\bildnocap{fig/v_von_s}{angle=-90,width=5cm}{
+	\put(-5,-10){$v$}
+	\put(130,-98){$s$}
+	\put(-10,-30){$v_0$}
+	\put(100,-98){$s_1$}
+	\put(3,-102){0}
+	\put(-8,-92){0}
+}
+
+\newpage
+\paragraph{Aufgabe 4.3:} Ein Insekt will mit konstanter Geschwindigkeit $v$ geradeaus fliegen.
+Dazu orientiert es sich an der Sonne und hält den Winkel $\alpha$ stets konstant.
+Nachts verwechselt es irrtümlicherweise eine Straßenlaterne mit der Sonne.\\
+Welche Flugbahn legt das Insekt zurück?\\
+Geben Sie die Bahn in Polarkoordinaten $r,\varphi$ an.\\
+
+\bildnocap{fig/insekt}{angle=-90,width=3cm}{
+	\put(-60,-20){Lichtquelle}
+	\put(83,-105){Insekt}
+	\put(90,-55){$\vec v$}
+	\put(35,-45){$\vec e_r$}
+	\put(40,0){$\vec e_\varphi$}
+	\put(65,-85){$\alpha$}
+}
+
+Gegeben: $|\vec v|=v=\textrm{konst}$, $\alpha=\textrm{konst}$ $0<\alpha<\pi/2$.\\
+Gesucht: $r(t)$, $\varphi(t)$ mit $r(0)=r_0$, $\varphi(0)=\varphi_0$.\\
+
+\paragraph{Aufgabe 4.4:} Ein Rad (Radius $a$) rollt in einem Zylinder (Radius $R$).
+Wie groß ist die Geschwindigkeit $v_P$ des Punktes $P$ außen am Rad in Abhängigkeit des Winkels $\alpha$(t)?\\
+In der Ausgangsposition $\alpha=0$ befinde sich $P$ im Kontakt mit dem Zylinder.\\
+
+\bildnocap{fig/radinzylinder}{angle=-90,width=5cm}{
+	\put(30,-15){$\alpha$}
+	\put(15,-80){$R$}
+	\put(100,-37){$a$}
+	\put(0,0){$O$}
+	%\put(90,2){$\omega$}
+	\put(110,-12){$P$}
+}
+
+
+\end{document}

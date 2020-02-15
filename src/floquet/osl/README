@@ -1,0 +1,14 @@
+Width:				W
+boundary layer thickness:	D
+ratio:				L = W/D
+Velocity:			V
+
+Reynolds number:		Rey = VD/viscosity	
+wavenumber:			k
+
+In the programme the width is scaled to [-1,1]
+so internal 
+	R = L*Rey
+	K = L*k
+
+

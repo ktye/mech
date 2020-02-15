@@ -1,0 +1,54 @@
+#!/bin/sh
+
+maxjobs=2
+basefiledir=$HOME/dat/base
+## Parameter config
+alphas="02 04 08"
+Rs="0001 0100 0500 1000"
+ts="00 16 32 44 63"
+ns="-1 0 1"
+N=11
+##
+
+date | tee logfile
+echo "starting $0" | tee -a logfile
+echo "parameter alpha=$alphas" | tee -a logfile
+echo "parameter R=$Rs" | tee -a logfile
+echo "parameter t=$ts" | tee -a logfile
+echo "parameter n=$ns" | tee -a logfile
+for alpha in $alphas; do
+	for R in $Rs; do
+		for t in $ts; do
+			for n in $ns; do
+				## job loop
+				nj=`jobs | wc -l`
+				while [ $nj -gt $maxjobs ]; do
+					sleep 10
+					nj=`jobs | wc -l`
+				done
+				infile="$basefiledir/base-${alpha}-${t}-${N}-B"
+				if [ -f "$infile" ]; then
+					kmax=$R
+					outfile="plot-${alpha}-${t}-${N}-${R}-${n}-${kmax}"
+					if [ -f $outfile ]; then
+						echo "--> $outfile exists" | tee -a $logfile
+					else
+						(
+							echo "start $outfile" | tee -a logfile
+							shoot -bRa $alpha -t $t -n $n -R $R -f $infile > $outfile
+							if grep 'break' $outfile >/dev/null; then
+								rcode="break"
+							else
+								rcode="ok"
+							fi
+							echo "--> $outfile $rcode" | tee -a logfile
+						)&
+					fi
+				else
+					echo "missing-basefile: $outfile" | tee -a logfile
+					echo "missing-basefile: $outfile" >> missing
+				fi
+			done
+		done
+	done
+done

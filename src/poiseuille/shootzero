@@ -1,0 +1,17 @@
+#!/bin/sh
+R=$1
+k="$2"
+
+zero="./zeros/obj/cpoly"
+shoot="./shoot/obj/shoot"
+
+if [ -z "$k" ]; then
+	echo "usage: $0 R k"
+	exit 1
+fi
+
+shot=`$shoot $R $k 2>/dev/null | tail -1` || exit 1
+echo ":0:20:blue"
+echo $shot
+echo
+$zero $R $k

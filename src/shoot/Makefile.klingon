@@ -1,0 +1,29 @@
+.SUFFIXES:      .o .c
+LDADD=  -lm
+OBJS= main.o baseflow.o v.o uw.o uvw.o uvw1.o shoot.o hooke.o rk4.o endian.o readfile.o
+#LIB=ode/ode.a
+
+shoot: $(OBJS) $(LIB)
+	cc -o shoot -O3 $(OBJS) $(LIB) $(LDADD)
+
+#$(LIB):
+#	( cd ode; make -f Makefile.klingon )
+	
+.c.o:
+	cc -O3 -c $<
+
+$(HOME)/bin/shoot: shoot
+	cp shoot $(HOME)/bin && chmod 744 $(HOME)/bin/shoot
+
+install: $(HOME)/bin/shoot
+
+getsrc:
+	scp -r 'lighthill:src/shoot/{Makefile.klingon,*.[ch]}' .
+	#scp -r 'lighthill:src/shoot/{Makefile.klingon,*.[ch],ode}' .
+
+clean:
+	rm *.o shoot
+
+nuke: clean
+	rm $(HOME)/bin/shoot; rm $(HOME)/bin/shootplot
+	

@@ -1,0 +1,513 @@
+% $Id: tm-5.tex,v 1.7 2006/06/13 12:56:50 elmar Exp $
+\input{header}
+\setcounter{section}{4}
+
+\begin{document}
+\section{Kinetik}
+In der Kinetik wird der Zusammenhang zwischen Kräften und Bewegungen untersucht.
+Er kann durch Gleichungen mathematisch formuliert werden, die auf einigen wenigen grundlegenden Beziehungen beruhen.
+Die Grundgesetze spiegeln allgemeine Erfahrungen wider und werden axiomatisch eingeführt.
+Ihre Darstellung hängt vom \textbf{Bezugssystem} ab, das zur Beschreibung verwendet wird.
+Zweckmäßigerweise wählt man (zunächst) sog. \textbf{Inertialsysteme}, das sind Bezugsysteme, in denen das folgende \textbf{Trägheitsgesetz} (Galilei, Newton) gilt:
+\begin{itemize}
+	\item Jeder Körper bleibt im Zustand der Ruhe oder der gleichförmig geradlinigen Bewegung, sofern keine äußeren Kräfte auf ihn einwirken.
+\end{itemize}
+Häufig verwendet man ein mit der Erde fest verbundenes Bezugsystem, das für die meisten technischen Anwendungen als ruhendes Inertialsystem angesehen werden kann.
+
+\subsection{Kinetische Grundbegriffe}
+In den ersten beiden Abschnitten betrachten wir \textbf{rein translatorische Bewegungen} starrer Körper gegenüber einem Inertialsystem.
+Alle Punkte des Körpers haben also dieselbe Geschwindigkeit $\vec v_S$ und erfahren dieselbe Beschleunigung $\vec a_S$ wie der Schwerpunkt $S$.
+Eine solche Bewegung muss nicht geradlinig sein.
+Die Bahnkurven können gekrümmt sein und sind kongruent.\\
+\bildnocap{fig/schwerpunktskinetik}{angle=-90,width=5cm}{
+	\put(-5,-113){$O$}
+	\put(15,-60){$\vec r_S$}
+	\put(35,-35){$S$}
+	\put(60,-23){$P$}
+	\put(110,-70){$\vec v_S$}
+	\put(140,-40){$\vec v_P = \vec v_S$}
+}
+
+Die Bewegung des Körpers kann dann auf die Bewegung des Schwerpunkts reduziert werden.
+Man spricht von der \textbf{Kinetik des Schwerpunkts} oder auch von der \textbf{Kinetik des Massen(mittel)punkts}.\\
+
+Zur Formulierung der kinetischen Grundgleichungen benötigt man einige kinetische Begriffe, die zunächst erklärt werden müssen:\\
+
+\textbf{Impuls} des Körpers $\quad \vec p:=m\vec v_S$
+\begin{itemize}
+	\item Der Impuls $\vec p$ eines mechanischen Systems ist das Produkt aus der Masse $m$ und der Geschwindigkeit $\vec v_S$ des Massenmittelpunkts.
+\end{itemize}
+
+\newpage
+\textbf{Drehimpuls} oder \textbf{Drall} (auch \textbf{Impulsmoment}) bezüglich eines Punktes $O$:
+$$	\vec L_O:=\vec r_S\times\vec p $$
+$$	\textrm{oder}\quad\vec L_O:=\vec r_S\times m\vec v_S $$
+
+Beachte: Impuls und Drall sind Vektoren.
+Der Impulsvektor $\vec p$ hat dieselbe Richtung wie der Geschwindigkeitsvektor $\vec v_S$.
+Der Drallvektor hängt von der Lage des Bezugspunkts $O$ ab.\\
+
+\textbf{Kinetische Energie} der Translationsbewegung
+$$T:=\frac{1}{2}m v_S^2$$
+
+\subsection{Kinetik des Schwerpunkts}
+Das fundamentale \textbf{Bewegungsgesetz} für einen Körper konstanter Masse lautet folgendermaßen (2. Newtonsches Axiom):
+\begin{itemize}
+	\item Die zeitliche Änderung des Impulses ist gleich der auf den Körper wirkenden Kraft.
+\end{itemize}
+\begin{eqnarray*}
+	\frac{d\vec p}{dt} &=& \vec F\\
+	\mathrm{oder}\quad m\frac{d\vec v_S}{dt} &=& \vec F\\
+	\mathrm{oder}\quad m\,\vec a_S &=& \vec F
+\end{eqnarray*}
+
+``Masse mal Beschleunigung ist Kraft''.
+Bei einer ebenen Bewegung folgen daraus zwei skalare Komponentengleichungen
+$$ m\ddot x_S = F_x,\qquad m\ddot z_S = F_z $$
+
+Beachte: $\vec F$ ist die Resultierende der am frei geschnittenen Körper angreifenden Kräfte.
+Bei einer rein translatorischen Bewegung geht ihre Wirkungslinie naturgemäß durch den Schwerpunkt.
+Der Beschleunigungsvektor $\vec a_S$ hat demnach dieselbe Richtung wie $\vec F$.
+
+\begin{itemize}
+	\item Bei Abwesenheit äußerer Kräfte bleibt der Impuls eines Systems erhalten (\textbf{Impuls"-erhaltungssatz}):
+	$$ \vec p = m\vec v_S = \textrm{ const, wenn } \vec F = \vec 0.$$
+	Infolgedessen ist dann die Schwerpunktsgeschwindigkeit konstant (gleichförmige Bewegung).
+\end{itemize}
+
+\newpage
+\paragraph{Beispiel 5.1:} Schiefer Wurf unter Wirkung der Schwerkraft.
+Die Punktmasse $m$ wird zur Zeit $t=0$ unter dem Winkel $\alpha$ mit der Geschwindigkeit $v_0$ abgeschossen.
+Der Luftwiderstand wird vernachlässigt.
+Wir verwenden zweckmäßigerweise kartesische Koordinaten $x$ (horizontal) und $z$ (vertikal nach oben).
+
+\begin{center}\begin{picture}(0,0)(0,0)
+	\put(3,-60){$0$}
+	\put(-5,-48){$0$}
+	\put(75,-60){$x$}
+	\put(-5,-10){$z$}
+	\put(35,-5){$v_0$}
+	\put(85,-30){$mg$}
+	\put(175,-60){$x_W$}
+	\put(20,-43){$\alpha$}
+\end{picture}\includegraphics[angle=-90,width=7cm]{fig/wurf}\end{center}
+%\bildnocap{fig/wurf}{angle=-90,width=7cm}{
+%	\put(3,-60){$0$}
+%	\put(-5,-48){$0$}
+%	\put(75,-60){$x$}
+%	\put(-5,-10){$z$}
+%	\put(35,-5){$v_0$}
+%	\put(85,-30){$mg$}
+%	\put(175,-60){$x_W$}
+%	\put(20,-43){$\alpha$}
+%}
+
+\vspace*{0.5cm}
+
+Integration der Bewegungsgleichungen:
+$$ m\ddot x(t) = 0 \quad\to\quad \dot x(t) = C_1 \quad\to\quad x(t) = C_1 t + C_2 $$
+$$ m\ddot z(t) = -mg \quad\to\quad \dot z(t) = - gt + C_3 \quad\to\quad z(t) = -\frac{1}{2}gt^2 + C_3t + C_4$$
+
+Bestimmung der Integrationskonstanten aus den Anfangsbedingungen:
+$$ x(0) = 0 \quad\to\quad C_2 = 0 $$
+$$ \dot x(0) = v_0\cos\alpha \quad\to\quad C_1 = v_0\cos\alpha $$
+$$ z(0) = 0 \quad\to\quad C_4 = 0 $$
+$$ \dot z(0) = v_0\sin\alpha \quad\to\quad C_3 = v_0\sin\alpha $$
+
+Analytisches Ergebnis mit der Zeit $t$ als Parameter:
+$$ x(t) = v_0\cos\alpha\cdot t $$
+$$ z(t) = -\frac{1}{2}gt^2 + v_0\sin\alpha\cdot t$$
+
+Elimination der Zeit $t$:
+$$ z(x) = - \frac{g}{2v_0^2\cos^2\alpha}x^2 + \tan\alpha \cdot x \quad\qquad\textrm{Wurfparabel}$$
+
+Die Wurfweite $x_W$ folgt aus der Bedingung, dass $z(x_w) = 0$:
+$$ x_w = \frac{2v_0^2\cos^2\alpha}{g}\tan\alpha\quad\to\quad x_w = \frac{v_0^2}{g}\sin(2\alpha)$$
+
+Die Wurfzeit $t_w$ folgt dann aus der Bedingung $x(t_w) = x_w$:
+$$ t_w = \frac{x_w}{v_0\cos\alpha} \quad\to\quad t_w = \frac{2 v_0}{g}\sin\alpha$$
+
+\newpage
+Bei der Verschiebung des Schwerpunkts längs der Bahn leisten die an ihm angreifenden Kräfte \textbf{Arbeit}.\\
+
+Definitionen:
+
+differentielle Arbeit $\qquad dW := \vec F\cdot d\vec r_S$\\
+Arbeit, die zwischen zwei Positionen verrichtet wird, $\qquad W_{12}:=\int_1^2 \vec F\cdot d\vec r_S$\\
+mechanische Leistung $\qquad P := \vec F\cdot \vec v_S$\\
+
+\bildnocap{fig/arbeit}{angle=-90,width=5cm}{
+	\put(-45,-33){Position 1}
+	\put(130,-20){Position 2}
+	\put(65,-3){$d\vec r_S$}
+	\put(105,-35){$\vec F$}
+	\put(40,-60){$\vec r_S$}
+	\put(50,-101){$x$}
+	\put(9,-60){$z$}
+}
+
+Beachte: Kräfte senkrecht zur Bahn leisten keine Arbeit.\\
+
+Integriert man das Bewegungsgesetz zwischen den Positionen 1 und 2, so erhält man die folgende Aussage:
+\begin{itemize}
+	\item Die bei der Schwerpunktsverschiebung verrichtete Arbeit ist gleich der Änderung der kinetischen Energie (\textbf{Arbeitssatz}),
+	$$ T_2 - T_1 = W_{12} $$
+\end{itemize}
+
+Eine besondere Form des Arbeitssatzes entsteht, wenn die Arbeit leistenden Kräfte ein Potential besitzen, d.h. wenn die Arbeit $W_{12}$ nur von den Ortskoordinaten der Bahnpunkte 1 und 2, nicht aber vom durchlaufenen Weg abhängt.
+Das gilt z.B. für die Gewichtskraft:
+$$ \vec G = \begin{pmatrix}0\\0\\-mg\end{pmatrix} \quad d\vec r_S = \begin{pmatrix}dx_S\\dy_S\\dz_S\end{pmatrix}$$
+$$ \to\quad \vec G\cdot d\vec r_S = -mg \,dz_S $$
+$$ \to\quad W_{12} = -mg\int_1^2 dz_S = -mg(z_{S2}-z_{S1}) = -(U_2-U_1)$$
+
+$$ \textrm{mit}\quad U:= mg z_S\quad\textbf{potentielle Energie}$$
+
+Unter der Voraussetzung, dass andere am Massenpunkt angreifende Kräfte senkrecht zur Bahn gerichtet sind und somit keine Arbeit verrichten, gilt dann:
+$$ T_2 + U_2 = T_1 + U_1 $$
+$$ \textrm{oder}\quad \frac{1}{2}mv_S^2 + mgz_S = \textrm{const}.$$
+d.h. die Summe aus kinetischer Energie und potentieller Energie bleibt während der Bewegung konstant (\textbf{Energieerhaltungssatz}).\\
+
+Achtung: Keine Potentialkräfte sind Reibungskräfte oder Luftwiderstandskräfte.\\
+
+\paragraph{Beispiel 5.2:} Reibungsfreie, geführte Bewegung einer Punktmasse $m$ in einer halbkreisförmigen Schale (Radius $r$) aus der skizzierten Ruhelage heraus.
+
+\bildnocap{fig/b52}{angle=-90,width=6cm}{
+	\put(15,-17){$m$}	
+	\put(60,-52){$r$}
+	\put(58,-33){$\varphi$}
+	\put(80,-4){$z$}
+	\put(175,-30){$g$}
+}
+
+Gesucht sind die Bahngeschwindigkeit $v$ der Masse und die von der Schale auf die Masse ausgeübte Stützkraft $N$ in Abhängigkeit vom Winkel $\varphi$.\\
+
+\begin{equation*}
+\left.
+\begin{tabular}{ll}
+	\textrm{Energieerhaltungssatz: } & \qquad $\displaystyle\frac{m}{2}v^2 + mgz = 0 + 0$\\\\
+	\textrm{Geometrische Beziehung: } & \qquad $\displaystyle z = -r\sin\varphi$
+\end{tabular}
+\right\} \to \underline{v = \sqrt{2gr\sin\varphi}}
+\end{equation*}
+%\begin{eqnarray*}
+%&\textrm{Energieerhaltungssatz: }&\qquad \frac{m}{2}v^2 + mgz = 0 + 0\\
+%&\textrm{Geometrische Beziehung: }&\quad \underline{z = -r\sin\varphi} \to \underline{v = \sqrt{2gr\sin\varphi}}
+%\left.  \right\}
+%\end{eqnarray}
+
+\bildnocap{fig/b52fkb}{angle=-90,width=4cm}{
+	\put(90,-12){$\varphi$}
+	\put(8,-60){$N$}
+	\put(52,-80){$mg$}
+	\put(37,-75){$\varphi$}
+	\put(82,-34){$\vec e_r$}
+}
+
+Bewegungsgleichung in radialer Richtung $\vec e_r$:
+
+$$ m a_r = -N + mg\sin\varphi $$
+
+Bei einer Kreisbewegung gilt (s. \S 4.1)
+$$ a_r = -r\dot\varphi^2 = - \frac{v^2}{r}$$
+$$ \to\quad N = mg\sin\varphi + m\frac{v^2}{r}$$
+$$ \underline{ N = 3mg\sin\varphi}$$\\
+
+Ergänzung: Das Bewegungsgesetz des Schwerpunkts
+$$ \frac{d\vec p}{dt} = \vec F\quad (\textrm{Impulsform}) $$
+kann auch folgendermaßen formuliert werden:
+$$ \frac{d\vec L_O}{dt} = \vec M_O\quad (\textrm{Drehimpulsform}) $$
+
+\begin{itemize}
+	\item Die zeitliche Änderung des Drehimpulses eines Massenpunktes bezogen auf einen ruhenden Bezugspunkt $O$ ist gleich dem resultierenden Moment der angreifenden Kräfte, bezogen auf denselben Punkt $O$.
+\end{itemize}
+
+\subsection{Rotation um eine feste Achse}
+In diesem Abschnitt geht es um den Zusammenhang zwischen den Kräften und der Bewegung eines starren Körpers, der sich um eine feste Achse drehen kann.
+Dabei durchläuft jedes Massenelement eine Kreisbahn.
+Die Geschwindigkeit $v$ hängt vom Abstand $r$ zur Drehachse ab; die Winkelgeschwindigkeit $\dot\varphi$ ist für alle Massenelemente gleich, ändert sich aber i. allg. mit der Zeit $t$.
+
+\bildnocap{fig/rotation}{angle=-90,width=4cm}{
+	\put(12,-72){$O$}
+	\put(40,-67){$\varphi$}
+	\put(40,-55){$r$}
+	\put(75,-40){$dm$}
+	\put(45,0){$v=r\dot\varphi$}
+}
+
+\begin{tabbing}
+Drehimpuls bezüglich der Drehachse\quad\=$dL_O = r^2\dot\varphi \,dm$ \kill
+Masse des Elements	\> $dm$ \\
+Geschwindigkeit		\> $v=r\dot\varphi$ \\
+Impuls			\> $dp = r\dot\varphi \,dm$ \\
+Drehimpuls bezüglich der Drehachse	\> $dL_O = r^2\dot\varphi \,dm$ \\
+Drehimpuls des gesamten Körpers	\> $L_O = \int_{\textrm{Körper}} r^2\,dm\, \dot\varphi$, \quad kurz: $\quad L_O = J_O\dot\varphi$
+\end{tabbing}
+
+Dabei bezeichnet 
+$$ J_O := \int_{\textrm{Körper}} r^2\,dm $$
+das axiale \textbf{Massenträgheitsmoment}.\\
+
+Durch Integration über alle Massenelemente des Körpers kann das Bewegungsgesetz für die einzelnen Massenelemente (Drehimpulsform) in einen Drehimpulssatz für den gesamten Körper überführt werden:
+\begin{eqnarray*}
+	\frac{dL_O}{dt} &=& M_O \\\\
+	 \textrm{oder}\quad J_O \ddot\varphi &=& M_O
+\end{eqnarray*}
+\newpage
+
+Die Tabelle gibt Auskunft über die Massenträgheitsmomente einiger geometrisch einfacher Körper.
+\bildnocap{fig/tab_massentraegheit}{angle=-90,width=\linewidth}{
+	\put(10,-22){Form des Körpers}
+	\put(230,-22){Massenträgheitsmoment}
+	\put(100,-60){Punktmasse}
+	\put(20,-70){$A$}
+	\put(42,-102){$l$}
+	\put(47,-143){$m$}
+	\put(230,-80){$J_A=ml^2$}
+
+	\put(100,-180){dünner Stab}
+	\put(20,-180){$A$}
+	\put(20,-230){$S$}
+	\put(55,-230){$l$}
+	\put(230,-200){$\displaystyle J_A=\frac{1}{3}ml^2$}
+	\put(230,-240){$\displaystyle J_S=\frac{1}{12}ml^2$}
+
+	\put(100,-305){homogener}
+	\put(100,-321){Kreiszylinder}
+	\put(38,-305){$A$}
+	\put(38,-345){$S$}
+	\put(65,-355){$R$}
+	\put(230,-325){$\displaystyle J_A=\frac{3}{2}mR^2$}
+	\put(230,-365){$\displaystyle J_S=\frac{1}{2}mR^2$}
+
+	\put(100,-415){homogene Kugel}
+	\put(38,-415){$A$}
+	\put(38,-450){$S$}
+	\put(65,-460){$R$}
+	\put(230,-435){$\displaystyle J_A=\frac{7}{5}mR^2$}
+	\put(230,-475){$\displaystyle J_S=\frac{2}{5}mR^2$}
+}
+\newpage
+
+\paragraph{Beispiel 5.3:} Eine Trommel (Radius $r$, Massenträgheitsmoment $J_O$) dreht sich anfangs mit der Winkelgeschwindigkeit $\omega_0$ und wird dann durch einen Hebel (Hebellängen $l$ und $a$, Reibkoeffizient $\mu$) mit konstanter Bremskraft $F$ abgebremst.
+Wie lange dauert der Bremsvorgang bis zum Stillstand?\\
+\bildnocap{fig/trommel}{angle=-90,width=11cm}{
+	\put(35,-30){$a$}
+	\put(70,-5){$l$}
+	\put(135,-12){$F$}
+	\put(57,-55){$\mu$}
+	\put(46,-75){$\omega_0$}
+	\put(20,-70){$J_O$}
+	\put(72,-60){$r$}
+	\put(73,-73){$O$}
+
+	\put(210,-58){$R$}
+	\put(245,-70){$N$}
+	\put(313,-10){$F$}
+	\put(265,-105){$R$}
+	\put(228,-90){$N$}
+	\put(235,-125){$r$}
+	\put(245,-125){$\varphi$}
+	\put(232,-140){$O$}
+}
+
+Lösungsskizze:
+\newcounter{Lcount}
+\begin{list}{\alph{Lcount})}{\usecounter{Lcount}\setlength{\rightmargin}{\leftmargin}}
+	\item	Trennen der Bindung zwischen Trommel und Hebel unter Berücksichtigung des Reaktionsprinzips, Gleichgewichtsbedingungen am Hebel, Coulbombsches Reibgesetz (\S\ 2.6):
+	$$ N=\frac{l}{a} F$$
+	$$ R = \mu N = \mu \frac{l}{a}F $$
+	\item Bewegungsgleichung der rotierenden Trommel, Integration mit der Anfangsbedingung $\dot\varphi(0)=\omega_0$:
+	$$\stackrel{\curvearrowright}{O}:\quad J_O\ddot\varphi(t) = -rR $$ 
+	$$\ddot\varphi(t) = -\frac{r\mu lF}{aJ_O} = \textrm{const} $$
+	$$\to\quad\dot\varphi(t)=-\frac{r\mu l F}{aJ_O}t+\omega_0$$
+	\item Aus der Bedingung $\dot\varphi(t_s)=0$ folgt die Bremszeit bis zum Stillstand
+	$$ \underline{t_s = \frac{aJ_O\omega}{r\mu lF}}$$
+\end{list}
+
+\newpage
+Hinweis auf die Analogie zwischen der Rotationsbewegung um eine feste Achse und einer geradlinigen Translationsbewegung\\
+
+\begin{tabular}{ll|ll}
+\hline
+Translation & &Rotation\\\hline
+Lagekoordinate &$ x(t)$ & Winkelkoordinate &$ \varphi(t)$\\
+Geschwindigkeit &$ v = \dot x$ & Winkelgeschwindigkeit &$\omega = \dot\varphi$\\
+Beschleunigung &$ a = \dot v = \ddot x$ & Winkelbeschleunigung &$\dot\omega = \ddot\varphi$\\
+Masse &$ m$ & Massenträgheitsmoment &$ J_O$\\
+Impuls &$ p=mv$ & Drehimpuls &$ L_O=J_O\omega$\\
+Kraft &$ F$ & Moment &$ M_O$\\
+Bewegungsgleichung &$ m\ddot x = F$ && $J_O\ddot\varphi = M_O$\\
+kinetische Energie &$ T=\displaystyle\frac{1}{2}mv^2$  &&$\displaystyle T=\frac{1}{2}J_O\omega^2$\\
+Arbeit &$\displaystyle  W_{12}=\int_1^2 F\,dx$ && $\displaystyle  W_{12}=\int_1^2 M_O\,d\varphi$\\
+mechanische Leistung &$ P=Fv$ && $P=M_O\omega$\\\hline
+\end{tabular}
+
+\subsection{Kinetik ebener Starrkörperbewegungen}
+Die ebene Bewegung eines starren Körpers kann als Überlagerung einer Translation (2 Freiheitsgrade) und einer Rotation (1 Freiheitsgrad) aufgefasst werden (\S\ 4.2).
+Ein solcher Bewegungszustand kann durch die Geschwindigkeit eines körperfesten Punkts, z.B. die Geschwindigkeit $\vec v_S$ des Schwerpunkts, und durch die Winkelgeschwindigkeit $\omega$ des Körpers beschrieben werden.
+Zum Studium des zeitlichen Ablaufs der Bewegung benötigt man drei Bewegungsgleichungen.
+Die Behandlung einer Starrkörperbewegung als ebene Bewegung setzt voraus, dass die am Körper angreifenden Kräfte auf eine Resultierende innerhalb der Bewegungsebene und auf ein Moment senkrecht zur Bewegungsebene reduziert werden können.
+
+\bildnocap{fig/starrkoerperkinetik}{angle=-90,width=7cm}{
+	\put(35,-50){$S$}
+	\put(12,-40){$\omega$}
+	\put(61,-10){$\vec v_S$}
+	\put(150,-45){$S$}
+	\put(100,-80){$O$}
+	\put(137,-52){$\vec r_S$}
+	\put(172,-50){$M_S$}
+	\put(135,-10){$\vec F_R$}
+}
+
+Zur Formulierung der Bewegungsgesetze benötigt man die zuvor schon verwendeten kinetischen Grundbegriffe, zum Teil in sinngemäßer Verallgemeinerung.\\
+
+\textbf{Impuls} des Körpers 
+$$\qquad \vec p = m\vec v_S$$
+
+\textbf{Drehimpuls} oder \textbf{Drall} des Körpers \textbf{bezüglich} einer zur Bewegungsebene senkrechten Achse durch den \textbf{bewegten Schwerpunkt} $S$
+$$ L_S = J_S \omega $$
+
+\textbf{Kinetische Energie} des Körpers als Summe aus der Translations- und Rotationsenergie
+$$ T = \frac{1}{2} m v_S^2 + \frac{1}{2} J_S \omega^2 $$
+
+\textbf{Drehimpuls bezüglich eines raumfesten Punkts} $O$
+$$ \vec L_O = \vec r_S \times \vec p + \vec L_S $$
+
+Das \textbf{Bewegungsgesetz} für den \textbf{translatorischen Anteil der Bewegung} wurde bereits in \S\ 5.2 formuliert.
+\begin{itemize}
+	\item Die zeitliche Änderung des Impulses eines Körpers ist gleich der Resultierenden der an ihm angreifenden Kräfte (2. Newtonsches Axiom):
+\end{itemize}
+$$ \frac{d\vec p}{dt} = \vec F_R $$
+$$ \textrm{oder}\quad m \frac{d\vec v_S}{dt} = \vec F_R $$
+\begin{itemize}
+	\item Der Schwerpunkt eines Körpers bewegt sich so, als ob die gesamte Masse in ihm vereinigt wäre und alle äußeren Kräfte an ihm angreifen würden (``Schwerpunktsatz'').
+\end{itemize}
+Bei einer ebenen Bewegung folgen daraus zwei Bewegungsgleichungen.
+Bei Verwendung kartesischer Koordinaten lauten sie
+$$ m \ddot x_S = \sum_i F_{ix},\qquad m\ddot y_S = \sum_i F_{iy} $$
+
+Für den \textbf{rotatorischen Anteil der Bewegung} gilt folgendes \textbf{Bewegungsgesetz}:
+\begin{itemize}
+	\item Die zeitliche Änderung des Dralls eines Körpers ist gleich dem Moment der an ihm angreifenden Kräfte, jeweils \textbf{bezogen auf} denselben \textbf{raumfesten Punkt} $O$ (Eulersches Axiom):
+\end{itemize}
+$$ \frac{d\vec L_O}{dt} = \vec M_O \quad \textrm{mit} \quad \vec M_O = \vec r_S \times \vec F_R + \vec M_S $$
+
+Die Anwendung dieses Drallsatzes wird erleichtert, wenn man ihn mit dem Impulssatz verknüpft.
+Dann folgt nämlich eine analoge Aussage \textbf{bezüglich des bewegten Schwerpunkts}:
+$$ \frac{dL_S}{dt} = M_S$$
+$$ \textrm{oder}\quad J_S \dot \omega = M_S$$
+$$ \textrm{oder}\quad J_S \ddot\varphi = M_S$$
+\begin{itemize}
+	\item Die zeitliche Änderung des auf den Schwerpunkt bezogenen Dralls eines Körpers ist gleich dem Moment der angreifenden Kräfte bezüglich des Schwerpunkts.
+\end{itemize}
+
+Im \textbf{Sonderfall einer Drehung} des Starrkörpers \textbf{um eine feste Achse} durch den Punkt $O$ kann man alternativ auch folgende Bewegungsgleichung verwenden (\S\ 5.3):
+$$ J_O\ddot\varphi = M_O$$
+Zwischen den beiden Massenträgheitsmomenten $J_S$ und $J_O$ besteht folgender Zusammenhang (Steinerscher Satz):
+$$ J_O = J_S + mr_S^2 $$
+
+\paragraph{Beispiel 5.4:} Rollendes Rad (Radius $r$, Masse $m$, Massenträgheitsmoment $J_S = \frac{1}{2}mr^2$) auf abschüssiger Straße (Neigungswinkel $\alpha$)\\
+
+
+\begin{center}\begin{picture}(0,0)(0,0)
+	\put(5,-30){$g$}
+	\put(50,-38){$r$}
+	\put(25,-79){$\mu_0$}
+	\put(55,-77){$\alpha$}
+	\put(150,-45){$x_S$}
+	\put(138,-10){$y_S$}
+	\put(200,-10){$\varphi$}
+	\put(175,-70){$H$}
+	\put(185,-90){$N$}
+	\put(212,-90){$mg$}
+	\put(197,-50){$S$}
+	\put(200,-79){$\alpha$}
+\end{picture}\includegraphics[angle=-90,width=8cm]{fig/radaufgabe}\end{center}
+
+
+Bewegungsgleichungen:
+\begin{eqnarray*}
+	\searrow\,\,\,\quad m\ddot x_S &=& mg\sin\alpha - H\\
+	\nearrow\quad\qquad 0 &=& N - mg\cos\alpha \quad\to\quad \underline{N=mg\cos\alpha}\\
+	\stackrel{\curvearrowright}{S}\qquad J_S\ddot\varphi &=& Hr
+\end{eqnarray*}
+Rollbedingung:
+$$ \dot x_S = r\dot\varphi \quad \to\quad \underline{\ddot\varphi = \frac{\ddot x_S}{r}}$$
+Elimination der Haftkraft $H$ ergibt die Schwerpunktsbeschleunigung
+$$ m\ddot x_S = mg\sin\alpha - \frac{J_S}{r^2}\ddot x_S \quad \to\quad \underline{\ddot x_S = \frac{g\sin\alpha}{1+\frac{J_S}{mr^2}} = \frac{2}{3}g\sin\alpha}$$
+Danach folgt für die Haftkraft
+$$ H = \frac{J_S}{r^2} \ddot x_S \quad\to\quad \underline{H = \frac{\frac{J_S}{r^2}}{1+\frac{J_S}{mr^2}}g\sin\alpha = \frac{1}{3}mg\sin\alpha}$$
+Haftbedingung:
+$$ H \leq \mu_0 N \quad\to\quad \frac{H}{N} = \frac{1}{3} \tan\alpha \leq \mu_0$$
+Wenn diese Bedingung nicht erfüllt ist, rutscht das Rad.\\
+
+\newpage
+Bei einem rollenden Rad ist der Kontaktpunkt mit der Straße der Momentanpol der Bewegung.
+Die Kontaktkräfte $N$ und $H$ leisten deshalb keine Arbeit.
+Die Schwerkraft $mg$ besitzt ein Potential (s. \S\ 5.2, potentielle Energie $U=mgz_S$).
+In Abwesenheit anderer äußerer Kräfte gilt deshalb der \textbf{Energieerhaltungssatz}
+$$ T + U = \textrm{konst} $$
+$$ \frac{1}{2} m v_S^2 + \frac{1}{2} J_S\omega^2 + mgz_S = \textrm{konst} $$
+$$ \frac{1}{2} \left(m+\frac{J_S}{r^2}\right) v_{S1}^2 + mgz_{S1} =  \frac{1}{2} \left(m+\frac{J_S}{r^2}\right) v_{S2}^2 + mgz_{S2} $$\\
+
+\vspace*{0.5cm}
+\bildnocap{fig/rad}{angle=-90,width=9cm}{
+	\put(50,15){Position 1}
+	\put(70,0){$\omega_1 = v_{S1}/r$}
+	\put(80,-48){$v_{S1}$}
+	\put(150,-20){Position 2}
+	\put(200,-70){$v_{S1}$}
+	\put(145,-35){$\omega_1 = v_{S1}/r$}
+	\put(-10,-60){$z_{S1}$}
+	\put(40,-90){$z_{S2}$}
+}
+
+Weitere Anwendungsbeispiele in der Vorlesung.
+
+%\subsection{Lineare Schwingungen}
+\subsection{Aufgaben}
+\paragraph{Aufgabe 5.1:} Von der Spitze eines Turmes wird eine Masse mit der Anfangsgeschwindigkeit $v_0=8$ m/s unter einem Winkel $\alpha=30^\circ$ gegen die Horizontale abgeworfen.
+Sie trifft im Abstand $L=10$ m vom Fuß des Turmes auf.\\
+a) Welche Höhe $H$ hat der Turm?
+b) Wie lange fliegt der Körper?
+c) Mit welcher Geschwindigkeit schägt er auf?
+
+\paragraph{Aufgabe 5.2:} Eine Kreisscheibe dreht sich in einer horizontalen Ebene mit der konstanten Winkelgeschwindigkeit $\omega_0$.
+In einer glatten Führungsschiene bewegt sich eine Punktmasse $m$ in radialer Richtung.
+Die Masse soll dabei relativ zur Scheibe eine konstante Geschwindigkeit $v_0$ besitzen.\\
+Welche Kräfte wirken auf die Masse?
+\bildnocap{fig/aufgabe52}{angle=-90,width=4cm}{
+	\put(60,-75){$\omega_0$}
+	\put(61,-38){$m$}
+	\put(90,-42){$v_0$}
+}
+
+\paragraph{Aufgabe 5.3:} Eine Masse $m$, die von einem Faden gehalten wird, bewegt sich mit der Winkelgeschwindigkeit $\omega_0$ auf einer glatten waagrechten Kreisbahn vom Radius $r_0$.
+Der Faden wird durch ein Loch $A$ in der Mitte der Kreisbahn geführt.\\
+a) Wie groß ist die Winkelgeschwindigkeit $\omega$, wenn der Faden so angezogen wird, daß sich die Masse im Abstand $r$ bewegt?\\
+b) Wie ändert sich hierbei die Fadenkraft $S$?\\
+
+\bildnocap{fig/aufgabe53}{angle=-90,width=8cm}{
+	\put(53,-35){$r_0$}
+	\put(40,-55){$\omega_0$}
+	\put(30,-35){$A$}
+	\put(70,-10){$m$}
+	\put(195,-23){$r_0$}
+	\put(175,-33){$A$}
+	\put(190,-80){$S$}
+}
+
+\paragraph{Aufgabe 5.4:} Ein Gewicht $G_1$ ist durch ein Seil mit einer Walze (Masse $m_2$, Massenträgheitsmoment $J_2$, Radius $r$) verbunden, die auf einer horizontalen Ebene rollt.
+Die Walze wird durch eine Feder (Federsteifigkeit $c$ gehalten).
+Seil und Umlenkrolle seien masselos.
+Wie groß ist die Geschwindigkeit des Gewichts in Abhängigkeit vom Weg, wenn das System bei entspannter Feder aus der Ruhe losgelassen wird?\\
+
+\bildnocap{fig/aufgabe54}{angle=-90,width=7cm}{
+	\put(30,-10){$m_2,\,J_2$}
+	\put(35,-55){$c$}
+	\put(86,-27){$r$}
+	\put(203,-75){$G_1$}
+}
+
+
+\end{document}

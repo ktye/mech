@@ -1,0 +1,165 @@
+% $Id: arteriovenoeser_puls.pretex,v 1.2 2004/06/18 12:24:47 elmar Exp $
+% TITLE={Ein hydrodynamisches Modell des arterioven\"osen Pulses}
+% SHORTTITLE={Der arterioven\"ose Puls}
+% DESCRIPTION=Grundgleichungen der Blutgefäße
+
+Das Blut in den Gefäßen betrachten wir als inkompressibles, reibungsfreies Fluid, die Strömung wird als gleichmäßig über dem Querschnitt angenommen. Die Massenbilanz für die Ader lautet
+{konti
+	\pdA:t + \pdAU:x = 0,
+}
+die Impulsbilanz
+{impuls
+	\pdU:t + U \pdU:x + \frac{1}{\rho} \pdP:x = 0.
+}
+Über den Innendruck $P$ machen wir die Annahme, er hänge lokal vom Querschnitt ab
+{
+	P = P(A).
+}
+Dies kann erreicht werden, in dem wir der Wand eine lineare Elastizität $E$ zuordnen. Die Wand wird als masselos und dünn (Dicke $h$) betrachtet. Spannungsgleichgewicht zwischen der Normalspannung der Wand $\sigma$, dem Innendruck $P$ und dem Außendruck $p$ liefert
+{wandspannung
+	\sigma h = R(P-p)
+}
+es führt mit $\sigma=E\varepsilon$, $\varepsilon=\d R/R$ auf das Druckgesetz
+{wandgesetz
+	P = p + Eh \sqrt{\pi}(1/\sqrt{A}-\sqrt{A_0}/A),
+}
+oder in linearisierter Form
+{
+%	P = p + \frac{Eh \sqrt{\pi}}{ 2 \sqrt{\smash[b]{A_0^3}}} (A-A_0).
+	P = p + \frac{Eh \sqrt{\pi}}{ 2 \sqrt{A_0^3}} (A-A_0).
+}
+Unter Vernachlässigung des Außendruckes führt dies für die vollständig linearisierten Bewegungsgleichungen für kleine Geschwindigkeiten und kleine Quer\-schnitts\-än\-de\-rung\-en auf die Wellengleichung für $U$ und $A$ mit der Wellenausbreitungsgeschwindigkeit
+{wellengeschwindigkeit
+	c = \sqrt{Eh/2\rho R_0}.
+}
+Um den Außendruck an der Aderwand ermitteln zu können, benötigen wir die Strömung im Außenbereich.\\
+Im ersten Schritt nehmen wir an, es handle sich um eine ebene Potentialströmung, in der Querschnittsebene senkrecht zur Pulsausbreitungsrichung. Die Bewegung der Ader wird für die Außenströmung wie eine Quelle wirken. Die Quellstärke, ist die pro Zeit verdrängte Flüssigkeitsfläche und wird wie folgt definiert
+{
+	Q = (1 /2\pi)( \PdA:t ) = R( \PdR:t ).
+}
+Wir wollen zeigen, daß sich eine Konfiguration stabilisiert, in der einem Puls in der Aterie, eine Einschnürung in der Vene folgt. Dies modellieren wir durch eine Quelle-- Senkenströmung.\\
+Wenn Aterie und Vene dicht benachbart liegen, dann ist das Verhältnis Aderradius zu Aderabstand $\lambda = R/L$ nicht zu vernachlässigen. Eine singuläre Quell-- Senkenanordnung verletzt die Randbedingungen an der Aderwand. Um die Randbedingungen zu erfüllen spiegeln wir die äußeren Quellen am Zylinderrand. Die Senke der Vene erscheint in der Aterie im Spiegelpunkt mit dem Abstand $\varrho$ vom Mittelpunkt $R^2 = \varrho L$, aus dem unendlichen wird eine weitere Quelle in den Mittelpunkt gespiegelt.\\
+Der Versuch das Feld komplett zu beschreiben schlägt fehl, denn versuchte man analog die Randbedingungen an der Vene zu erfüllen, dann verletzt die Spiegelquelle wiederum die Randbedingung an der Aterie. Sukzessives einführen weiterer Quellen wie es bei Kugelproblemen zum Erfolg führen kann\footnote{Hierzu: \textsc{Lamb} \textsl{Hydrodynamics} \S98}, schlägt hier fehl, da im zweidimensionalen die Stärken der Spiegelquellen nicht abnehmen. Man bekäme eine unendliche alternierende Quell Anordnung in Inneren des Zylinders.\\
+Wir können allerdings erwarten, daß sich das wahre Feld in der Nähe der Wand wie folgt verhält
+{potential
+	\phi = 2Q\ln r - Q \ln a - Q\ln b = Q \ln r^2 / ab
+}
+hierbei ist $r$ der Abstand vom Mittlepunkt der Aterie, $a$ vom Spiegelpunkt der Vene in der Aterie und $b$ vom Mittelpunkt der Vene. Die Längen $a$ und $b$ lassen sich durch trigonometrische Beziehungen durch die Polarkoordinaten $r$ und $\varphi$ ausdrücken.\\
+Die Geschwindigkeit an der Wand setzt sich aus der Radialkomponente $v_r = \PdR:t $ und der Tangentialkomponente 
+{
+	v_\varphi = 2Q\sin\varphi/L\gamma, \quad \gamma = 1+\lambda^2-2\lambda\cos\varphi
+}
+zusammen.\\
+Im Fernfeld fassen wir das Adersystem als ein Bipolarsystem auf. Es seien nun $r$ und $\varphi$ Bipolarkoordinaten gemäß
+{
+	r = \ln r_1/r_2,\quad \varphi = \varphi_1 - \varphi_2
+}
+Das Potentialfeld ist $\phi = Q r$, die Geschwindigkeit zeigt entlang der Kreise $\varphi=\textrm{konst}$ mit dem Betrag 
+{
+	v = Q \, \frac{\csh r-\cos\varphi}{L/2}.
+}
+Den Druck an der Aderwand bestimmen wir mit Hilfe der Gleichung von \textsc{Bernoulli} 
+{
+	\Pd\phi:t + v^2/2 + p/\rho_a = f(t) .
+}
+Die Zeitfunktion $f$ erhalten wir aus der Randbedigung im unendlichen. Weder die zeitliche Potentialänderung des Bipolarsystems noch die Geschwindigkeit liefern einen Beitrag nach dem Grenzübergang ins unendliche $\varphi --> 0,\, r --> 0$. Die Zeitfunktion folgt daher aus dem Druck im unendlichen $f = p_\infty/\rho_a$. Hiermit ist der Aderaußendruck bestimmt
+{umfangsdruck
+	\frac{p_\infty - p}{\rho_a} = \pdQ:t \ln \frac{\lambda}{\gamma} + 1/2 |( \pdR:t )| ^2 + 2 |( \frac{Q}{L})|^2 \frac{\sin^2\varphi}{\gamma} .
+}
+
+Aus der Verteilung des Druckes über dem Umfang läßt sich die resultierende Kraft auf die Ader bestimmen. Die zum Zentrum gerichtete Kraft lautet
+{
+	f = 2\pi R\rho_a \lambda |( \pdQ:t + \frac{Q^2}{L^2} \frac{1}{1-\lambda^2} )| 	
+}
+Der stationäre Anteil entspricht der Kraft auf einen festen Zylinder in einer singulären Quellströmung und ist stehts positiv, das heißt er wirkt anziehend auf die Adern. Der temporäre Anteil hängt von der Querschnittsbeschleunigung also von der Form des duch die Ader laufenden Pulses ab.\\
+
+Für die eindimensionale Pulsausbreitung genügt ein über den Umfang gemittelter Druck. Durch Integration erhalten wir
+{druckmittelung
+	\frac{p_\infty - \bar p}{\rho_a} = \pdQ:t  \ln \lambda + 1/2 |( \pdR:t )| ^2 + |( \frac{Q}{L} )|^2 \frac{1}{1-\lambda^2} .
+}
+Zusammen mit der Kontinuitätsgleichung \eq{konti}, der Impulsbilanz \eq{impuls} und  dem Wandgesetz \eq{wandgesetz} ist das System für die Pulsausbreitung vollständig.\\
+In linearer Näherung verbleibt aus dem Druckgradienten der Anteil $(\rho_a/2\pi)\ln\lambda\,( \Pd3A:x:t^2 )$. Für das lineare System bekommen wir duch die Kopplung über die Außenströmung statt der einfachen Wellengleichung, die dispersive \textsc{Boussinesq} Gleichung mit dem Operator
+{
+	\pd2:t^2 -c^2 \pd2:x^2 - B \pd4:t^2:x^2 
+}
+mit der positiven Konstanten
+{
+	B = - (1 /2\pi) (\rho_a/\rho) \ln \lambda
+}
+Der Quotient $\rho_a/\rho$ beschreibt das Verhältnis der Flüssigkeitsdichte im Außenbereich zur Dichte des Blutes. Die Geschwindigkeit $c$ ist die einfache Wellengeschwindigkeit der Ader ohne Außenströmung aus \eq{wellengeschwindigkeit}.\\
+Weitere dispersive Einflüsse, die ebenfalls einen Beitrag zu $B$ lieferten, bekämen wir, indem wir die Wandmasse berücksichtigten, oder die Radialkomponente der Blutgeschwindigkeit, vergleichbar mit dem Querträgheitseinfluß bei Flachwasserwellen.\\
+
+Es läßt sich eine erste Aussage über den Einfluß der Kopplung auf das Pulsausbreitungssystem machen. Betrachten wir \eq{druckmittelung} für große Aderabstände. Der temporäre Druckanteil, der die umgebende Flüssigkeit beschleunigen muß wächst mit der Entfernung logarithmisch. Wäre das System nicht derart beschaffen, daß die Vene die von der Aterie verdrängte Flüssigkeit im Außenbereich aufnehmen könnte, stiege der Druck ins unendliche. Die ist eine Eigenschaft des Raumes, die beim expandierenden Zylinder auftritt. Bei einer expandierenden Kugel in einem Potentialfeld ist dies nicht der Fall.\\
+Diese pathologische Situation läßt zweifel an den Modellannahmen aufkommen. Es gibt mehrere Kor\-rek\-tur\-möglichkeiten. Zum einen könnte das Außenmedium als kompressibel angesehen werden, das hätte zur Folge daß eine Wellengleichung zu lösen wäre. Allerdings wächst auch hier der Druck mit der Wellengeschwindigkeit im Außenmedium. Ein Grenzübergang zum inkompressiblen ist nicht möglich.\\
+Eine andere Modellkorrektur besteht in der Begrenzung des Außenraumes. Wir betrachten einen expandierenden Zylinder im Zentrum eines rotationssymmetrischen Gebietes mit Außenradius $\mathcal R$. Der Druck am Zylinder ergibt sich zu
+{
+	\frac{p_\mathcal R - p }{\rho_a} = \pdQ:t \ln \frac{R}{\mathcal R} + 1/2 Q^2 |(  \frac{1}{R^2} - \frac{1}{\mathcal R ^2} )|.
+}
+Die Gleichung hat eine Ähnlichkeit mit \eq{druckmittelung}, wenn wir das Längenverhältnis Aderradius zu Flüssigkeitsradius $R/\mathcal R$ gleichsetzen mit dem Aderradius zu Aderabstandsverhältnis $\lambda$ des gekoppelten Systems. Der temporäre Anteil entspricht dieser Analogie vollkommen, der Anteil der Tangentialgeschwindigkeit konvergiert für kleine $\lambda$. Wir können also sagen, daß sich die Kopplung der Vene an die Aterie so verhält, als begrenze man den Radius des Außenraumes einer einzelnen Ader auf die Länge des Abstandes.\\
+Dies läßt sich leichter erkennen, indem wir ein einfacheres Modell benutzen. Wir nehmen an der Abstand sei groß gegenüber dem Radius. Dann ist die von der Vene induzierte Geschwindigkeit annähernd konstant über dem Aterienwinkel $v = - Q/L$. Die Geschwindigkeitskomponente der Aterienexpansion ist $v = Q/R$. Diese Geschwindigkeiten müssen vektoriell addiert werden, zum Beispiel in karthesischen Koordinaten
+{
+	v_x = (Q/R) \cos\varphi - Q/L,\quad v_y = (Q/R)\sin\varphi
+}
+und wir erhalten
+{
+	 \vec v ^2 = (Q/R)^2 ( 1 - 2\lambda \cos \varphi ).
+}
+
+Statt der bisher angenommenen ebenen Außen\-ström\-ung für sehr langwellige Pulse, lassen wir jetzt die Beweglichkeit der Flüssigkeit in Richtung der Aderachse zu. Wir betrachten nun die Potentialströmung im Raum, und modellieren die Ader als eine eindimensionale Quellverteilung in der Pulsausbreitungsrichung $x$.\\
+Die Lösung der homogenen Potentialgleichung im Aussenraum einer expandierenden Kugel lautet
+{
+	\phi(r,t) = -\frac{R^2 ( \PdR:t ) }{r}
+}
+Jene Kugeln denken wir uns infinitessimal benachbart entlang der Aderachse angeordnet. Damit die überlagerten Lösungen der Potentialgleichung physikalisch sinnvoll bleiben, müssen die Einzelquellen durch eine Länge $\delta$ dividiert werden.\\
+Der Fluß durch die Oberfläche beträgt
+{
+	\oint \pd\phi:r \d s = \int_0^H 4\pi \frac{R^2( \PdR:t )}{\delta} \d x,
+}
+im Falle der Gleichförmigkeit soll dies dem Fluß durch einen expandierenden Zylinder der Höhe $H$ entsprechen, sodaß wegen
+{
+	\oint \pd\phi:r \d s = 2\pi RH ( \PdR:t ) ,
+}
+für die Divisionskonstante gilt
+{
+	\delta = 2 R.
+}
+Das Potentialfeld im Abstand $r$ zur Ader lautet demnach als Superposition der Lösungen der Einzelquellen an den Stellen $x=\xi$
+{
+	\phi(x,r,t) = \int_{-\infty}^\infty - \frac{R(\xi,t) ( \PdR:t ) }{ 2 s }\, \d \xi.
+}
+mit dem Abstand $s$ des Punktes $(x,r)$ vom Quellpunkt $x=\xi$
+{
+	s^2 = (x-\xi)^2 + r^2
+}
+Das Integral können wir aufteilen in eine Integration von $x$ bis unendlich mit dem Argument $\xi = x+\sqrt{s^2-r^2}$ und eine Integration von $x$ ins negativ unendliche, mit dem Argument $\xi = x-\sqrt{s^2-r^2}$. Wir führen die Substitution $\d \xi --> \d s$ durch. Es gilt $\d \xi = \pm (s/\sqrt{s^2-r^2}) \d s$, die Integrationsgrenzen erstrecken sich für beide Bereiche von $s=r$ bis unendlich
+{
+\begin{split}
+	\phi = - 1/2 \int_r^\infty & \left(  \left.\frac{ R( \PdR:t ) }{ \sqrt{s^2-r^2}}\right|_{\xi=x+\sqrt{s^2-r^2}} \right. \\
+	  &+ \left. \left.\frac{ R( \PdR:t ) }{ \sqrt{s^2-r^2}}\right|_{\xi=x-\sqrt{s^2-r^2}} \right) \d s.
+\end{split}
+}
+Für den Fall daß der Aderradius nicht von der Längskoordinate $x$ abhängt, erhalten wir mit $Q = R( \PdR:t )$
+{
+	\phi = - Q \int_r^\infty \frac{ \d s}{\sqrt{s^2-r^2}} = Q \left. \ln (s+\sqrt{s^2-r^2}) \right|_r^\infty,
+}
+dies ist die bekannte radial logarithmische Lösung im ebenen. [$ --> $ Entwicklung von Benjamin--Ono Operator ?].\\
+
+\paragraph{Langwellennäherung KdV Gleichung} Wir entwickeln das System der gekoppelten Ader \eq{konti} \eq{impuls} \eq{wandgesetz} \eq{druckmittelung} in eine schwach nichtlineare langwellige Wellenevolution, indem wir die Orts- und Zeitvariablen strecken und eine weitere unabhängige langsame Zeitvariable $T$ einführen
+{
+	\xi = \varepsilon x,\quad \tau = \varepsilon t,\quad T = \varepsilon^3 t
+}
+sowie die abhängigen Größen entwickeln
+{
+	U = \varepsilon^2 U_1 + \varepsilon^4 U_2,\quad A = 1 + \varepsilon^2 A_1 + \varepsilon^4 A_2
+}
+hierbei sind $U$ und $A$ die dimensionsfreie Geschwindigkeit und der Aderquerschnitt gebildet mit der Länge $\sqrt{A_0}$ und der Zeit $\sqrt{2 A_0^{3/2} \rho / Eh\sqrt{\pi}}$.
+In dieser Entwicklung bekommen wir für den $\varepsilon^3$ Abgleich die normierte linerare Wellengleichung für $U_1$ und $A_1$ in den gestreckten Koordianten $\xi$ und $\tau$ mit der unimodalen Lösung
+{
+	U_1 = f(\zeta), \quad A_1 = f(\zeta),\quad \zeta=\xi-\tau
+}
+für vom Herzen weglaufende Wellen. In der nächsten Ordnung ($\varepsilon^5$) bekommen wir inhomogene Wellengleichungen für $A_2$ und $U_2$. Die Säkularbedingung führt auf die KdV Gleichung
+{
+	\pdf:T + \frac{1}{4} f \pdf:\zeta - \frac{1}{4\pi}\frac{\rho_a}{\rho}\ln |( { \frac{A_0}{\pi L^2}} )| \pd3f:\zeta^3 = 0.
+}
+
+%[ $ --> $ vermtl. Benjamin--Ono]

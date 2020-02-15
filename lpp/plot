@@ -1,0 +1,176 @@
+#!/bin/sh
+#
+# plot - graph module for lpp
+#
+#
+# SYNOPSIS
+#
+# plot [-noaxis] [-noarrow] [-box] +[XDIMxYDIM] CAPTION XMIN XMAX YMIN YMAX XLABEL\
+# 	XSTRING YLABEL YSTRING [FILE.dat] [[CMD|FILE.dat] [...]]
+
+xdim=50
+ydim=40
+NOAXIS=""
+NOARROW=""
+BOX=""
+for i in "$@"; do
+	if [ "$i" = "-noaxis" ]; then 
+		NOAXIS="yes"
+		shift 
+	fi
+done
+for i in "$@"; do
+	if [ "$i" = "-noarrow" ]; then 
+		NOARROW="yes"
+		shift 
+	fi
+done
+for i in "$@"; do
+	if [ "$i" = "-box" ]; then 
+		BOX="yes"
+		NOARROW="yes"
+		shift 
+	fi
+done
+
+for i in "$@"; do
+	if echo "$i" | grep '+[0-9]*x[0-9]*' >/dev/null; then 
+		xdim=`echo "$i" | sed 's/^+\(.*\)x.*/\1/'`
+		ydim=`echo "$i" | sed 's/^+.*x\(.*\)/\1/'`
+		shift 
+	fi
+done
+
+let "xdim_3 = $xdim - 3"
+let "ydim_3 = $ydim - 3"
+let "xdim_5 = $xdim - 5"
+let "ydim_5 = $ydim - 5"
+
+
+
+caption=$1; shift
+
+xmin=$1; shift
+xmax=$1; shift
+ymin=$1; shift
+ymax=$1; shift
+export xmin max ymin ymax
+xminlabel=`printf "%2.0f" $xmin`
+xmaxlabel=`printf "%2.0f" $xmax`
+yminlabel=`printf "%2.0f" $ymin`
+ymaxlabel=`printf "%2.0f" $ymax`
+
+xlabel=$1; shift
+xstring=$1; shift
+ylabel=$1; shift
+ystring=$1; shift
+
+_clip() {
+	awk 'BEGIN{
+		lastx=xmin;lasty=ymin
+	}{
+		if (($1 >= xmin) && ($1<=xmax) && ($2>=ymin) && ($2<=ymax) ) {
+			if (lasty<ymin) {
+				x=lastx+(ymin-lasty)*($1-lastx)/($2-lasty)
+				y=ymin
+				print -xdim_5*x/(xmin-xmax)+(xmin*50-xmax*5)/(xmin-xmax),-ydim_5*y/(ymin-ymax)+(ymin*ydim-ymax*5)/(ymin-ymax) 
+			}
+			print -xdim_5*$1/(xmin-xmax)+(xmin*xdim-xmax*5)/(xmin-xmax),-ydim_5*$2/(ymin-ymax)+(ymin*ydim-ymax*5)/(ymin-ymax) 
+		} else {
+			if (($1 >= xmin) && ($1<=xmax) && ($2<=ymax) && (lasty>=ymin)) {
+				x=lastx+(lasty-ymin)*($1-lastx)/(lasty-$2)
+				y=ymin
+				print -xdim_5*x/(xmin-xmax)+(xmin*xdim-xmax*5)/(xmin-xmax),-ydim_5*y/(ymin-ymax)+(ymin*ydim-ymax*5)/(ymin-ymax) 
+			} else {
+				print ""
+			}
+		}
+		lastx=$1
+		lasty=$2
+	}' xmin=$xmin xmax=$xmax ymin=$ymin ymax=$ymax xdim_5=$xdim_5 ydim_5=$ydim_5 xdim=$xdim ydim=$ydim
+}
+
+_xy2path() {
+	printf "\\\path"
+	_clip | awk 'BEGIN{ newpath=0 }
+	/^$/ {newpath=1} 
+	!/^$/{
+		if (newpath) {
+			printf "\n\\\path"
+			newpath=0
+		}
+		if (NF==2) printf "(%f,%f)",$1,$2
+	}
+	END{ print }' 
+}
+
+if [ ! -z "$caption" ]; then
+cat << EOF
+\begin{figure}
+EOF
+fi
+
+cat << EOF
+\begin{center}
+\unitlength = 1mm
+\begin{picture}($xdim,$ydim)(0,0)
+EOF
+
+if [ -z "$NOAXIS" ]; then
+cat << EOF
+\put(5,3){\tiny $xminlabel}
+\put($xdim,3){\tiny $xmaxlabel}
+\put(0,5){\tiny $yminlabel}
+\put(0,$ydim){\tiny $ymaxlabel}
+EOF
+fi
+
+cat << EOF
+\put($xdim_3,0){\$ $xlabel \$}
+\put(0,$ydim_3){\$ $ylabel \$}
+\put(10,0){$xstring}
+\put(2,10){\begin{rotate}{90}{$ystring}\end{rotate}}
+EOF
+
+if [ -z "$NOARROW" ]; then
+cat << EOF
+\drawline(5,5)(5,$ydim)
+\drawline(5,5)($xdim,5)
+\blacken\path(5,$ydim)(4.5,$ydim_3)(5.5,$ydim_3)(5,$ydim)
+\blacken\path($xdim,5)($xdim_3,5.5)($xdim_3,4.5)($xdim,5)
+EOF
+fi
+
+if [ ! -z "$BOX" ]; then
+cat << EOF
+\drawline(5,5)(5,$ydim)
+\drawline(5,$ydim)($xdim,$ydim)
+\drawline($xdim,$ydim)($xdim,5)
+\drawline($xdim,5)(5,5)
+EOF
+fi
+
+for x in "$@"; do
+	if [ -f "$x" ]; then
+		_xy2path <$x | sed '/^\\path$/d'
+	elif echo "$x" | grep '\\' >/dev/null; then
+		echo $x
+#	elif echo "$x" | grep '^\$' >/dev/null; then
+#		cmd=`echo "$x" | sed 's/^.//' `
+#		$cmd | _xy2path
+	else
+		x | y "$x" | _xy2path | sed '/^\\path$/d'
+	fi
+done
+
+cat << EOF
+\end{picture}
+\end{center}
+EOF
+
+if [ ! -z "$caption" ]; then
+cat << EOF
+\caption{$caption}
+\end{figure}
+EOF
+fi

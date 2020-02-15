@@ -1,0 +1,16 @@
+/* Stability of stationary poisseuille pipe flow */
+
+shoot - shooting algorithm finding least stable roots for omega (complex
+	temporal frequency) for different Reynoldsnumbers R
+shootxx - same as shoot, but written in C++ with complex<double>
+
+shootsurf - as shoot, solves initial value ode, prints value at r=1 (which
+	should be 0 if omega == eigenvalue. Least stable zeros of this height
+	field, should be similar to `shoot'
+
+shoothighr -  as shoot, but the limit for high Reynolds numbers R->infty
+
+shootk - as shoot, but prints lines of constant k, with R as parameter. Output
+	of both shoot, and shootk can be plotted together
+
+shootlines - wrapper around shoot, and shootk, to produce the plot

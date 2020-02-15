@@ -1,0 +1,12 @@
+<$SRC/mkhdr
+
+#LIB=ode/ode.a $LIBDIR/libcvode.a
+TARG=shoot
+#CFLAGS=$CFLAGS -I $INCDIR/cvode
+LDFLAGS=-lm
+
+<$SRC/mkone
+
+#$LIB:V:
+#	cd ode
+#	mk

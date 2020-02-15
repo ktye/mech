@@ -1,0 +1,8 @@
+#!/bin/sh
+for n in 0 1 2; do
+	for N in 1 2 3; do
+		floquet -AR1 -k3 -n$n -N$N | sed 1d |\
+		awk -v n=32 '{ if (!((NR+n-1)%(n))) print }' > V.$n-$N
+	done
+done
+sh mkpath

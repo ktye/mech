@@ -1,0 +1,13 @@
+#!/usr/bin/awk -f
+{
+	if (NR==1) {
+		sigma = $4
+		line = $0
+	} else if ($4 > sigma) {
+		sigma = $4
+		line = $0
+	}
+}
+END {
+	print line
+}

@@ -1,0 +1,36 @@
+\paragraph{Nichtorthogonalit\"at}
+Mit einem einfachen Modell wollen wir den Effekt transienter Verst\"arkung infolge nichtorthogonaler Eigenfunktionen demonstrieren.\\
+Dazu betrachten wir ein lineares dynamisches System zweiter Ordnung mit dem Zustandsvektor $x(t)=(u,v)$
+\begin{equation}
+	\frac{\mathrm{d}x}{\mathrm{d}t} = Ax.
+\end{equation}
+Die Systemmatrix $A$ habe ged\"ampfte Eigenwerte $\Re\lambda_{1,2}<0$ mit den zugeh\"origen nichtorthogonale Eigenvektoren
+\begin{equation}
+	x_1 = (1,0) \qquad x_2 = (\cos{\varphi},\sin\varphi).
+\end{equation}
+Um den Effekt der nichtorthogonalen Eigenvektoren hervorzuheben soll der eingeschlossene Winkel $\varphi$ klein sein $0<\varphi\ll\pi/2$.\\
+Die Eigenwerte und Eigenvektoren korrespondieren mit der Systemmatrix
+\begin{equation}
+	A = \begin{pmatrix}\lambda_1&(\lambda_2-\lambda_1)\cot\varphi\\0&\lambda_2\end{pmatrix}.
+\end{equation}
+Die allgemeine L\"osung des homogenen Systems setzt sich linear aus den Basisl\"osungen zusammen
+\begin{equation}
+	x(t) = \alpha x_1 e^{\lambda_1 t} + \beta x_2 e^{\lambda_2 t}.
+\end{equation}
+W\"ahlen wir als Anfangsbedingung einen Vektor, welcher orthogonal zur Vorzugsrichtung des Systems steht
+\begin{equation}
+	x(0) = (0,1),
+\end{equation}
+dann lautet die L\"osung
+\begin{eqnarray}
+	u(t) &=& (e^{\lambda_2 t} - e^{\lambda_1 t}) \cot\varphi \\
+	v(t) &=& e^{\lambda_2 t}.
+\end{eqnarray}
+Da die Realteile der Eigenwerte $\lambda_{1,2}$ negativ sind, n\"ahern sich beide Komponenten f\"ur lange Zeiten exponentiell der Null\"osung.
+Trotzdem w\"achst die Komponente in Vorzugsrichtung des Systems $u$ zwischenzeitlich stark, da der Faktor $\cot\varphi$ f\"ur kleine Winkel wie $1/\varphi$ singul\"ar wird.
+Das h\"angt damit zusammen, da\ss\ die Faktoren $\alpha$ und $\beta$ sehr gro\ss\ sein m\"ussen, um eine endliche Anfangskonfiguration $x(0)$ darzustellen, welche orthogonal auf die Vorzugsrichtung steht.
+Zum Zeitpunkt $t=0$ kompensieren sich die Anteile nahezu gegenseitig.
+Wenn die Eigenwerte ungleich sind $\lambda_1\neq\lambda_2$, dann klingen die Anteile im weiteren Verlauf unterschiedlich schnell ab, soda\ss\ vor\"ubergehend einer der beiden Anteile dominiert.\\
+\textit{Wird ein ged\"ampftes System mit Vorzugsrichtung orthogonal zu dieser Richtung angeregt, so weicht es parallel zur Vorzugsrichtung aus, bevor es asymptotisch abklingt.
+Die Intensit\"at der Verst\"arkung ist das Produkt aus dem Kotangens des eingeschlossenen Winkels der Eigenvektoren und der Differenz der Exponentiall\"osungen.}
+

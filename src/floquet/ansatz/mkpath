@@ -1,0 +1,56 @@
+#!/bin/sh
+
+export xmin xmax ymin ymax Xmin Xmax Ymin Ymax
+
+_sscale () {
+	awk -v "m=$1" -v "xmin=$xmin" -v "xmax=$xmax" -v "ymin=$ymin" -v "ymax=$ymax" -v "Xmin=$Xmin" -v "Xmax=$Xmax" -v "Ymin=$Ymin" -v "Ymax=$Ymax" 'BEGIN{
+		if (m==1)
+			printf "\\thicklines\\drawline"
+		else if (m==2)
+			printf "\\dottedline{2}"
+		else
+			printf "\\thinlines\\drawline"
+	}
+	{
+		a = xmin
+		b = xmax
+		c = Xmin
+		d = Xmax
+		x = $1
+		X = (x*(d-c) + (b*c-a*d))/(b-a)		
+
+		a = ymin
+		b = ymax
+		c = Ymin
+		d = Ymax
+		x = $2
+		Y = (x*(d-c) + (b*c-a*d))/(b-a)		
+
+		printf "(%g,%g)",X,Y
+	}
+	END {
+		printf "\\thinlines\n"
+	}'
+}
+
+_scale () {
+	cat $1 | awk '{print $1,$2}' | _sscale 1
+	cat $1 | awk '{print $1,$3}' | _sscale 2
+	cat $1 | awk '{print $1,$4}' | _sscale 3
+}
+
+
+xmin=0   xmax=1   ymin=-6  ymax=6
+Xmin=020 Xmax=098 Ymin=190 Ymax=260 _scale V.0-1 > P.0-1
+Xmin=108 Xmax=186 Ymin=190 Ymax=260 _scale V.0-2 > P.0-2
+Xmin=196 Xmax=274 Ymin=190 Ymax=260 _scale V.0-3 > P.0-3
+
+xmin=0   xmax=1   ymin=-3  ymax=3
+Xmin=020 Xmax=098 Ymin=100 Ymax=170 _scale V.1-1 > P.1-1
+Xmin=108 Xmax=186 Ymin=100 Ymax=170 _scale V.1-2 > P.1-2
+Xmin=196 Xmax=274 Ymin=100 Ymax=170 _scale V.1-3 > P.1-3
+
+xmin=0   xmax=1   ymin=-3  ymax=3
+Xmin=020 Xmax=098 Ymin=010 Ymax=080 _scale V.2-1 > P.2-1
+Xmin=108 Xmax=186 Ymin=010 Ymax=080 _scale V.2-2 > P.2-2
+Xmin=196 Xmax=274 Ymin=010 Ymax=080 _scale V.2-3 > P.2-3

@@ -1,0 +1,57 @@
+#!/bin/sh
+# $Id: ltab,v 1.2 2003/10/02 19:03:56 elmar Exp $
+
+# Print latex table from (TAB,LINE)-separated stdin data.
+
+
+if [ ! -z "$1" ]; then
+	label="$1"
+	shift
+else
+	label=""
+fi
+
+if [ -z "$*" ]; then
+	format=auto
+else
+	format="$*"
+fi
+
+if [ ! -z "$label" ]; then
+	echo '\\begin{table}'
+	echo '\\begin{center}'
+fi
+
+cat | awk -v "format=$format" '
+BEGIN { FS="\t"; first=1; }
+!/^$/{
+	if (first) {
+		if (format=="auto") {
+			format="|"
+			for (i=0; i<NF;i++)
+				if ($(i+1)=="") 
+					format=sprintf("%s%s",format,"|")
+				else
+					format=sprintf("%s%s",format,"c|")
+		}
+		printf ("\\begin{tabular}{%s}\n",format)
+		print "\\hline"
+	}
+	first=0
+	n=split($0,l)
+	for (i=1; i<NF;i++)
+		printf("%s & ",l[i])
+	printf("%s \\\\\\hline\n",l[NF])
+}
+/^$/ {
+	print "\\hline\\hline"
+}
+END{
+	print "\\end{tabular}"
+}'
+
+if [ ! -z "$label" ]; then
+	echo '\end{center}'
+	echo "\\\caption{$label}"
+	echo '\end{table}'
+fi

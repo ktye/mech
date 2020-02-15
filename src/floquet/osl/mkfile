@@ -1,0 +1,4 @@
+<$SRC/mkhdr
+TARG=osl
+LDFLAGS=$LDFLAGS $LIBLAPACK -lm
+<$SRC/mkone
