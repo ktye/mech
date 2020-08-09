@@ -13,7 +13,12 @@ import (
 )
 
 func main() {
-	f, e := ioutil.ReadFile(os.Args[1])
+	a := os.Args[1]
+	if a == "new" {
+		newr()
+		return
+	}
+	f, e := ioutil.ReadFile(a)
 	fatal(e)
 	run(bytes.NewReader(f))
 }
@@ -106,4 +111,16 @@ func reps(a L) L {
 		}
 	}
 	return a
+}
+func newr() {
+	t := time.Now()
+	o3 := func() {
+		s := t.Format("Mon 2006.01.02")
+		fmt.Printf("%s a\n%s b\n%s c\n\n", s, s, s)
+	}
+	o3()
+	t = t.AddDate(0, 0, 1)
+	o3()
+	t = t.AddDate(0, 0, 1)
+	o3()
 }
