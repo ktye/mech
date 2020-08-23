@@ -3,28 +3,36 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
-	"os"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
 )
 
 func main() {
-	a := os.Args[1]
-	if a == "new" {
+	var g string
+	var nw bool
+	var s bool
+	flag.BoolVar(&nw, "new", false, "new")
+	flag.StringVar(&g, "g", "abcn", "filter group")
+	flag.BoolVar(&s, "s", false, "stats")
+	flag.Parse()
+	if nw {
 		newr()
 		return
 	}
-	f, e := ioutil.ReadFile(a)
+	f, e := ioutil.ReadFile("c:/k/p")
 	fatal(e)
-	run(bytes.NewReader(f))
-}
-func run(r io.Reader) {
-	a := Parse(r)
-	fmt.Println(a)
+	l := filter(g, Parse(bytes.NewReader(f)))
+	if s {
+		stats(l)
+	} else {
+		fmt.Println(l)
+	}
 }
 func fatal(e error) {
 	if e != nil {
@@ -123,4 +131,47 @@ func newr() {
 	o3()
 	t = t.AddDate(0, 0, 1)
 	o3()
+}
+func filter(g string, a L) (r L) {
+	for _, x := range a {
+		if strings.IndexByte(g, x.G) != -1 {
+			r = append(r, x)
+		}
+	}
+	return r
+}
+func floats(a L, f func(x R) float64) []float64 {
+	var v []float64
+	for _, r := range a {
+		if x := f(r); x != 0 {
+			v = append(v, x)
+		}
+	}
+	return v
+}
+func st(name string, v []float64) {
+	N := len(v)
+	if N == 0 {
+		return
+	}
+	Min, Max := v[0], v[0]
+	for _, x := range v {
+		if x < Min {
+			Min = x
+		}
+		if x > Max {
+			Max = x
+		}
+	}
+	b := make([]float64, len(v))
+	copy(b, v)
+	sort.Float64s(b)
+	Med := b[N/2]
+	fmt.Printf("%s %3v [%3v %3v] #%d\n", name, Med, Min, Max, N)
+}
+func stats(a L) {
+	st("H", floats(a, func(x R) float64 { return x.H }))
+	st("L", floats(a, func(x R) float64 { return x.L }))
+	st("B", floats(a, func(x R) float64 { return x.B }))
+	st("S", floats(a, func(x R) float64 { return x.S }))
 }
