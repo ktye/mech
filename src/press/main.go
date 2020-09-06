@@ -16,10 +16,11 @@ import (
 func main() {
 	var g string
 	var nw bool
-	var s bool
+	var s, a bool
 	flag.BoolVar(&nw, "new", false, "new")
 	flag.StringVar(&g, "g", "abcn", "filter group")
 	flag.BoolVar(&s, "s", false, "stats")
+	flag.BoolVar(&a, "a", false, "average")
 	flag.Parse()
 	if nw {
 		newr()
@@ -28,6 +29,9 @@ func main() {
 	f, e := ioutil.ReadFile("c:/k/p")
 	fatal(e)
 	l := filter(g, Parse(bytes.NewReader(f)))
+	if a {
+		l = average(l)
+	}
 	if s {
 		stats(l)
 	} else {
@@ -139,6 +143,31 @@ func filter(g string, a L) (r L) {
 		}
 	}
 	return r
+}
+func average(a L) (r L) {
+	var x R
+	for i, y := range a {
+		if y.Rep == 0 {
+			if i != 0 {
+				r = append(r, x)
+			}
+			x = y
+		} else if y.Rep == 1 {
+			x = merge(x, y)
+		} else {
+			panic("rep")
+		}
+	}
+	return append(r, x)
+}
+func merge(x, y R) R {
+	f := func(a, b float64) float64 {
+		return float64((int(a) + int(b)) / 2)
+	}
+	x.H = f(x.H, y.H)
+	x.L = f(x.L, y.L)
+	x.B = f(x.B, y.B)
+	return x
 }
 func floats(a L, f func(x R) float64) []float64 {
 	var v []float64
