@@ -48,7 +48,7 @@ type R struct {
 	Date       time.Time
 	G          byte
 	H, L, B, S float64
-	E          bool
+	E, Z       bool
 	Rep        int
 }
 type L []R
@@ -64,6 +64,9 @@ func (r R) String() string {
 	s := "   "
 	if r.G == 'a' {
 		s = fmt.Sprintf("%2dh", int(r.S))
+		if r.Z {
+			s = s[:len(s)-1] + "z"
+		}
 	}
 	return fmt.Sprintf("%s %s %c %03d %02d %02d %s %d", r.Date.Weekday().String()[:3], r.Date.Format("2006.01.02"), r.G, int(r.H), int(r.L), int(r.B), s, r.Rep)
 }
@@ -100,8 +103,16 @@ func parse(s string) R {
 	G := []byte(v[2])
 	S := 0.0
 	E := false
-	if g := G[0]; g == 'a' && len(v) == 7 && strings.HasSuffix(v[6], "h") {
-		S = flt(strings.TrimSuffix(v[6], "h"))
+	Z := false
+	if g := G[0]; g == 'a' && len(v) == 7 {
+		if s := v[6]; strings.HasSuffix(s, "h") || strings.HasSuffix(s, "z") {
+			S = flt(s[:len(s)-1])
+			if strings.HasSuffix(s, "z") {
+				Z = true
+			}
+		} else {
+			panic("a!")
+		}
 	} else if g == 'a' && len(v) != 7 {
 		pan("a!")
 	} else if g == 'b' && len(v) == 7 && v[6] == "e" {
@@ -109,7 +120,7 @@ func parse(s string) R {
 	} else if len(v) != 6 {
 		pan("len!")
 	}
-	return R{d, G[0], flt(v[3]), flt(v[4]), flt(v[5]), S, E, 0}
+	return R{d, G[0], flt(v[3]), flt(v[4]), flt(v[5]), S, E, Z, 0}
 }
 func flt(s string) float64 {
 	f, e := strconv.ParseFloat(s, 64)
